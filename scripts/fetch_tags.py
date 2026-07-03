@@ -37,7 +37,7 @@ EXCHANGE_KEYWORDS = [
     "coinex", "bittrex", "crypto.com", "upbit", "bithumb", "lbank", "xt.com",
     "bitmart", "bingx", "coinw", "hotcoin", "weex", "deepcoin", "pionex",
     "bitkub", "coinbase", "bitstamp", "bit2me", "latoken", "phemex",
-    "exchange", "probit", "bitrue", "tokocrypto", "indodax",
+    "exchange", "probit", "bitrue", "tokocrypto", "indodax", "cex.io",
 ]
 
 # Tags that are exchanges but too short/ambiguous for substring matching:

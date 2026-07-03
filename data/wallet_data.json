@@ -14,7 +14,7 @@
     "circular_counterparty_count": 26,
     "wallet_address": "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL",
     "wallet_tag": "",
-    "exchange_source_count": 19,
+    "exchange_source_count": 21,
     "exchange_destination_count": 0
   },
   "sources": [
@@ -5587,8 +5587,8 @@
       "address": "TA7jHA7BR17Sv4vdV2Thx2wJaiUGHNybzU",
       "total": 700.0,
       "count": 1,
-      "tag": "",
-      "is_exchange": false
+      "tag": "BitMart Hot Wallet",
+      "is_exchange": true
     },
     {
       "address": "TQicGmSLJ1ig3bMSJVjXxFB1ddoJrYTsa4",
@@ -6910,8 +6910,8 @@
       "address": "TQ8y7omRyKSq42Tri398txQCQE4wxjk97Q",
       "total": 162.22,
       "count": 1,
-      "tag": "",
-      "is_exchange": false
+      "tag": "CEX.IO",
+      "is_exchange": true
     },
     {
       "address": "TFAdu5a8RNSxP1qAQy3YfJVqpVEfxRk4d3",
