@@ -1,65 +1,64 @@
-import Image from "next/image";
+import { getWalletData } from "@/lib/data";
+import { formatDateTime } from "@/lib/format";
+import KpiCards from "@/components/KpiCards";
+import SankeyFlow from "@/components/SankeyFlow";
+import DailyVolumeTimeline from "@/components/DailyVolumeTimeline";
+import CircularTable from "@/components/CircularTable";
+import CounterpartyTable from "@/components/CounterpartyTable";
 
 export default function Home() {
+  const { kpis, sources, destinations, circular_counterparties, daily_volumes } = getWalletData();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="flex-1 w-full max-w-[1400px] mx-auto px-4 sm:px-8 py-8 sm:py-10 flex flex-col gap-8">
+      <header className="flex flex-col gap-1 border-b border-[var(--border)] pb-5">
+        <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.15em] text-[var(--muted)]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
+          On-Chain Flow Analysis · TRON / USDT
+        </div>
+        <h1 className="text-2xl sm:text-3xl font-semibold mt-1">{kpis.wallet_label}</h1>
+        <p className="text-sm text-[var(--muted)] mono">
+          {formatDateTime(kpis.first_tx_time)} → {formatDateTime(kpis.last_tx_time)} · {kpis.active_days} active days
+        </p>
+      </header>
+
+      <section>
+        <KpiCards kpis={kpis} />
+      </section>
+
+      <section className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-3">
+        <div>
+          <h2 className="text-sm font-medium">Fund Flow — Top 15 Sources → {kpis.wallet_label} → Top 15 Destinations</h2>
+          <p className="text-xs text-[var(--muted)] mt-0.5">
+            Remaining counterparties grouped as &quot;Other&quot;. Link width is proportional to USDT volume.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <SankeyFlow sources={sources} destinations={destinations} walletLabel={kpis.wallet_label} />
+      </section>
+
+      <section className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-3">
+        <div>
+          <h2 className="text-sm font-medium">Daily Volume — Inflow / Outflow</h2>
+          <p className="text-xs text-[var(--muted)] mt-0.5">
+            Mirrored timeline: inflow rendered above the axis, outflow below.
+          </p>
         </div>
-      </main>
-    </div>
+        <DailyVolumeTimeline data={daily_volumes} />
+      </section>
+
+      <section>
+        <CircularTable rows={circular_counterparties} />
+      </section>
+
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <CounterpartyTable title="Top Sources (Inflow)" rows={sources} direction="in" />
+        <CounterpartyTable title="Top Destinations (Outflow)" rows={destinations} direction="out" />
+      </section>
+
+      <footer className="text-[11px] text-[var(--muted)] border-t border-[var(--border)] pt-4 pb-2">
+        Derived from on-chain USDT transfer records. Wallet identity redacted — shown only as &quot;{kpis.wallet_label}
+        &quot;. Counterparty values are TRON addresses, not personal identities.
+      </footer>
+    </main>
   );
 }

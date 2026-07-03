@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wallet X — On-Chain Flow Analysis
 
-## Getting Started
+Forensic-style Next.js dashboard for a single TRON wallet's USDT flows. The
+wallet's identity is never shown — only pre-aggregated numbers, labeled
+"Wallet X". No raw Tronscan export ever ships with the app; the repo only
+contains the aggregated `data/wallet_data.json`.
 
-First, run the development server:
+## Structure
+
+- `scripts/preprocess.py` — one-off script that reads the two Tronscan xlsx
+  exports (Incoming/Outgoing transfers, not included in this repo), filters
+  to `Token == "USDT"`, and writes `data/wallet_data.json`. Re-run it locally
+  if the source exports change; the xlsx files themselves must never be
+  committed.
+- `data/wallet_data.json` — the only data file the app ships with: KPIs,
+  per-counterparty totals, daily volumes, and circular-counterparty list.
+- `src/lib/` — typed data loader, address/number formatting helpers, Sankey
+  data-shaping logic.
+- `src/components/` — KPI cards, Sankey flow diagram, mirrored daily volume
+  timeline, circular-counterparties table, searchable counterparty tables.
+
+## Regenerating the data
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+python3 scripts/preprocess.py
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Reads the two xlsx files from `~/Downloads` (see the top of the script to
+change the paths) and overwrites `data/wallet_data.json`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Open http://localhost:3000.
 
-To learn more about Next.js, take a look at the following resources:
+## Deploying to Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This is a standard static-friendly Next.js App Router project — no server
+secrets, no database, no API routes. The dashboard reads `data/wallet_data.json`
+at build time, so the whole site can be statically prerendered.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Option A — Vercel CLI
 
-## Deploy on Vercel
+```bash
+npm install -g vercel   # if not already installed
+vercel login
+vercel                  # first deploy, links the project
+vercel --prod           # promote to production
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Option B — Git + Vercel dashboard
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push this repo to GitHub/GitLab/Bitbucket.
+2. In the Vercel dashboard, "Add New… → Project", import the repo.
+3. Framework preset "Next.js" is auto-detected — no config overrides needed.
+4. Deploy.
+
+No environment variables are required. Before pushing, double-check that no
+`.xlsx` file and nothing outside `data/wallet_data.json` containing wallet
+data has been added to git (`git status`, `.gitignore` already excludes
+`node_modules`, `.next`, `.vercel`).

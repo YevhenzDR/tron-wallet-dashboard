@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #08090c;
+  --surface: #0f1116;
+  --surface-raised: #14161d;
+  --border: #22252f;
+  --foreground: #e4e6eb;
+  --muted: #7c8394;
+  --accent: #3dd6c1;
+  --accent-dim: #1f7a6f;
+  --inflow: #3dd6c1;
+  --outflow: #e8785a;
+  --warn: #e8b84a;
+  --danger: #e8785a;
 }
 
 @theme inline {
@@ -12,15 +22,36 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
 }
 
 body {
   background: var(--background);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(61, 214, 193, 0.06), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(232, 120, 90, 0.05), transparent 45%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, Menlo, monospace;
+}
+
+.report-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
 }
