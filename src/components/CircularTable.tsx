@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import type { CircularCounterparty } from "@/lib/types";
-import { formatUsdt, shortenAddress } from "@/lib/format";
+import { formatUsdt } from "@/lib/format";
+import AddressLink from "./AddressLink";
 
 type SortKey = "in_total" | "out_total" | "net";
 
@@ -15,9 +16,9 @@ export default function CircularTable({ rows }: { rows: CircularCounterparty[] }
     <div className="report-card rounded-md overflow-hidden">
       <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)]">
         <div>
-          <h3 className="text-sm font-medium">Circular Counterparties</h3>
+          <h3 className="text-sm font-medium">Циркулярні контрагенти</h3>
           <p className="text-xs text-[var(--muted)] mt-0.5">
-            Addresses that appear as both a source and a destination — {rows.length} flagged
+            Адреси, що фігурують і як джерело, і як отримувач — виявлено: {rows.length}
           </p>
         </div>
         <div className="flex gap-1 text-xs">
@@ -31,7 +32,7 @@ export default function CircularTable({ rows }: { rows: CircularCounterparty[] }
                   : "border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)]"
               }`}
             >
-              sort: {k === "in_total" ? "in" : k === "out_total" ? "out" : "net"}
+              сорт.: {k === "in_total" ? "вхід" : k === "out_total" ? "вихід" : "сальдо"}
             </button>
           ))}
         </div>
@@ -40,19 +41,19 @@ export default function CircularTable({ rows }: { rows: CircularCounterparty[] }
         <table className="w-full text-xs mono">
           <thead className="sticky top-0 bg-[var(--surface)]">
             <tr className="text-[var(--muted)] text-left">
-              <th className="px-4 py-2 font-normal">Address</th>
-              <th className="px-4 py-2 font-normal text-right">In Total</th>
-              <th className="px-4 py-2 font-normal text-right">In Tx</th>
-              <th className="px-4 py-2 font-normal text-right">Out Total</th>
-              <th className="px-4 py-2 font-normal text-right">Out Tx</th>
-              <th className="px-4 py-2 font-normal text-right">Net</th>
+              <th className="px-4 py-2 font-normal">Адреса</th>
+              <th className="px-4 py-2 font-normal text-right">Надійшло</th>
+              <th className="px-4 py-2 font-normal text-right">Тр. вх.</th>
+              <th className="px-4 py-2 font-normal text-right">Відправлено</th>
+              <th className="px-4 py-2 font-normal text-right">Тр. вих.</th>
+              <th className="px-4 py-2 font-normal text-right">Сальдо</th>
             </tr>
           </thead>
           <tbody>
             {sorted.map((r) => (
               <tr key={r.address} className="border-t border-[var(--border)] hover:bg-[var(--surface-raised)]">
-                <td className="px-4 py-2" title={r.address}>
-                  {shortenAddress(r.address)}
+                <td className="px-4 py-2 min-w-72">
+                  <AddressLink address={r.address} tag={r.tag} isExchange={r.is_exchange} />
                 </td>
                 <td className="px-4 py-2 text-right" style={{ color: "var(--inflow)" }}>
                   {formatUsdt(r.in_total)}

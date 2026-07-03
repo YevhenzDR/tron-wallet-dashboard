@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wallet X — On-Chain Flow Analysis",
-  description: "Forensic USDT flow report for a TRON wallet, derived from on-chain transfer exports.",
+  title: "TRON-гаманець — аналіз он-чейн потоків",
+  description:
+    "Форензік-звіт про потоки USDT гаманця TRON, складений на основі он-чейн записів переказів.",
 };
 
 export default function RootLayout({
@@ -24,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="uk"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">{children}</body>

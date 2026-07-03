@@ -170,6 +170,24 @@ def main():
         "daily_volumes": daily_list,
     }
 
+    # Re-apply address tags (exchange labels) if fetch_tags.py has run before,
+    # so re-running this script doesn't strip the enrichment.
+    tags_path = OUT_PATH.rsplit("/", 1)[0] + "/address_tags.json"
+    try:
+        with open(tags_path) as f:
+            tag_cache = json.load(f)
+    except FileNotFoundError:
+        tag_cache = None
+    if tag_cache is not None:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "fetch_tags", __file__.rsplit("/", 1)[0] + "/fetch_tags.py"
+        )
+        fetch_tags = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(fetch_tags)
+        fetch_tags.merge(output, tag_cache)
+        print("Re-applied address tags from address_tags.json")
+
     with open(OUT_PATH, "w") as f:
         json.dump(output, f, indent=2)
 

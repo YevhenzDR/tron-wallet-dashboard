@@ -1,5 +1,7 @@
 export interface Kpis {
   wallet_label: string;
+  wallet_address: string;
+  wallet_tag: string;
   total_in: number;
   total_out: number;
   residual: number;
@@ -11,12 +13,16 @@ export interface Kpis {
   first_tx_time: string;
   last_tx_time: string;
   circular_counterparty_count: number;
+  exchange_source_count: number;
+  exchange_destination_count: number;
 }
 
 export interface Counterparty {
   address: string;
   total: number;
   count: number;
+  tag: string;
+  is_exchange: boolean;
 }
 
 export interface CircularCounterparty {
@@ -26,6 +32,8 @@ export interface CircularCounterparty {
   out_total: number;
   out_count: number;
   net: number;
+  tag: string;
+  is_exchange: boolean;
 }
 
 export interface DailyVolume {

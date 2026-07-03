@@ -1,17 +1,22 @@
-export function shortenAddress(address: string, lead = 6, tail = 6): string {
-  if (address.length <= lead + tail + 3) return address;
-  return `${address.slice(0, lead)}…${address.slice(-tail)}`;
+const LOCALE = "uk-UA";
+
+export function tronscanUrl(address: string): string {
+  return `https://tronscan.org/#/address/${address}`;
 }
 
 export function formatUsdt(value: number, fractionDigits = 2): string {
-  return value.toLocaleString("en-US", {
+  return value.toLocaleString(LOCALE, {
     minimumFractionDigits: fractionDigits,
     maximumFractionDigits: fractionDigits,
   });
 }
 
+export function formatCount(value: number): string {
+  return value.toLocaleString(LOCALE);
+}
+
 export function formatCompact(value: number): string {
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat(LOCALE, {
     notation: "compact",
     maximumFractionDigits: 2,
   }).format(value);
@@ -19,7 +24,7 @@ export function formatCompact(value: number): string {
 
 export function formatDate(iso: string): string {
   const d = new Date(iso);
-  return d.toLocaleDateString("en-US", {
+  return d.toLocaleDateString(LOCALE, {
     year: "numeric",
     month: "short",
     day: "2-digit",
@@ -29,9 +34,9 @@ export function formatDate(iso: string): string {
 export function formatDateTime(iso: string): string {
   const d = new Date(iso);
   return (
-    d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "2-digit" }) +
+    d.toLocaleDateString(LOCALE, { year: "numeric", month: "short", day: "2-digit" }) +
     " " +
-    d.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: false }) +
+    d.toLocaleTimeString(LOCALE, { hour: "2-digit", minute: "2-digit", hour12: false }) +
     " UTC"
   );
 }

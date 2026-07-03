@@ -1,10 +1,19 @@
 import { getWalletData } from "@/lib/data";
-import { formatDateTime } from "@/lib/format";
+import { formatDateTime, tronscanUrl } from "@/lib/format";
 import KpiCards from "@/components/KpiCards";
 import SankeyFlow from "@/components/SankeyFlow";
 import DailyVolumeTimeline from "@/components/DailyVolumeTimeline";
 import CircularTable from "@/components/CircularTable";
 import CounterpartyTable from "@/components/CounterpartyTable";
+
+function LegendDot({ color, label }: { color: string; label: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 text-[11px] text-[var(--muted)]">
+      <span className="w-2 h-2 rounded-sm" style={{ background: color }} />
+      {label}
+    </span>
+  );
+}
 
 export default function Home() {
   const { kpis, sources, destinations, circular_counterparties, daily_volumes } = getWalletData();
@@ -14,11 +23,21 @@ export default function Home() {
       <header className="flex flex-col gap-1 border-b border-[var(--border)] pb-5">
         <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.15em] text-[var(--muted)]">
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
-          On-Chain Flow Analysis · TRON / USDT
+          Аналіз он-чейн потоків · TRON / USDT
         </div>
-        <h1 className="text-2xl sm:text-3xl font-semibold mt-1">{kpis.wallet_label}</h1>
+        <h1 className="text-lg sm:text-2xl font-semibold mt-1 mono break-all">
+          <a
+            href={tronscanUrl(kpis.wallet_address)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline hover:text-[var(--accent)]"
+          >
+            {kpis.wallet_address}
+          </a>
+        </h1>
         <p className="text-sm text-[var(--muted)] mono">
-          {formatDateTime(kpis.first_tx_time)} → {formatDateTime(kpis.last_tx_time)} · {kpis.active_days} active days
+          {formatDateTime(kpis.first_tx_time)} → {formatDateTime(kpis.last_tx_time)} · активних днів:{" "}
+          {kpis.active_days}
         </p>
       </header>
 
@@ -27,20 +46,37 @@ export default function Home() {
       </section>
 
       <section className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-3">
-        <div>
-          <h2 className="text-sm font-medium">Fund Flow — Top 15 Sources → {kpis.wallet_label} → Top 15 Destinations</h2>
-          <p className="text-xs text-[var(--muted)] mt-0.5">
-            Remaining counterparties grouped as &quot;Other&quot;. Link width is proportional to USDT volume.
-          </p>
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 className="text-sm font-medium">
+              Потоки коштів — топ-15 джерел → гаманець → топ-15 отримувачів
+            </h2>
+            <p className="text-xs text-[var(--muted)] mt-0.5">
+              Решту контрагентів згруповано як «Інші». Товщина зв&apos;язку пропорційна обсягу USDT. Натисніть
+              на адресу, щоб відкрити її в Tronscan.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <LegendDot color="#3dd6c1" label="гаманець-джерело" />
+            <LegendDot color="#e8785a" label="гаманець-отримувач" />
+            <LegendDot color="#8b7cf6" label="біржа" />
+            <LegendDot color="#e8b84a" label="досліджуваний гаманець" />
+            <LegendDot color="#4a5568" label="інші (згруповано)" />
+          </div>
         </div>
-        <SankeyFlow sources={sources} destinations={destinations} walletLabel={kpis.wallet_label} />
+        <SankeyFlow
+          sources={sources}
+          destinations={destinations}
+          walletAddress={kpis.wallet_address}
+          walletTag={kpis.wallet_tag}
+        />
       </section>
 
       <section className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-3">
         <div>
-          <h2 className="text-sm font-medium">Daily Volume — Inflow / Outflow</h2>
+          <h2 className="text-sm font-medium">Денний обсяг — надходження / відправлення</h2>
           <p className="text-xs text-[var(--muted)] mt-0.5">
-            Mirrored timeline: inflow rendered above the axis, outflow below.
+            Дзеркальна шкала: надходження відкладено вгору від осі, відправлення — вниз.
           </p>
         </div>
         <DailyVolumeTimeline data={daily_volumes} />
@@ -50,14 +86,15 @@ export default function Home() {
         <CircularTable rows={circular_counterparties} />
       </section>
 
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <CounterpartyTable title="Top Sources (Inflow)" rows={sources} direction="in" />
-        <CounterpartyTable title="Top Destinations (Outflow)" rows={destinations} direction="out" />
+      <section className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        <CounterpartyTable title="Топ джерел (надходження)" rows={sources} direction="in" />
+        <CounterpartyTable title="Топ отримувачів (відправлення)" rows={destinations} direction="out" />
       </section>
 
       <footer className="text-[11px] text-[var(--muted)] border-t border-[var(--border)] pt-4 pb-2">
-        Derived from on-chain USDT transfer records. Wallet identity redacted — shown only as &quot;{kpis.wallet_label}
-        &quot;. Counterparty values are TRON addresses, not personal identities.
+        Складено на основі он-чейн записів переказів USDT. Мітки бірж походять з публічних тегів адрес
+        Tronscan; адреси без тегів вважаються звичайними гаманцями. Усі адреси ведуть на блокчейн-оглядач
+        Tronscan.
       </footer>
     </main>
   );
