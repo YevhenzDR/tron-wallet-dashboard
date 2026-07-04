@@ -4,6 +4,15 @@ import { useMemo, useState } from "react";
 import type { Counterparty } from "@/lib/types";
 import { formatUsdt } from "@/lib/format";
 import AddressLink from "./AddressLink";
+import SortableTh, { type SortDir } from "./SortableTh";
+
+type SortKey = "address" | "total" | "count";
+
+const DEFAULT_DIR: Record<SortKey, SortDir> = {
+  address: "asc",
+  total: "desc",
+  count: "desc",
+};
 
 export default function CounterpartyTable({
   title,
@@ -15,8 +24,19 @@ export default function CounterpartyTable({
   direction: "in" | "out";
 }) {
   const [query, setQuery] = useState("");
+  const [sortKey, setSortKey] = useState<SortKey>("total");
+  const [dir, setDir] = useState<SortDir>("desc");
   const color = direction === "in" ? "var(--inflow)" : "var(--outflow)";
   const exchangeCount = rows.filter((r) => r.is_exchange).length;
+
+  const handleSort = (key: SortKey) => {
+    if (key === sortKey) {
+      setDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      setDir(DEFAULT_DIR[key]);
+    }
+  };
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -26,6 +46,15 @@ export default function CounterpartyTable({
       (r) => r.address.toLowerCase().includes(q) || r.tag.toLowerCase().includes(q)
     );
   }, [rows, query]);
+
+  const sorted = useMemo(() => {
+    const arr = [...filtered];
+    arr.sort((a, b) => {
+      const cmp = sortKey === "address" ? a.address.localeCompare(b.address) : a[sortKey] - b[sortKey];
+      return dir === "asc" ? cmp : -cmp;
+    });
+    return arr;
+  }, [filtered, sortKey, dir]);
 
   return (
     <div className="report-card rounded-md overflow-hidden flex flex-col">
@@ -47,13 +76,27 @@ export default function CounterpartyTable({
         <table className="w-full text-xs mono">
           <thead className="sticky top-0 bg-[var(--surface)]">
             <tr className="text-[var(--muted)] text-left">
-              <th className="px-4 py-2 font-normal">Адреса</th>
-              <th className="px-4 py-2 font-normal text-right">Сума (USDT)</th>
-              <th className="px-4 py-2 font-normal text-right">К-сть тр.</th>
+              <SortableTh label="Адреса" sortKey="address" activeKey={sortKey} dir={dir} onClick={handleSort} />
+              <SortableTh
+                label="Сума (USDT)"
+                sortKey="total"
+                activeKey={sortKey}
+                dir={dir}
+                onClick={handleSort}
+                align="right"
+              />
+              <SortableTh
+                label="К-сть тр."
+                sortKey="count"
+                activeKey={sortKey}
+                dir={dir}
+                onClick={handleSort}
+                align="right"
+              />
             </tr>
           </thead>
           <tbody>
-            {filtered.slice(0, 200).map((r) => (
+            {sorted.map((r) => (
               <tr key={r.address} className="border-t border-[var(--border)] hover:bg-[var(--surface-raised)]">
                 <td className="px-4 py-2 min-w-72">
                   <AddressLink address={r.address} tag={r.tag} isExchange={r.is_exchange} />
@@ -64,7 +107,7 @@ export default function CounterpartyTable({
                 <td className="px-4 py-2 text-right text-[var(--muted)]">{r.count}</td>
               </tr>
             ))}
-            {filtered.length === 0 && (
+            {sorted.length === 0 && (
               <tr>
                 <td colSpan={3} className="px-4 py-6 text-center text-[var(--muted)]">
                   Збігів не знайдено
@@ -74,11 +117,6 @@ export default function CounterpartyTable({
           </tbody>
         </table>
       </div>
-      {filtered.length > 200 && (
-        <div className="px-4 py-2 text-[11px] text-[var(--muted)] border-t border-[var(--border)]">
-          Показано перші 200 із {filtered.length.toLocaleString("uk-UA")} збігів — уточніть пошук
-        </div>
-      )}
     </div>
   );
 }

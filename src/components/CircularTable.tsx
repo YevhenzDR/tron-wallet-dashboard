@@ -4,49 +4,91 @@ import { useState } from "react";
 import type { CircularCounterparty } from "@/lib/types";
 import { formatUsdt } from "@/lib/format";
 import AddressLink from "./AddressLink";
+import SortableTh, { type SortDir } from "./SortableTh";
 
-type SortKey = "in_total" | "out_total" | "net";
+type SortKey = "address" | "in_total" | "in_count" | "out_total" | "out_count" | "net";
+
+const DEFAULT_DIR: Record<SortKey, SortDir> = {
+  address: "asc",
+  in_total: "desc",
+  in_count: "desc",
+  out_total: "desc",
+  out_count: "desc",
+  net: "desc",
+};
 
 export default function CircularTable({ rows }: { rows: CircularCounterparty[] }) {
   const [sortKey, setSortKey] = useState<SortKey>("in_total");
+  const [dir, setDir] = useState<SortDir>("desc");
 
-  const sorted = [...rows].sort((a, b) => Math.abs(b[sortKey]) - Math.abs(a[sortKey]));
+  const handleSort = (key: SortKey) => {
+    if (key === sortKey) {
+      setDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      setDir(DEFAULT_DIR[key]);
+    }
+  };
+
+  const sorted = [...rows].sort((a, b) => {
+    const cmp = sortKey === "address" ? a.address.localeCompare(b.address) : a[sortKey] - b[sortKey];
+    return dir === "asc" ? cmp : -cmp;
+  });
 
   return (
     <div className="report-card rounded-md overflow-hidden">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)]">
-        <div>
-          <h3 className="text-sm font-medium">Циркулярні контрагенти</h3>
-          <p className="text-xs text-[var(--muted)] mt-0.5">
-            Адреси, що фігурують і як джерело, і як отримувач — виявлено: {rows.length}
-          </p>
-        </div>
-        <div className="flex gap-1 text-xs">
-          {(["in_total", "out_total", "net"] as SortKey[]).map((k) => (
-            <button
-              key={k}
-              onClick={() => setSortKey(k)}
-              className={`px-2 py-1 rounded border text-xs transition-colors ${
-                sortKey === k
-                  ? "border-[var(--warn)] text-[var(--warn)]"
-                  : "border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)]"
-              }`}
-            >
-              сорт.: {k === "in_total" ? "вхід" : k === "out_total" ? "вихід" : "сальдо"}
-            </button>
-          ))}
-        </div>
+      <div className="px-4 py-3 border-b border-[var(--border)]">
+        <h3 className="text-sm font-medium">Циркулярні контрагенти</h3>
+        <p className="text-xs text-[var(--muted)] mt-0.5">
+          Адреси, що фігурують і як джерело, і як отримувач — виявлено: {rows.length}. Натисніть на
+          заголовок стовпця для сортування.
+        </p>
       </div>
       <div className="overflow-x-auto scrollbar-thin max-h-96 overflow-y-auto">
         <table className="w-full text-xs mono">
           <thead className="sticky top-0 bg-[var(--surface)]">
             <tr className="text-[var(--muted)] text-left">
-              <th className="px-4 py-2 font-normal">Адреса</th>
-              <th className="px-4 py-2 font-normal text-right">Надійшло</th>
-              <th className="px-4 py-2 font-normal text-right">Тр. вх.</th>
-              <th className="px-4 py-2 font-normal text-right">Відправлено</th>
-              <th className="px-4 py-2 font-normal text-right">Тр. вих.</th>
-              <th className="px-4 py-2 font-normal text-right">Сальдо</th>
+              <SortableTh label="Адреса" sortKey="address" activeKey={sortKey} dir={dir} onClick={handleSort} />
+              <SortableTh
+                label="Надійшло"
+                sortKey="in_total"
+                activeKey={sortKey}
+                dir={dir}
+                onClick={handleSort}
+                align="right"
+              />
+              <SortableTh
+                label="Тр. вх."
+                sortKey="in_count"
+                activeKey={sortKey}
+                dir={dir}
+                onClick={handleSort}
+                align="right"
+              />
+              <SortableTh
+                label="Відправлено"
+                sortKey="out_total"
+                activeKey={sortKey}
+                dir={dir}
+                onClick={handleSort}
+                align="right"
+              />
+              <SortableTh
+                label="Тр. вих."
+                sortKey="out_count"
+                activeKey={sortKey}
+                dir={dir}
+                onClick={handleSort}
+                align="right"
+              />
+              <SortableTh
+                label="Сальдо"
+                sortKey="net"
+                activeKey={sortKey}
+                dir={dir}
+                onClick={handleSort}
+                align="right"
+              />
             </tr>
           </thead>
           <tbody>

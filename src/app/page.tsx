@@ -1,10 +1,13 @@
 import { getWalletData } from "@/lib/data";
+import { getDestinationTraces } from "@/lib/traces";
 import { formatDateTime, tronscanUrl } from "@/lib/format";
 import KpiCards from "@/components/KpiCards";
 import SankeyFlow from "@/components/SankeyFlow";
 import DailyVolumeTimeline from "@/components/DailyVolumeTimeline";
 import CircularTable from "@/components/CircularTable";
 import CounterpartyTable from "@/components/CounterpartyTable";
+import TypologyNotes from "@/components/TypologyNotes";
+import DestinationTraceTable from "@/components/DestinationTraceTable";
 
 function LegendDot({ color, label }: { color: string; label: string }) {
   return (
@@ -17,6 +20,7 @@ function LegendDot({ color, label }: { color: string; label: string }) {
 
 export default function Home() {
   const { kpis, sources, destinations, circular_counterparties, daily_volumes } = getWalletData();
+  const destinationTraces = getDestinationTraces();
 
   return (
     <main className="flex-1 w-full max-w-[1400px] mx-auto px-4 sm:px-8 py-8 sm:py-10 flex flex-col gap-8">
@@ -43,6 +47,15 @@ export default function Home() {
 
       <section>
         <KpiCards kpis={kpis} />
+      </section>
+
+      <section>
+        <TypologyNotes
+          kpis={kpis}
+          sources={sources}
+          circularCounterparties={circular_counterparties}
+          traceSummary={destinationTraces.summary}
+        />
       </section>
 
       <section className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-3">
@@ -84,6 +97,10 @@ export default function Home() {
 
       <section>
         <CircularTable rows={circular_counterparties} />
+      </section>
+
+      <section>
+        <DestinationTraceTable data={destinationTraces} />
       </section>
 
       <section className="grid grid-cols-1 xl:grid-cols-2 gap-6">

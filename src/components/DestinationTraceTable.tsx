@@ -1,12 +1,38 @@
 "use client";
 
 import { useState } from "react";
-import type { DestinationTraces } from "@/lib/types";
+import type { DestinationTraces, TraceTarget } from "@/lib/types";
 import { formatCount, formatUsdt } from "@/lib/format";
 import AddressLink from "./AddressLink";
+import SortableTh, { type SortDir } from "./SortableTh";
+
+type TargetSortKey = "address" | "total" | "count";
+
+const DEFAULT_DIR: Record<TargetSortKey, SortDir> = {
+  address: "asc",
+  total: "desc",
+  count: "desc",
+};
 
 export default function DestinationTraceTable({ data }: { data: DestinationTraces }) {
   const [expanded, setExpanded] = useState<string | null>(data.traced[0]?.address ?? null);
+  const [sortKey, setSortKey] = useState<TargetSortKey>("total");
+  const [dir, setDir] = useState<SortDir>("desc");
+
+  const handleSort = (key: TargetSortKey) => {
+    if (key === sortKey) {
+      setDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      setDir(DEFAULT_DIR[key]);
+    }
+  };
+
+  const sortTargets = (targets: TraceTarget[]) =>
+    [...targets].sort((a, b) => {
+      const cmp = sortKey === "address" ? a.address.localeCompare(b.address) : a[sortKey] - b[sortKey];
+      return dir === "asc" ? cmp : -cmp;
+    });
 
   return (
     <div className="report-card rounded-md overflow-hidden">
@@ -59,13 +85,36 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
                   <table className="w-full text-xs mono">
                     <thead>
                       <tr className="text-[var(--muted)] text-left">
-                        <th className="py-1.5 font-normal">Отримувач (наступний хоп)</th>
-                        <th className="py-1.5 font-normal text-right">Сума (USDT)</th>
-                        <th className="py-1.5 font-normal text-right">К-сть тр.</th>
+                        <SortableTh
+                          label="Отримувач (наступний хоп)"
+                          sortKey="address"
+                          activeKey={sortKey}
+                          dir={dir}
+                          onClick={handleSort}
+                          padX=""
+                        />
+                        <SortableTh
+                          label="Сума (USDT)"
+                          sortKey="total"
+                          activeKey={sortKey}
+                          dir={dir}
+                          onClick={handleSort}
+                          align="right"
+                          padX=""
+                        />
+                        <SortableTh
+                          label="К-сть тр."
+                          sortKey="count"
+                          activeKey={sortKey}
+                          dir={dir}
+                          onClick={handleSort}
+                          align="right"
+                          padX=""
+                        />
                       </tr>
                     </thead>
                     <tbody>
-                      {t.top_targets.map((target) => (
+                      {sortTargets(t.top_targets).map((target) => (
                         <tr key={target.address} className="border-t border-[var(--border)]">
                           <td className="py-2 min-w-72">
                             <AddressLink

@@ -5,7 +5,7 @@ wallet, pull their own outgoing USDT transfers and see where the money goes
 next. This is the "where did it go after leaving the wallet" step.
 
 Only reads transfer amounts from Tronscan (no new tag/label fetching --
-that's deferred to the Arkham-based labeling pass). Any target address that
+that's deferred to a future labeling pass). Any target address that
 happens to already be in data/address_tags.json is flagged using the cached
 tag, opportunistically, but nothing new is fetched for labeling here.
 
@@ -165,7 +165,7 @@ def main():
     output = {
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime()) + "Z",
         "note": "Мітки взято лише з наявного кешу тегів Tronscan (без нового запиту для цих адрес). "
-                "Повне маркування цього кроку буде виконано після інтеграції Arkham.",
+                "Повне маркування цього кроку буде виконано після подальшого кластерного аналізу адрес.",
         "traced": traced,
         "summary": {
             "addresses_traced": len(traced),
