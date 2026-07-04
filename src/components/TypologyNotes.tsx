@@ -27,23 +27,25 @@ export default function TypologyNotes({
   return (
     <div className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-4 text-sm">
       <div>
-        <h2 className="text-sm font-medium">Типологічні нотатки — попередній висновок</h2>
-        <p className="text-xs text-[var(--muted)] mt-0.5">
+        <h2 className="text-base font-medium" style={{ color: "var(--warn)" }}>
+          Типологічні нотатки — попередній висновок
+        </h2>
+        <p className="text-sm text-[var(--foreground)] mt-1 leading-relaxed">
           Автоматично сформовано на основі агрегованих показників нижче. Мітки бірж наразі базуються
           лише на публічних тегах Tronscan — вони покривають гарячі гаманці бірж, але{" "}
-          <span className="text-[var(--foreground)]">не</span> покривають персональні депозитні адреси
+          <span className="font-medium">не</span> покривають персональні депозитні адреси
           користувачів бірж. Тому кількість «біржових» адрес у цьому звіті, ймовірно,{" "}
-          <span className="text-[var(--foreground)]">занижена</span> — особливо на стороні відправлень.
+          <span className="font-medium">занижена</span> — особливо на стороні відправлень.
           Точніша атрибуція очікується після подальшого кластерного аналізу адрес.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="flex flex-col gap-1.5">
-          <h3 className="text-xs uppercase tracking-wider text-[var(--muted)]">
+          <h3 className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--warn)" }}>
             Наскрізний транзитний вузол
           </h3>
-          <p className="text-[13px] text-[var(--foreground)] leading-relaxed">
+          <p className="text-sm text-[var(--foreground)] leading-relaxed">
             Залишок на гаманці — лише {formatUsdt(kpis.residual)} USDT при обороті понад{" "}
             {formatUsdt(kpis.total_in, 0)} USDT за {kpis.active_days} днів. Кошти від{" "}
             {kpis.unique_sources.toLocaleString("uk-UA")} джерел консолідуються та майже одразу
@@ -54,27 +56,27 @@ export default function TypologyNotes({
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <h3 className="text-xs uppercase tracking-wider text-[var(--muted)]">
+          <h3 className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--warn)" }}>
             Асиметрія біржових міток
           </h3>
-          <p className="text-[13px] text-[var(--foreground)] leading-relaxed">
+          <p className="text-sm text-[var(--foreground)] leading-relaxed">
             {exchangeSources.length} з {kpis.unique_sources.toLocaleString("uk-UA")} джерел позначені як
             біржі ({exchangeInflowPct}% від суми надходжень — {formatUsdt(exchangeInflowTotal, 0)} USDT),
             і жодного отримувача не позначено як біржу. Це очікувано: гарячі гаманці бірж видно, коли
-            кошти <span className="text-[var(--foreground)]">знімають</span> з біржі (вхід у цей
-            гаманець), але коли кошти <span className="text-[var(--foreground)]">вносять</span> на
+            кошти <span className="font-medium">знімають</span> з біржі (вхід у цей
+            гаманець), але коли кошти <span className="font-medium">вносять</span> на
             біржу, вони йдуть на одноразову депозитну адресу конкретного користувача, яку Tronscan не
             підписує. Відсутність позначених біржових отримувачів{" "}
-            <span className="text-[var(--foreground)]">не означає</span>, що кошти на біржі не
+            <span className="font-medium">не означає</span>, що кошти на біржі не
             повертались.
           </p>
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <h3 className="text-xs uppercase tracking-wider text-[var(--muted)]">
+          <h3 className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--warn)" }}>
             Циркулярні контрагенти
           </h3>
-          <p className="text-[13px] text-[var(--foreground)] leading-relaxed">
+          <p className="text-sm text-[var(--foreground)] leading-relaxed">
             Виявлено {kpis.circular_counterparty_count} адрес по обидва боки потоку. Найбільша за сальдо
             —{" "}
             {topCircular ? (
@@ -102,16 +104,16 @@ export default function TypologyNotes({
 
       {traceSummary && (
         <div className="pt-3 border-t border-[var(--border)]">
-          <h3 className="text-xs uppercase tracking-wider text-[var(--muted)] mb-1.5">
+          <h3 className="text-sm font-medium uppercase tracking-wider mb-1.5" style={{ color: "var(--warn)" }}>
             Простеження на один крок вперед
           </h3>
-          <p className="text-[13px] text-[var(--foreground)] leading-relaxed">
+          <p className="text-sm text-[var(--foreground)] leading-relaxed">
             З {traceSummary.addresses_traced} найбільших отримувачів коштів{" "}
             {traceSummary.addresses_with_known_exchange_hits} відправляють кошти на адреси, вже
             позначені як біржові — на загальну суму{" "}
             {formatUsdt(traceSummary.total_exchange_hit_volume, 0)} USDT. Це підтверджує, що частина
             фактичного виведення в фіат/на біржу відбувається{" "}
-            <span className="text-[var(--foreground)]">через один крок після</span> досліджуваного
+            <span className="font-medium">через один крок після</span> досліджуваного
             гаманця. Детальний розподіл — у таблиці нижче.
           </p>
         </div>

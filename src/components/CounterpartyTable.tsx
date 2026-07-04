@@ -60,8 +60,10 @@ export default function CounterpartyTable({
     <div className="report-card rounded-md overflow-hidden flex flex-col">
       <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-[var(--border)]">
         <div>
-          <h3 className="text-sm font-medium">{title}</h3>
-          <p className="text-xs text-[var(--muted)] mt-0.5">
+          <h3 className="text-sm font-medium" style={{ color: "var(--warn)" }}>
+            {title}
+          </h3>
+          <p className="text-sm text-[var(--foreground)] opacity-80 mt-1">
             унікальних адрес: {rows.length.toLocaleString("uk-UA")} · бірж: {exchangeCount}
           </p>
         </div>

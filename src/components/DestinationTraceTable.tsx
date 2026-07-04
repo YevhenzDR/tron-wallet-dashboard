@@ -37,14 +37,16 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
   return (
     <div className="report-card rounded-md overflow-hidden">
       <div className="px-4 py-3 border-b border-[var(--border)]">
-        <h3 className="text-sm font-medium">Простеження на один крок вперед — топ отримувачів</h3>
-        <p className="text-xs text-[var(--muted)] mt-0.5">
+        <h3 className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--warn)" }}>
+          Простеження на один крок вперед — топ отримувачів
+        </h3>
+        <p className="text-sm text-[var(--foreground)] mt-1.5 leading-relaxed">
           Куди найбільші отримувачі коштів від досліджуваного гаманця відправляють USDT далі. Виявлено
           відомих отримувачів-бірж: {data.summary.addresses_with_known_exchange_hits} з{" "}
           {data.summary.addresses_traced} · обсяг на відомі біржові адреси:{" "}
           {formatUsdt(data.summary.total_exchange_hit_volume)} USDT
         </p>
-        <p className="text-[11px] text-[var(--muted)] mt-1.5 italic">{data.note}</p>
+        <p className="text-sm text-[var(--foreground)] mt-1.5 italic opacity-80">{data.note}</p>
       </div>
       <div className="divide-y divide-[var(--border)] max-h-[560px] overflow-y-auto scrollbar-thin">
         {data.traced.map((t) => {
@@ -57,7 +59,7 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
               >
                 <div className="min-w-0 flex-1">
                   <AddressLink address={t.address} />
-                  <p className="text-[11px] text-[var(--muted)] mt-1">
+                  <p className="text-sm text-[var(--foreground)] opacity-80 mt-1 leading-relaxed">
                     отримав від досліджуваного гаманця: {formatUsdt(t.received_from_wallet)} USDT ·
                     власний вихідний обіг адреси (вся історія, не лише кошти з цього гаманця):{" "}
                     {formatUsdt(t.total_out_all_time)} USDT ({formatCount(t.out_tx_count)} тр.,{" "}

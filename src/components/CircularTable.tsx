@@ -38,8 +38,10 @@ export default function CircularTable({ rows }: { rows: CircularCounterparty[] }
   return (
     <div className="report-card rounded-md overflow-hidden">
       <div className="px-4 py-3 border-b border-[var(--border)]">
-        <h3 className="text-sm font-medium">Циркулярні контрагенти</h3>
-        <p className="text-xs text-[var(--muted)] mt-0.5">
+        <h3 className="text-sm font-medium" style={{ color: "var(--warn)" }}>
+          Циркулярні контрагенти
+        </h3>
+        <p className="text-sm text-[var(--foreground)] opacity-80 mt-1">
           Адреси, що фігурують і як джерело, і як отримувач — виявлено: {rows.length}. Натисніть на
           заголовок стовпця для сортування.
         </p>
