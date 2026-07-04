@@ -51,3 +51,34 @@ export interface WalletData {
   circular_counterparties: CircularCounterparty[];
   daily_volumes: DailyVolume[];
 }
+
+export interface TraceTarget {
+  address: string;
+  total: number;
+  count: number;
+  tag: string;
+  is_exchange: boolean;
+}
+
+export interface DestinationTrace {
+  address: string;
+  received_from_wallet: number;
+  total_out_all_time: number;
+  out_tx_count: number;
+  unique_targets: number;
+  exchange_out_total: number;
+  top_targets: TraceTarget[];
+}
+
+export interface DestinationTraceSummary {
+  addresses_traced: number;
+  addresses_with_known_exchange_hits: number;
+  total_exchange_hit_volume: number;
+}
+
+export interface DestinationTraces {
+  generated_at: string;
+  note: string;
+  traced: DestinationTrace[];
+  summary: DestinationTraceSummary;
+}
