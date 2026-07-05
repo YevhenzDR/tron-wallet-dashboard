@@ -1,5 +1,6 @@
 import { getWalletData } from "@/lib/data";
 import { getDestinationTraces } from "@/lib/traces";
+import { getTransactionLedger } from "@/lib/ledger";
 import { formatDateTime, tronscanUrl } from "@/lib/format";
 import KpiCards from "@/components/KpiCards";
 import SankeyFlow from "@/components/SankeyFlow";
@@ -8,6 +9,7 @@ import CircularTable from "@/components/CircularTable";
 import CounterpartyTable from "@/components/CounterpartyTable";
 import TypologyNotes from "@/components/TypologyNotes";
 import DestinationTraceTable from "@/components/DestinationTraceTable";
+import TransactionLedgerTable from "@/components/TransactionLedger";
 
 function LegendDot({ color, label }: { color: string; label: string }) {
   return (
@@ -21,6 +23,7 @@ function LegendDot({ color, label }: { color: string; label: string }) {
 export default function Home() {
   const { kpis, sources, destinations, circular_counterparties, daily_volumes } = getWalletData();
   const destinationTraces = getDestinationTraces();
+  const ledger = getTransactionLedger();
 
   return (
     <main className="flex-1 w-full max-w-[1400px] mx-auto px-4 sm:px-8 py-8 sm:py-10 flex flex-col gap-8">
@@ -106,6 +109,10 @@ export default function Home() {
       <section className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         <CounterpartyTable title="Топ джерел (надходження)" rows={sources} direction="in" />
         <CounterpartyTable title="Топ отримувачів (відправлення)" rows={destinations} direction="out" />
+      </section>
+
+      <section>
+        <TransactionLedgerTable data={ledger} />
       </section>
 
       <footer className="text-[11px] text-[var(--muted)] border-t border-[var(--border)] pt-4 pb-2">

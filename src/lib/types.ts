@@ -82,3 +82,18 @@ export interface DestinationTraces {
   traced: DestinationTrace[];
   summary: DestinationTraceSummary;
 }
+
+export interface Transaction {
+  hash: string;
+  time: string;
+  direction: "in" | "out";
+  counterparty: string;
+  amount: number;
+  tag: string;
+  is_exchange: boolean;
+}
+
+export interface TransactionLedger {
+  transactions: Transaction[];
+  count: number;
+}

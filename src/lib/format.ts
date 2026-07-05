@@ -4,6 +4,10 @@ export function tronscanUrl(address: string): string {
   return `https://tronscan.org/#/address/${address}`;
 }
 
+export function tronscanTxUrl(hash: string): string {
+  return `https://tronscan.org/#/transaction/${hash}`;
+}
+
 export function formatUsdt(value: number, fractionDigits = 2): string {
   return value.toLocaleString(LOCALE, {
     minimumFractionDigits: fractionDigits,

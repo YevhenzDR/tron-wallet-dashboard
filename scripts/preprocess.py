@@ -21,6 +21,7 @@ WALLET_LABEL = "Wallet X"
 INCOMING_PATH = "/Users/yzcentric/Downloads/Incoming_Transactions.xlsx"
 OUTGOING_PATH = "/Users/yzcentric/Downloads/Outgoing_Transactions.xlsx"
 OUT_PATH = "/Users/yzcentric/Desktop/tron-wallet-dashboard/data/wallet_data.json"
+LEDGER_OUT_PATH = "/Users/yzcentric/Desktop/tron-wallet-dashboard/data/transactions.json"
 
 
 def load_rows(path, amount_col_name):
@@ -178,6 +179,7 @@ def main():
             tag_cache = json.load(f)
     except FileNotFoundError:
         tag_cache = None
+    fetch_tags = None
     if tag_cache is not None:
         import importlib.util
         spec = importlib.util.spec_from_file_location(
@@ -193,6 +195,45 @@ def main():
 
     print(f"\nWrote {OUT_PATH}")
     print(f"Sources: {len(sources)}, Destinations: {len(destinations)}, Circular: {len(circular)}, Active days: {active_days}")
+
+    # Full per-transaction ledger, for evidentiary/traceability purposes
+    # (aggregates alone don't give investigators a verifiable tx hash trail).
+    def tag_for(addr):
+        tag = (tag_cache or {}).get(addr, "")
+        is_exchange = fetch_tags.is_exchange_tag(tag) if (fetch_tags and tag) else False
+        return tag, is_exchange
+
+    ledger = []
+    for r in incoming:
+        counterparty = r["from"]
+        tag, is_exchange = tag_for(counterparty)
+        ledger.append({
+            "hash": r["hash"],
+            "time": r["time"].isoformat(),
+            "direction": "in",
+            "counterparty": counterparty,
+            "amount": round(r["amount"], 6),
+            "tag": tag,
+            "is_exchange": is_exchange,
+        })
+    for r in outgoing:
+        counterparty = r["to"]
+        tag, is_exchange = tag_for(counterparty)
+        ledger.append({
+            "hash": r["hash"],
+            "time": r["time"].isoformat(),
+            "direction": "out",
+            "counterparty": counterparty,
+            "amount": round(r["amount"], 6),
+            "tag": tag,
+            "is_exchange": is_exchange,
+        })
+    ledger.sort(key=lambda x: x["time"], reverse=True)
+
+    with open(LEDGER_OUT_PATH, "w") as f:
+        json.dump({"transactions": ledger, "count": len(ledger)}, f, indent=1)
+
+    print(f"Wrote {LEDGER_OUT_PATH} ({len(ledger)} individual transactions)")
 
 
 if __name__ == "__main__":
