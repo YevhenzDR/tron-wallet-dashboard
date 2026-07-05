@@ -59,8 +59,8 @@ export default function Home() {
         <TypologyNotes
           kpis={kpis}
           sources={sources}
+          destinations={destinations}
           circularCounterparties={circular_counterparties}
-          traceSummary={destinationTraces.summary}
         />
       </section>
 

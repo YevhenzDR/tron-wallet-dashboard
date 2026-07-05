@@ -16,14 +16,31 @@ export function TagBadge({ tag, isExchange }: { tag: string; isExchange: boolean
   );
 }
 
+export function RiskBadge({ isHighRisk, riskLevel }: { isHighRisk: boolean; riskLevel: string }) {
+  if (!isHighRisk) return null;
+  return (
+    <span
+      className="inline-flex items-center gap-1 align-middle text-[10px] leading-none px-1.5 py-1 rounded border whitespace-nowrap"
+      style={{ color: "var(--danger)", borderColor: "var(--danger)", background: "rgba(232, 120, 90, 0.08)" }}
+      title={`MistTrack risk level: ${riskLevel}`}
+    >
+      ⚠ РИЗИК: {riskLevel === "Severe" ? "КРИТИЧНИЙ" : "ВИСОКИЙ"}
+    </span>
+  );
+}
+
 export default function AddressLink({
   address,
   tag = "",
   isExchange = false,
+  riskLevel = "",
+  isHighRisk = false,
 }: {
   address: string;
   tag?: string;
   isExchange?: boolean;
+  riskLevel?: string;
+  isHighRisk?: boolean;
 }) {
   return (
     <span className="inline-flex flex-wrap items-center gap-1.5">
@@ -36,6 +53,7 @@ export default function AddressLink({
         {address}
       </a>
       <TagBadge tag={tag} isExchange={isExchange} />
+      <RiskBadge isHighRisk={isHighRisk} riskLevel={riskLevel} />
     </span>
   );
 }

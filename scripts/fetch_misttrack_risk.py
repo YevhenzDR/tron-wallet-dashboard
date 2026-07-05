@@ -23,6 +23,7 @@ from pathlib import Path
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 WALLET_DATA_PATH = DATA_DIR / "wallet_data.json"
+TRACES_PATH = DATA_DIR / "destination_traces.json"
 CACHE_PATH = DATA_DIR / "misttrack_risk.json"
 
 API_KEY = "ac250G8L6HSsPXKdtEJ3nClMe1OFDIwb"
@@ -50,7 +51,7 @@ def fetch_risk(address: str) -> dict | None:
     return None
 
 
-def collect_addresses(wallet_data: dict) -> list[str]:
+def collect_addresses(wallet_data: dict, traces: dict | None) -> list[str]:
     addrs = {wallet_data["kpis"]["wallet_address"]}
     for s in wallet_data["sources"]:
         addrs.add(s["address"])
@@ -58,12 +59,18 @@ def collect_addresses(wallet_data: dict) -> list[str]:
         addrs.add(d["address"])
     for c in wallet_data["circular_counterparties"]:
         addrs.add(c["address"])
+    if traces:
+        for entry in traces["traced"]:
+            addrs.add(entry["address"])
+            for t in entry["top_targets"]:
+                addrs.add(t["address"])
     return sorted(addrs)
 
 
 def main():
     wallet_data = json.loads(WALLET_DATA_PATH.read_text())
-    addresses = collect_addresses(wallet_data)
+    traces = json.loads(TRACES_PATH.read_text()) if TRACES_PATH.exists() else None
+    addresses = collect_addresses(wallet_data, traces)
 
     cache: dict[str, dict] = {}
     if CACHE_PATH.exists():

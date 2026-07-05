@@ -178,7 +178,13 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
                   </span>
                 </td>
                 <td className="px-4 py-2 min-w-72">
-                  <AddressLink address={r.counterparty} tag={r.tag} isExchange={r.is_exchange} />
+                  <AddressLink
+                    address={r.counterparty}
+                    tag={r.tag}
+                    isExchange={r.is_exchange}
+                    riskLevel={r.risk_level}
+                    isHighRisk={r.is_high_risk}
+                  />
                 </td>
                 <td
                   className="px-4 py-2 text-right"

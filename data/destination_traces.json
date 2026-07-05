@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-07-04T12:30:13Z",
-  "note": "Мітки взято лише з наявного кешу тегів Tronscan (без нового запиту для цих адрес). Повне маркування цього кроку буде виконано після подальшого кластерного аналізу адрес.",
+  "note": "Мітки поєднують публічні теги Tronscan та мульти-хоп аналіз MistTrack. Покриття все ще не вичерпне для цього кроку — частина адрес може залишатися непозначеною.",
   "traced": [
     {
       "address": "TG1aThkXb431xo3NsMT2WF8uyR2fshPd86",
@@ -8,63 +8,79 @@
       "total_out_all_time": 98195540.529064,
       "out_tx_count": 220,
       "unique_targets": 35,
-      "exchange_out_total": 0,
+      "exchange_out_total": 0.0,
       "top_targets": [
         {
           "address": "TRf44w6jc3ikwHFJYZqvdVezd8JnemFQBc",
           "total": 33546621.507784,
           "count": 52,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TDc3pAH7Fud9tNehw8gnTSr2d3n4haxLk3",
           "total": 10907566.674835,
           "count": 23,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TULhTKmE4AzGiNoknrd5Kq5jiv2XiX39tD",
           "total": 5037844.848114,
           "count": 10,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TQLqrhkWk9eyZVQPuRmXtEAQKM6qJMdPh5",
           "total": 4770000.0,
           "count": 9,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TLEejdzApbq4GiX33sJemJG8zZJGt9gpVB",
           "total": 4400000.0,
           "count": 12,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TEnWxry4cAmpuZuz2M7Q9x3g8zQjt1nYcH",
           "total": 3600000.0,
           "count": 7,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TNo5SdQfYdW9tj74WQ9VxBrYN8Qxi1Ewta",
           "total": 3501448.0,
           "count": 9,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TG6MPNKZTT3RwbqgSA4pVha18AzoXzZkBE",
           "total": 3500000.0,
           "count": 8,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         }
       ]
     },
@@ -74,63 +90,79 @@
       "total_out_all_time": 8828896.68716,
       "out_tx_count": 148,
       "unique_targets": 52,
-      "exchange_out_total": 0,
+      "exchange_out_total": 0.0,
       "top_targets": [
         {
           "address": "THuBSaEkZXwbboBrZfY51MFTcv8mAi15dW",
           "total": 2250000.0,
           "count": 5,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "THGJ7GRZarTw7BARLXxySNYESouCXLT1EA",
           "total": 1006000.0,
           "count": 4,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Wellwallet.Io",
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TLYnNXsAVjTP1eBfiMSzuyM1m3rrLEAzn5",
           "total": 1000000.0,
           "count": 4,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TLjhCz7y7LJ5RDi5UuK8Q8xncJhZYXiPCj",
           "total": 900000.0,
           "count": 3,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Wellwallet.Io",
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TCarZZM4gCAXbJsHWZMbyaMnhnbpg6x3ak",
           "total": 750000.0,
           "count": 6,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TCP1wZp1qSTpoSrEMfME9EnAhraSfyBMJ1",
           "total": 625058.0,
           "count": 8,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TVx8MxKsEPsH2dfpvJXkengdXPHJbyRrLG",
           "total": 500000.0,
           "count": 2,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Wellwallet.Io",
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TRGPo29F5nowURoXhyb8kRCkoUPn69B78w",
           "total": 290000.0,
           "count": 2,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Wellwallet.Io",
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         }
       ]
     },
@@ -140,63 +172,79 @@
       "total_out_all_time": 19074096.591402,
       "out_tx_count": 364,
       "unique_targets": 253,
-      "exchange_out_total": 0,
+      "exchange_out_total": 683845.39,
       "top_targets": [
         {
           "address": "TMQ45HgyAxsQ8wJ9dXVHQ9C2xc7ZVceKrD",
           "total": 2384207.64,
           "count": 14,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TG1aThkXb431xo3NsMT2WF8uyR2fshPd86",
           "total": 2250823.763137,
           "count": 13,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TUfJ8BoDRj8aeKUhKQ2v89RmzmREQ94N5s",
           "total": 1281066.834,
           "count": 7,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TRamfiXxSpiBs3wK31f3B5wrUmRV7CQeJk",
           "total": 788808.82,
           "count": 2,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TSLPidpAqNRfBSeCSuPvMFTTsNupStf3iE",
           "total": 683845.39,
           "count": 2,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Whitebit",
+          "is_exchange": true,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TLEejdzApbq4GiX33sJemJG8zZJGt9gpVB",
           "total": 600000.0,
           "count": 3,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TG6MPNKZTT3RwbqgSA4pVha18AzoXzZkBE",
           "total": 440820.0,
           "count": 6,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TSox6qeaAieDXyjdSp7uP89AgU8UEFAuow",
           "total": 400000.0,
           "count": 4,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         }
       ]
     },
@@ -206,63 +254,79 @@
       "total_out_all_time": 15391205.186874,
       "out_tx_count": 384,
       "unique_targets": 257,
-      "exchange_out_total": 0,
+      "exchange_out_total": 0.0,
       "top_targets": [
         {
           "address": "TMQ45HgyAxsQ8wJ9dXVHQ9C2xc7ZVceKrD",
           "total": 2652600.41,
           "count": 8,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TG1aThkXb431xo3NsMT2WF8uyR2fshPd86",
           "total": 1703784.353368,
           "count": 10,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TCiYEASAk23SCsyggyPJQZuiP4W42QMXH3",
           "total": 995924.28,
           "count": 8,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TXk8q51TuA9yPQK2xdKb6qUksayT8QSEj1",
           "total": 529812.84,
           "count": 11,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TMTYWZh9DMuMEPzdCHG6cJ5iFTZEwT9LTX",
           "total": 453618.785609,
           "count": 8,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TKaPhVYtgvf84tJ6UDfq7WM7GSRPnUXiNF",
           "total": 359740.037897,
           "count": 4,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TSox6qeaAieDXyjdSp7uP89AgU8UEFAuow",
           "total": 355000.0,
           "count": 4,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TDc3pAH7Fud9tNehw8gnTSr2d3n4haxLk3",
           "total": 350000.0,
           "count": 2,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         }
       ]
     },
@@ -272,63 +336,79 @@
       "total_out_all_time": 9204094.797881,
       "out_tx_count": 38,
       "unique_targets": 12,
-      "exchange_out_total": 0,
+      "exchange_out_total": 8825094.797881,
       "top_targets": [
         {
           "address": "TFCF76nkuPrgFBPuEjkX95U871RhbjL1LX",
           "total": 4202005.0,
           "count": 8,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Kraken",
+          "is_exchange": true,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TLXGVzscSGq6rJBN1TQhTTiHzd7xjF3c9c",
           "total": 2782666.0,
           "count": 7,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Kraken",
+          "is_exchange": true,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TCTBibGLZLLVGK9TYj7XUqskPJXf7TQBU5",
           "total": 1151737.979154,
           "count": 3,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Kraken",
+          "is_exchange": true,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TExseqaSFWydciKN6PqrhKEcFhACMxVzmG",
           "total": 668368.0,
           "count": 6,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Binance",
+          "is_exchange": true,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TBNFLgCwS9Y5oAT8BJzPqVcS1xHwcGoUQF",
           "total": 279000.0,
           "count": 5,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TUMg6C6rXJ6qP75REHaZUnZnnsYQZSdKEi",
           "total": 50000.0,
           "count": 1,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TEbUvBEWyFUc6ZBYLULQEF1twmiTQiyypc",
           "total": 50000.0,
           "count": 1,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TLVpnD59JjNqa6YCwow7J5HhanexCfgM15",
           "total": 20317.818727,
           "count": 2,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Binance",
+          "is_exchange": true,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         }
       ]
     },
@@ -338,63 +418,79 @@
       "total_out_all_time": 1945887.1,
       "out_tx_count": 51,
       "unique_targets": 22,
-      "exchange_out_total": 0,
+      "exchange_out_total": 175153.0,
       "top_targets": [
         {
           "address": "TUd2vZ9meGVyVSRMYNsFFPiZJ9XzyP1Du1",
           "total": 936328.0,
           "count": 13,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TUXLMJ1r5d7daLix14rMKib2VuNuRdndfF",
           "total": 281269.0,
           "count": 3,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TG5eHVKfQ7BQw2JYsAZCWBU5Umx9oeUtTB",
           "total": 266918.0,
           "count": 5,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TPLS93tiQtDsNhdkaVpQmnUTSasYT7xBez",
           "total": 99996.0,
           "count": 1,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Whitebit",
+          "is_exchange": true,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TMQUkDt8GVKBa74p24iCWHX3PpjSMkcs7o",
           "total": 75157.0,
           "count": 3,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Bybit",
+          "is_exchange": true,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TM4W2MEBvnyXdugr4LNAFZFawe79bkgrkn",
           "total": 70635.0,
           "count": 2,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TXN79rxyU3ttA9g8Az1WsUvgJE47Kg1AEq",
           "total": 59088.0,
           "count": 1,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TLodrpivHTM3d1RsNhYGSWnRQmmdUTYovY",
           "total": 30000.0,
           "count": 1,
-          "tag": "",
-          "is_exchange": false
+          "tag": "Wellwallet.Io",
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         }
       ]
     },
@@ -404,63 +500,79 @@
       "total_out_all_time": 8860084.382932,
       "out_tx_count": 175,
       "unique_targets": 38,
-      "exchange_out_total": 0,
+      "exchange_out_total": 334089.0,
       "top_targets": [
         {
           "address": "THnRagBFwM159qKBKonVVG38y1S6GMFZCi",
           "total": 3281729.0,
           "count": 43,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TNFbM4K3nVdzy1sV4gKoQ49tbiEyg8eqAa",
           "total": 2956272.5,
           "count": 48,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TLVNF8RQsZhkxYgaQyn7iX7ErfeskGm4g6",
           "total": 620389.221878,
           "count": 3,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TN1mcDinAt4sHxFeDykAUFrtKpBskw97Ut",
           "total": 598853.0,
           "count": 8,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TGqpUmpzScFvgmgj3Kfxc16TZ4sDHAu9ay",
           "total": 334089.0,
           "count": 5,
-          "tag": "",
-          "is_exchange": false
+          "tag": "001K.Exchange",
+          "is_exchange": true,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TA8Gwa9PS6LthR8BUVq6S6L5GvbaFyAd3K",
           "total": 293916.0,
           "count": 6,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TCHsCUGt87fvUZGvU7SfVmbrPpiYpxofBU",
           "total": 184251.0,
           "count": 4,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TQH2dRYmgTrajYbgAxskW5aZHzuNzBUqzr",
           "total": 112524.0,
           "count": 4,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         }
       ]
     },
@@ -477,7 +589,9 @@
           "total": 1017737.854,
           "count": 36,
           "tag": "Bitget 9",
-          "is_exchange": true
+          "is_exchange": true,
+          "risk_level": "Low",
+          "is_high_risk": false
         }
       ]
     },
@@ -494,7 +608,9 @@
           "total": 2713790.268749,
           "count": 228,
           "tag": "Binance-Hot 7",
-          "is_exchange": true
+          "is_exchange": true,
+          "risk_level": "Low",
+          "is_high_risk": false
         }
       ]
     },
@@ -511,7 +627,9 @@
           "total": 4329807.784562,
           "count": 216,
           "tag": "OKX Hot Wallet 8",
-          "is_exchange": true
+          "is_exchange": true,
+          "risk_level": "Low",
+          "is_high_risk": false
         }
       ]
     },
@@ -521,63 +639,79 @@
       "total_out_all_time": 16444012.858566,
       "out_tx_count": 321,
       "unique_targets": 193,
-      "exchange_out_total": 0,
+      "exchange_out_total": 0.0,
       "top_targets": [
         {
           "address": "TFj7Q6S5k7MsvUt56bcMQ2WiFzMd5Pi9eD",
           "total": 5290383.959904,
           "count": 18,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         },
         {
           "address": "TLEejdzApbq4GiX33sJemJG8zZJGt9gpVB",
           "total": 729481.973099,
           "count": 9,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TUfJ8BoDRj8aeKUhKQ2v89RmzmREQ94N5s",
           "total": 592787.76,
           "count": 5,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL",
           "total": 498780.303,
           "count": 4,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TThFXLqRXYnstnRQoaZSKLvtstQG7cH34b",
           "total": 492215.37,
           "count": 3,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TDc3pAH7Fud9tNehw8gnTSr2d3n4haxLk3",
           "total": 415957.337887,
           "count": 3,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TLUFkUGX3DvVdfaXE792kAiodWN7Z7hT2E",
           "total": 366247.93,
           "count": 2,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TYz3wZf44yj3vuC6m3QtYiqPBThL8GjXAu",
           "total": 362371.41,
           "count": 3,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         }
       ]
     },
@@ -594,7 +728,9 @@
           "total": 1600910.107236,
           "count": 21,
           "tag": "Bybit",
-          "is_exchange": true
+          "is_exchange": true,
+          "risk_level": "Low",
+          "is_high_risk": false
         }
       ]
     },
@@ -604,63 +740,79 @@
       "total_out_all_time": 7113713.05,
       "out_tx_count": 134,
       "unique_targets": 72,
-      "exchange_out_total": 0,
+      "exchange_out_total": 0.0,
       "top_targets": [
         {
           "address": "TCDGu87EwcHiTuUMwiVyGANDoR3zSp4gNY",
           "total": 902747.0,
           "count": 9,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TTEM34Vm3ZQ2NkxwJLhdZhtFFHBv6Pa8TW",
           "total": 449317.0,
           "count": 9,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TBcMmEzvLSpDJD8LEH8WiYcr4zeptwHGRA",
           "total": 380984.0,
           "count": 2,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TWeY93qY2zRGydjxGvdYxrndm5Uy2jHToQ",
           "total": 368011.0,
           "count": 8,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "THJRFKyNPYUcq5zJqPi1AkJjbfdZDZrTmU",
           "total": 360189.0,
           "count": 4,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TVLPTqYeDdPyA7RiwKwatYAjp65mH3ozLF",
           "total": 326656.0,
           "count": 8,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TNZgZ86JPcF4P6PaYDEfRc3YrrnawVDCXE",
           "total": 259177.0,
           "count": 2,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Moderate",
+          "is_high_risk": false
         },
         {
           "address": "TWEEvg3Qr4SMr8YEhtP5eQ5C1cUPUNBDxD",
           "total": 200495.0,
           "count": 1,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         }
       ]
     },
@@ -677,7 +829,9 @@
           "total": 2308185.356457,
           "count": 194,
           "tag": "Binance-Hot 7",
-          "is_exchange": true
+          "is_exchange": true,
+          "risk_level": "Low",
+          "is_high_risk": false
         }
       ]
     },
@@ -687,21 +841,23 @@
       "total_out_all_time": 2935678.212352,
       "out_tx_count": 399,
       "unique_targets": 1,
-      "exchange_out_total": 0,
+      "exchange_out_total": 0.0,
       "top_targets": [
         {
           "address": "TXfN9f2kXyBDhinFuCz55aXAahmjdAgANG",
           "total": 2935678.212352,
           "count": 399,
           "tag": "",
-          "is_exchange": false
+          "is_exchange": false,
+          "risk_level": "Low",
+          "is_high_risk": false
         }
       ]
     }
   ],
   "summary": {
     "addresses_traced": 15,
-    "addresses_with_known_exchange_hits": 5,
-    "total_exchange_hit_volume": 11970431.371004
+    "addresses_with_known_exchange_hits": 9,
+    "total_exchange_hit_volume": 21988613.558885
   }
 }
