@@ -1,4 +1,4 @@
-import type { CircularCounterparty, Counterparty, DestinationTraceSummary, Kpis } from "@/lib/types";
+import type { CircularCounterparty, Counterparty, Kpis } from "@/lib/types";
 import { formatUsdt } from "@/lib/format";
 import AddressLink from "./AddressLink";
 
@@ -12,13 +12,11 @@ export default function TypologyNotes({
   sources,
   destinations,
   circularCounterparties,
-  traceSummary,
 }: {
   kpis: Kpis;
   sources: Counterparty[];
   destinations: Counterparty[];
   circularCounterparties: CircularCounterparty[];
-  traceSummary?: DestinationTraceSummary;
 }) {
   const exchangeSources = sources.filter((s) => s.is_exchange);
   const exchangeInflowTotal = exchangeSources.reduce((sum, s) => sum + s.total, 0);
@@ -118,23 +116,6 @@ export default function TypologyNotes({
           </p>
         </div>
       </div>
-
-      {traceSummary && (
-        <div className="pt-3 border-t border-[var(--border)]">
-          <h3 className="text-sm font-medium uppercase tracking-wider mb-1.5" style={{ color: "var(--warn)" }}>
-            Простеження на один крок вперед
-          </h3>
-          <p className="text-sm text-[var(--foreground)] leading-relaxed">
-            З {traceSummary.addresses_traced} найбільших отримувачів коштів{" "}
-            {traceSummary.addresses_with_known_exchange_hits} відправляють кошти на адреси, вже
-            позначені як біржові — на загальну суму{" "}
-            {formatUsdt(traceSummary.total_exchange_hit_volume, 0)} USDT. Це підтверджує, що частина
-            фактичного виведення в фіат/на біржу відбувається{" "}
-            <span className="font-medium">через один крок після</span> досліджуваного
-            гаманця. Детальний розподіл — у таблиці нижче.
-          </p>
-        </div>
-      )}
     </div>
   );
 }

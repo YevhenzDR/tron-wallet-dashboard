@@ -125,7 +125,11 @@ def main():
         traces["summary"]["total_exchange_hit_volume"] = round(
             sum(e["exchange_out_total"] for e in traces["traced"]), 6
         )
-        TRACES_PATH.write_text(json.dumps(traces, indent=2))
+        traces["note"] = (
+            "Мітки поєднують публічні теги Tronscan та мульти-хоп аналіз MistTrack. Покриття все ще "
+            "не вичерпне для цього кроку — частина адрес може залишатися непозначеною."
+        )
+        TRACES_PATH.write_text(json.dumps(traces, indent=2, ensure_ascii=False))
         print(
             f"destination_traces.json: {traces['summary']['addresses_with_known_exchange_hits']} "
             f"addresses with exchange hits, {traces['summary']['total_exchange_hit_volume']:.2f} USDT total"
