@@ -10,17 +10,23 @@ function pct(part: number, whole: number): string {
 export default function TypologyNotes({
   kpis,
   sources,
+  destinations,
   circularCounterparties,
   traceSummary,
 }: {
   kpis: Kpis;
   sources: Counterparty[];
+  destinations: Counterparty[];
   circularCounterparties: CircularCounterparty[];
   traceSummary?: DestinationTraceSummary;
 }) {
   const exchangeSources = sources.filter((s) => s.is_exchange);
   const exchangeInflowTotal = exchangeSources.reduce((sum, s) => sum + s.total, 0);
   const exchangeInflowPct = pct(exchangeInflowTotal, kpis.total_in);
+
+  const exchangeDestinations = destinations.filter((d) => d.is_exchange);
+  const exchangeOutflowTotal = exchangeDestinations.reduce((sum, d) => sum + d.total, 0);
+  const exchangeOutflowPct = pct(exchangeOutflowTotal, kpis.total_out);
 
   const topCircular = [...circularCounterparties].sort((a, b) => b.net - a.net)[0];
 
@@ -31,12 +37,12 @@ export default function TypologyNotes({
           Типологічні нотатки — попередній висновок
         </h2>
         <p className="text-sm text-[var(--foreground)] mt-1 leading-relaxed">
-          Автоматично сформовано на основі агрегованих показників нижче. Мітки бірж наразі базуються
-          лише на публічних тегах Tronscan — вони покривають гарячі гаманці бірж, але{" "}
-          <span className="font-medium">не</span> покривають персональні депозитні адреси
-          користувачів бірж. Тому кількість «біржових» адрес у цьому звіті, ймовірно,{" "}
-          <span className="font-medium">занижена</span> — особливо на стороні відправлень.
-          Точніша атрибуція очікується після подальшого кластерного аналізу адрес.
+          Автоматично сформовано на основі агрегованих показників нижче. Мітки бірж поєднують публічні
+          теги Tronscan із результатами мульти-хоп аналізу MistTrack (кластеризація адрес та зв&apos;язки
+          через посередників, а не лише прямі публічні теги). Незважаючи на це, покриття все ще{" "}
+          <span className="font-medium">не є вичерпним</span> — частина персональних депозитних адрес
+          користувачів бірж залишається непозначеною. Кількість «біржових» адрес у цьому звіті варто
+          розглядати як нижню межу, а не остаточне число.
         </p>
       </div>
 
@@ -61,14 +67,25 @@ export default function TypologyNotes({
           </h3>
           <p className="text-sm text-[var(--foreground)] leading-relaxed">
             {exchangeSources.length} з {kpis.unique_sources.toLocaleString("uk-UA")} джерел позначені як
-            біржі ({exchangeInflowPct}% від суми надходжень — {formatUsdt(exchangeInflowTotal, 0)} USDT),
-            і жодного отримувача не позначено як біржу. Це очікувано: гарячі гаманці бірж видно, коли
-            кошти <span className="font-medium">знімають</span> з біржі (вхід у цей
-            гаманець), але коли кошти <span className="font-medium">вносять</span> на
-            біржу, вони йдуть на одноразову депозитну адресу конкретного користувача, яку Tronscan не
-            підписує. Відсутність позначених біржових отримувачів{" "}
-            <span className="font-medium">не означає</span>, що кошти на біржі не
-            повертались.
+            біржі ({exchangeInflowPct}% від суми надходжень — {formatUsdt(exchangeInflowTotal, 0)} USDT).
+            {exchangeDestinations.length > 0 ? (
+              <>
+                {" "}
+                Завдяки мульти-хоп аналізу MistTrack також виявлено {exchangeDestinations.length} з{" "}
+                {kpis.unique_destinations.toLocaleString("uk-UA")} отримувачів, позначених як біржові (
+                {exchangeOutflowPct}% від суми відправлень — {formatUsdt(exchangeOutflowTotal, 0)} USDT).
+                Це підтверджує пряме виведення коштів на біржі, а не лише транзит через посередницькі
+                адреси.
+              </>
+            ) : (
+              <>
+                {" "}
+                Жодного отримувача не позначено як біржу. Це очікувано: гарячі гаманці бірж видно, коли
+                кошти <span className="font-medium">знімають</span> з біржі (вхід у цей гаманець), але
+                коли кошти <span className="font-medium">вносять</span> на біржу, вони йдуть на
+                одноразову депозитну адресу конкретного користувача, яку публічні теги не підписують.
+              </>
+            )}
           </p>
         </div>
 

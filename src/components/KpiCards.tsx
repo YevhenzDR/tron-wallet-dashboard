@@ -77,14 +77,14 @@ export default function KpiCards({ kpis }: { kpis: Kpis }) {
       <Card
         label="Унікальні джерела"
         value={formatCount(kpis.unique_sources)}
-        sub={`бірж: ${kpis.exchange_source_count} · звичайних гаманців: ${formatCount(
+        sub={`бірж: ${kpis.exchange_source_count} · високоризикових: ${kpis.high_risk_source_count} · звичайних гаманців: ${formatCount(
           kpis.unique_sources - kpis.exchange_source_count
         )}`}
       />
       <Card
         label="Унікальні отримувачі"
         value={formatCount(kpis.unique_destinations)}
-        sub={`бірж: ${kpis.exchange_destination_count} · звичайних гаманців: ${formatCount(
+        sub={`бірж: ${kpis.exchange_destination_count} · високоризикових: ${kpis.high_risk_destination_count} · звичайних гаманців: ${formatCount(
           kpis.unique_destinations - kpis.exchange_destination_count
         )}`}
       />

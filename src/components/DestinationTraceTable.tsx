@@ -123,6 +123,8 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
                               address={target.address}
                               tag={target.tag}
                               isExchange={target.is_exchange}
+                              riskLevel={target.risk_level}
+                              isHighRisk={target.is_high_risk}
                             />
                           </td>
                           <td className="py-2 text-right" style={{ color: "var(--outflow)" }}>

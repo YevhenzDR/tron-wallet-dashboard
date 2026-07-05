@@ -101,7 +101,13 @@ export default function CounterpartyTable({
             {sorted.map((r) => (
               <tr key={r.address} className="border-t border-[var(--border)] hover:bg-[var(--surface-raised)]">
                 <td className="px-4 py-2 min-w-72">
-                  <AddressLink address={r.address} tag={r.tag} isExchange={r.is_exchange} />
+                  <AddressLink
+                    address={r.address}
+                    tag={r.tag}
+                    isExchange={r.is_exchange}
+                    riskLevel={r.risk_level}
+                    isHighRisk={r.is_high_risk}
+                  />
                 </td>
                 <td className="px-4 py-2 text-right" style={{ color }}>
                   {formatUsdt(r.total)}

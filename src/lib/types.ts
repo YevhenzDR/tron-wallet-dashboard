@@ -15,6 +15,8 @@ export interface Kpis {
   circular_counterparty_count: number;
   exchange_source_count: number;
   exchange_destination_count: number;
+  high_risk_source_count: number;
+  high_risk_destination_count: number;
 }
 
 export interface Counterparty {
@@ -23,6 +25,8 @@ export interface Counterparty {
   count: number;
   tag: string;
   is_exchange: boolean;
+  risk_level: string;
+  is_high_risk: boolean;
 }
 
 export interface CircularCounterparty {
@@ -34,6 +38,8 @@ export interface CircularCounterparty {
   net: number;
   tag: string;
   is_exchange: boolean;
+  risk_level: string;
+  is_high_risk: boolean;
 }
 
 export interface DailyVolume {
@@ -58,6 +64,8 @@ export interface TraceTarget {
   count: number;
   tag: string;
   is_exchange: boolean;
+  risk_level: string;
+  is_high_risk: boolean;
 }
 
 export interface DestinationTrace {
@@ -91,6 +99,8 @@ export interface Transaction {
   amount: number;
   tag: string;
   is_exchange: boolean;
+  risk_level: string;
+  is_high_risk: boolean;
 }
 
 export interface TransactionLedger {
