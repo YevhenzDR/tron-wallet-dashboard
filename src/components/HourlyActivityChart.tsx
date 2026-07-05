@@ -90,7 +90,7 @@ export default function HourlyActivityChart({ data }: { data: HourlyActivity[] }
           </ComposedChart>
         </ResponsiveContainer>
       </div>
-      <p className="text-sm text-[var(--foreground)] opacity-80 leading-relaxed">
+      <p className="text-base text-[var(--foreground)] leading-relaxed">
         Уся активність гаманця зосереджена в межах{" "}
         <span className="font-medium">
           {fmtHour(firstActive)}–{fmtHour(lastActive + 1)} UTC

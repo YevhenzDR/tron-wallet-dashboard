@@ -105,10 +105,10 @@ export default function Home() {
 
       <section className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-3">
         <div>
-          <h2 className="text-sm font-medium" style={{ color: "var(--warn)" }}>
+          <h2 className="text-base font-medium" style={{ color: "var(--warn)" }}>
             Активність за годинами доби (UTC) — ознака ручного керування
           </h2>
-          <p className="text-sm text-[var(--foreground)] opacity-80 mt-1 leading-relaxed">
+          <p className="text-base text-[var(--foreground)] mt-1 leading-relaxed">
             Розподіл кількості транзакцій за годиною доби. Затінена ділянка — нічна пауза, коли гаманець
             повністю неактивний.
           </p>
