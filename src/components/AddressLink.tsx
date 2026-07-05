@@ -1,17 +1,43 @@
 import { tronscanUrl } from "@/lib/format";
 
-export function TagBadge({ tag, isExchange }: { tag: string; isExchange: boolean }) {
+export function TagBadge({
+  tag,
+  isExchange,
+  onTagClick,
+}: {
+  tag: string;
+  isExchange: boolean;
+  onTagClick?: (tag: string) => void;
+}) {
   if (!tag) return null;
+  const style = isExchange
+    ? { color: "var(--exchange)", borderColor: "var(--exchange)", background: "rgba(139, 124, 246, 0.08)" }
+    : { color: "var(--muted)", borderColor: "var(--border)" };
+  const label = isExchange ? `БІРЖА · ${tag}` : tag;
+
+  if (isExchange && onTagClick) {
+    return (
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          onTagClick(tag);
+        }}
+        className="inline-block align-middle text-[10px] leading-none px-1.5 py-1 rounded border whitespace-nowrap hover:brightness-125 transition-[filter] cursor-pointer"
+        style={style}
+        title={`Показати всі транзакції з міткою «${tag}»`}
+      >
+        {label}
+      </button>
+    );
+  }
+
   return (
     <span
       className="inline-block align-middle text-[10px] leading-none px-1.5 py-1 rounded border whitespace-nowrap"
-      style={
-        isExchange
-          ? { color: "var(--exchange)", borderColor: "var(--exchange)", background: "rgba(139, 124, 246, 0.08)" }
-          : { color: "var(--muted)", borderColor: "var(--border)" }
-      }
+      style={style}
     >
-      {isExchange ? `БІРЖА · ${tag}` : tag}
+      {label}
     </span>
   );
 }
@@ -35,12 +61,14 @@ export default function AddressLink({
   isExchange = false,
   riskLevel = "",
   isHighRisk = false,
+  onTagClick,
 }: {
   address: string;
   tag?: string;
   isExchange?: boolean;
   riskLevel?: string;
   isHighRisk?: boolean;
+  onTagClick?: (tag: string) => void;
 }) {
   return (
     <span className="inline-flex flex-wrap items-center gap-1.5">
@@ -52,7 +80,7 @@ export default function AddressLink({
       >
         {address}
       </a>
-      <TagBadge tag={tag} isExchange={isExchange} />
+      <TagBadge tag={tag} isExchange={isExchange} onTagClick={onTagClick} />
       <RiskBadge isHighRisk={isHighRisk} riskLevel={riskLevel} />
     </span>
   );

@@ -107,6 +107,7 @@ export default function CounterpartyTable({
                     isExchange={r.is_exchange}
                     riskLevel={r.risk_level}
                     isHighRisk={r.is_high_risk}
+                    onTagClick={setQuery}
                   />
                 </td>
                 <td className="px-4 py-2 text-right" style={{ color }}>

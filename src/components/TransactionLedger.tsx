@@ -184,6 +184,10 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
                     isExchange={r.is_exchange}
                     riskLevel={r.risk_level}
                     isHighRisk={r.is_high_risk}
+                    onTagClick={(tag) => {
+                      setQuery(tag);
+                      setPage(0);
+                    }}
                   />
                 </td>
                 <td
