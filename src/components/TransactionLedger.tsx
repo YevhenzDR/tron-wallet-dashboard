@@ -216,7 +216,7 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
         </table>
       </div>
 
-      <div className="flex items-center justify-between gap-3 px-4 py-3 border-t border-[var(--border)] text-xs text-[var(--muted)]">
+      <div className="flex items-center justify-end gap-3 px-4 py-3 border-t border-[var(--border)] text-xs text-[var(--muted)]">
         <span>
           сторінка {currentPage + 1} з {pageCount}
         </span>
