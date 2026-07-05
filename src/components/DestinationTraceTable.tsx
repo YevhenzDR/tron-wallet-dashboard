@@ -57,13 +57,17 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
                 onClick={() => setExpanded(isOpen ? null : t.address)}
                 className="w-full flex flex-wrap items-center justify-between gap-3 px-4 py-3 text-left hover:bg-[var(--surface-raised)] transition-colors"
               >
-                <div className="min-w-0 flex-1">
+                <div className="min-w-0 flex-1 flex flex-col gap-0.5">
                   <AddressLink address={t.address} />
-                  <p className="text-sm text-[var(--foreground)] opacity-80 mt-1 leading-relaxed">
-                    отримав від досліджуваного гаманця: {formatUsdt(t.received_from_wallet)} USDT ·
-                    власний вихідний обіг адреси (вся історія, не лише кошти з цього гаманця):{" "}
-                    {formatUsdt(t.total_out_all_time)} USDT ({formatCount(t.out_tx_count)} тр.,{" "}
-                    {formatCount(t.unique_targets)} унікальних отримувачів)
+                  <p className="text-xs text-[var(--foreground)] opacity-80">
+                    отримав від гаманця: <span className="mono">{formatUsdt(t.received_from_wallet)} USDT</span>
+                  </p>
+                  <p className="text-xs text-[var(--foreground)] opacity-80">
+                    власний вихідний обіг (вся історія):{" "}
+                    <span className="mono">{formatUsdt(t.total_out_all_time)} USDT</span>
+                  </p>
+                  <p className="text-xs text-[var(--muted)]">
+                    {formatCount(t.out_tx_count)} тр. · {formatCount(t.unique_targets)} унікальних отримувачів
                   </p>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
