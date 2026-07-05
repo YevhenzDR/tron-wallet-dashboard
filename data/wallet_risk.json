@@ -1,0 +1,464 @@
+{
+  "score": 31,
+  "hacking_event": "",
+  "detail_list": [
+    "Involved Illicit Activity",
+    "Interact With High-risk Tag Address"
+  ],
+  "risk_level": "Moderate",
+  "risk_detail": [
+    {
+      "entity": "htx",
+      "risk_type": "sanctioned_entity",
+      "volume": 1170084.636,
+      "hop_num": 2,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "htx"
+        ],
+        "2": [
+          "TA1VGgWu4tMqxdCkK4wGCSHckD5FCLuUKy"
+        ],
+        "3": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 4.432
+    },
+    {
+      "entity": "rapira",
+      "risk_type": "sanctioned_entity",
+      "volume": 323887.607,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "rapira"
+        ],
+        "2": [
+          "TJSv7xnm5H9UEhKNXhhAoiJJxFtdTw4A4T"
+        ],
+        "3": [
+          "TA1VGgWu4tMqxdCkK4wGCSHckD5FCLuUKy"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 1.227
+    },
+    {
+      "entity": "garantex.io",
+      "risk_type": "sanctioned_entity",
+      "volume": 59785.235,
+      "hop_num": 2,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "garantex.io"
+        ],
+        "2": [
+          "TBDiaL4gZHywdKNns4uf2ZnnF5qj1b7xUp"
+        ],
+        "3": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.226
+    },
+    {
+      "entity": "payeer.com",
+      "risk_type": "sanctioned_entity",
+      "volume": 16306.362,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "payeer.com"
+        ],
+        "2": [
+          "TJSv7xnm5H9UEhKNXhhAoiJJxFtdTw4A4T"
+        ],
+        "3": [
+          "TA1VGgWu4tMqxdCkK4wGCSHckD5FCLuUKy"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.062
+    },
+    {
+      "entity": "aifory.pro",
+      "risk_type": "sanctioned_entity",
+      "volume": 15581.937,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "aifory.pro"
+        ],
+        "2": [
+          "TQn81E3T7v6AxXXtKPmAdFCUsWu9KKgiFH"
+        ],
+        "3": [
+          "TCQ7tjSRfmx1t27MzZRCjGNMGd8gzWL96Z"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.059
+    },
+    {
+      "entity": "abcex.io",
+      "risk_type": "sanctioned_entity",
+      "volume": 13868.939,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "abcex.io"
+        ],
+        "2": [
+          "TJjDAUR1KCivLSs9t4aUFviCeFcuRbExc7"
+        ],
+        "3": [
+          "TCKf6usAzix4FzR2Sps7cEnfeGHuSDixHS"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.053
+    },
+    {
+      "entity": "huionepay",
+      "risk_type": "sanctioned_entity",
+      "volume": 8746.035,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "huionepay"
+        ],
+        "2": [
+          "TW7tZnUDpfwQLrKBDyf6jBdbzC26bHQVfd"
+        ],
+        "3": [
+          "TBDiaL4gZHywdKNns4uf2ZnnF5qj1b7xUp"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.033
+    },
+    {
+      "entity": "cryptex.net",
+      "risk_type": "sanctioned_entity",
+      "volume": 2259.671,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "cryptex.net"
+        ],
+        "2": [
+          "TLiV5b5m28J1fUiDoFCH6nFFhFAVuZZXtc"
+        ],
+        "3": [
+          "TCc6PuYs9HdmhDm1EwbdK34keBHJQ88a9A"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.009
+    },
+    {
+      "entity": "grinex.io",
+      "risk_type": "sanctioned_entity",
+      "volume": 1658.129,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "grinex.io"
+        ],
+        "2": [
+          "TMJKHgks3ZF4ybRn9KdoMKkaFAtWi42N2m"
+        ],
+        "3": [
+          "TCKf6usAzix4FzR2Sps7cEnfeGHuSDixHS"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.006
+    },
+    {
+      "entity": "xinbi guarantee",
+      "risk_type": "sanctioned_entity",
+      "volume": 103.009,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "xinbi guarantee"
+        ],
+        "2": [
+          "TXD7rrHRUg4L2Gjofg67E6uoA3NjnESgMY"
+        ],
+        "3": [
+          "TWrGVdkoqSKZv7C96UCNUmB9VCHHQN1hSR"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.0
+    },
+    {
+      "entity": "www.hwdb.la",
+      "risk_type": "sanctioned_entity",
+      "volume": 87.508,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "www.hwdb.la"
+        ],
+        "2": [
+          "TXD7rrHRUg4L2Gjofg67E6uoA3NjnESgMY"
+        ],
+        "3": [
+          "TWrGVdkoqSKZv7C96UCNUmB9VCHHQN1hSR"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.0
+    },
+    {
+      "entity": "abantether.com",
+      "risk_type": "sanctioned_entity",
+      "volume": 23.168,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "abantether.com"
+        ],
+        "2": [
+          "TQd7TqQn9omQTPCt86MJPDW1RkfsZsf6R6"
+        ],
+        "3": [
+          "TC7aJgAT8LEXw7gwauwPHj9RuuxXcgdSFZ"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.0
+    },
+    {
+      "entity": "nobitex.ir",
+      "risk_type": "sanctioned_entity",
+      "volume": 6.157,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "nobitex.ir"
+        ],
+        "2": [
+          "TQd7TqQn9omQTPCt86MJPDW1RkfsZsf6R6"
+        ],
+        "3": [
+          "TC7aJgAT8LEXw7gwauwPHj9RuuxXcgdSFZ"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.0
+    },
+    {
+      "entity": "Theft",
+      "risk_type": "illicit_activity",
+      "volume": 23052.395,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "TQeB7VJDFrPccCGoYa2Jt98Tghwson9xBP"
+        ],
+        "2": [
+          "TNWrsp2jF4HvPJa5rSm4Z9qdKqSgMW1LqY"
+        ],
+        "3": [
+          "TAK2gzLNrxte6B5A8pRrw81G3PFLEWgJfm"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.087
+    },
+    {
+      "entity": "OFAC Sanctions",
+      "risk_type": "illicit_activity",
+      "volume": 17245.353,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "TMuCgBejD5RsNANZdjGtaM3YyKGNgDoy7N"
+        ],
+        "2": [
+          "TXa1VUTXFKucY4azpPEBdinHyFu73zfxWT"
+        ],
+        "3": [
+          "TPBQobqAjw1xuUpEfMWZcuCU1vjuYEnXFD"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.065
+    },
+    {
+      "entity": "Theft",
+      "risk_type": "illicit_activity",
+      "volume": 5721,
+      "hop_num": 1,
+      "exposure_type": "direct",
+      "hop_dic": {
+        "1": [
+          "TMd7SqApZtiPbeBtwqKJc6d8Wgm8zuTVAB"
+        ],
+        "2": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.022
+    },
+    {
+      "entity": "USDT Banned Address",
+      "risk_type": "illicit_activity",
+      "volume": 4859.471,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "TVa1p4aTVoHuF4EDGthn57FbKNbu4DRJkQ"
+        ],
+        "2": [
+          "TPoXUr2qFKc8NrGgMKQUzXMrA5P8tzT9iK"
+        ],
+        "3": [
+          "TCKf6usAzix4FzR2Sps7cEnfeGHuSDixHS"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.018
+    },
+    {
+      "entity": "WOO X Exploiter",
+      "risk_type": "illicit_activity",
+      "volume": 610.417,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "TSdV4qNhtWc58x9xkNGKPwLHNzsQRTBmTg"
+        ],
+        "2": [
+          "TDQDJQZCKhycTTWiA2SxUrn4wfLy8wNrb3"
+        ],
+        "3": [
+          "TPaBMfkW2n1BtLX2LNityuBbxrbXNu4by8"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.002
+    },
+    {
+      "entity": "Phishing",
+      "risk_type": "illicit_activity",
+      "volume": 125.064,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "TFoEoMCqPdPUy1KKLR76GJdAWvdauJQZMP"
+        ],
+        "2": [
+          "TVvLYNkAYnhGpcY5XekBQhp6QbAgr1CT2G"
+        ],
+        "3": [
+          "TA1VGgWu4tMqxdCkK4wGCSHckD5FCLuUKy"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.0
+    },
+    {
+      "entity": "Dusting Attack",
+      "risk_type": "illicit_activity",
+      "volume": 16.54,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "TMBmZ2a1Aj56hYAvrHAbpdJ4DoRitdMJA6"
+        ],
+        "2": [
+          "TFH8ykhMsB6agwL1saZthAhtfXdzBKcL3e"
+        ],
+        "3": [
+          "TA1VGgWu4tMqxdCkK4wGCSHckD5FCLuUKy"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.0
+    },
+    {
+      "entity": "Terrorism Financing",
+      "risk_type": "illicit_activity",
+      "volume": 1.352,
+      "hop_num": 3,
+      "exposure_type": "indirect",
+      "hop_dic": {
+        "1": [
+          "TJFA3AqnkgM55rvRCpZgy7fb4MX7UjyHrh"
+        ],
+        "2": [
+          "TE4S465DvgEdVsp1b1KPTZVdRvDWKjvtGt"
+        ],
+        "3": [
+          "TGraKxw4gTwZmyY3GCcdBcftKzW3t7kBKe"
+        ],
+        "4": [
+          "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL"
+        ]
+      },
+      "percent": 0.0
+    }
+  ],
+  "address_label": "",
+  "risk_report_url": "https://files.misttrack.io/riskReport/TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL?token=541da93f-0bca-4743-9022-5f74c47ddc02",
+  "generated_at": "2026-07-05T15:30:22Z"
+}

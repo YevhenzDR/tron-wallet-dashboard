@@ -97,3 +97,24 @@ export interface TransactionLedger {
   transactions: Transaction[];
   count: number;
 }
+
+export interface RiskDetailEntry {
+  entity: string;
+  risk_type: "sanctioned_entity" | "illicit_activity" | string;
+  volume: number;
+  hop_num: number;
+  exposure_type: "direct" | "indirect" | string;
+  hop_dic: Record<string, string[]>;
+  percent: number;
+}
+
+export interface WalletRisk {
+  score: number;
+  hacking_event: string;
+  detail_list: string[];
+  risk_level: string;
+  risk_detail: RiskDetailEntry[];
+  address_label: string;
+  risk_report_url: string;
+  generated_at: string;
+}
