@@ -50,12 +50,19 @@ export interface DailyVolume {
   out_count: number;
 }
 
+export interface HourlyActivity {
+  hour: number;
+  in_count: number;
+  out_count: number;
+}
+
 export interface WalletData {
   kpis: Kpis;
   sources: Counterparty[];
   destinations: Counterparty[];
   circular_counterparties: CircularCounterparty[];
   daily_volumes: DailyVolume[];
+  hourly_activity: HourlyActivity[];
 }
 
 export interface TraceTarget {

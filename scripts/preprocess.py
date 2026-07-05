@@ -140,6 +140,18 @@ def main():
         key=lambda x: x["date"],
     )
 
+    # Hour-of-day activity (UTC). A human-operated wallet shows a diurnal
+    # (day/night) pattern; an exchange hot wallet runs 24/7 with no gap.
+    hourly = {h: {"in": 0, "out": 0} for h in range(24)}
+    for r in incoming:
+        hourly[r["time"].hour]["in"] += 1
+    for r in outgoing:
+        hourly[r["time"].hour]["out"] += 1
+    hourly_list = [
+        {"hour": h, "in_count": hourly[h]["in"], "out_count": hourly[h]["out"]}
+        for h in range(24)
+    ]
+
     active_days = len(daily)
     unique_sources = len(in_by_counterparty)
     unique_destinations = len(out_by_counterparty)
@@ -169,6 +181,7 @@ def main():
         "destinations": destinations,
         "circular_counterparties": circular,
         "daily_volumes": daily_list,
+        "hourly_activity": hourly_list,
     }
 
     # Re-apply address tags (exchange labels) if fetch_tags.py has run before,

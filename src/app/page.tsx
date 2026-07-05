@@ -6,6 +6,7 @@ import { formatDateTime, tronscanUrl } from "@/lib/format";
 import KpiCards from "@/components/KpiCards";
 import SankeyFlow from "@/components/SankeyFlow";
 import DailyVolumeTimeline from "@/components/DailyVolumeTimeline";
+import HourlyActivityChart from "@/components/HourlyActivityChart";
 import CircularTable from "@/components/CircularTable";
 import CounterpartyTable from "@/components/CounterpartyTable";
 import TypologyNotes from "@/components/TypologyNotes";
@@ -23,7 +24,8 @@ function LegendDot({ color, label }: { color: string; label: string }) {
 }
 
 export default function Home() {
-  const { kpis, sources, destinations, circular_counterparties, daily_volumes } = getWalletData();
+  const { kpis, sources, destinations, circular_counterparties, daily_volumes, hourly_activity } =
+    getWalletData();
   const destinationTraces = getDestinationTraces();
   const ledger = getTransactionLedger();
   const walletRisk = getWalletRisk();
@@ -99,6 +101,19 @@ export default function Home() {
           </p>
         </div>
         <DailyVolumeTimeline data={daily_volumes} />
+      </section>
+
+      <section className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-3">
+        <div>
+          <h2 className="text-sm font-medium" style={{ color: "var(--warn)" }}>
+            Активність за годинами доби (UTC) — ознака ручного керування
+          </h2>
+          <p className="text-sm text-[var(--foreground)] opacity-80 mt-1 leading-relaxed">
+            Розподіл кількості транзакцій за годиною доби. Затінена ділянка — нічна пауза, коли гаманець
+            повністю неактивний.
+          </p>
+        </div>
+        <HourlyActivityChart data={hourly_activity} />
       </section>
 
       <section>
