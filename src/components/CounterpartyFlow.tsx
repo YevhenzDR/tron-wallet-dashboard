@@ -38,12 +38,21 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
   const [sortKey, setSortKey] = useState<SortKey>("received");
   const [dir, setDir] = useState<SortDir>("desc");
   const [entityQuery, setEntityQuery] = useState("");
+  const [destQuery, setDestQuery] = useState("");
 
   const filteredEntities = useMemo(() => {
     const q = entityQuery.trim().toLowerCase();
     if (!q) return data.entities;
     return data.entities.filter((e) => e.name.toLowerCase().includes(q));
   }, [data.entities, entityQuery]);
+
+  const filteredDestinations = useMemo(() => {
+    const q = destQuery.trim().toLowerCase();
+    if (!q) return data.per_destination;
+    return data.per_destination.filter(
+      (d) => d.address.toLowerCase().includes(q) || d.tag.toLowerCase().includes(q)
+    );
+  }, [data.per_destination, destQuery]);
 
   const handleSort = (key: SortKey) => {
     if (key === sortKey) {
@@ -60,7 +69,7 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
   const highRiskCount = data.per_destination.filter((d) => !d.is_exchange && d.is_high_risk).length;
 
   const sorted = useMemo(() => {
-    const arr = [...data.per_destination];
+    const arr = [...filteredDestinations];
     arr.sort((a, b) => {
       let cmp: number;
       if (sortKey === "address") {
@@ -74,7 +83,7 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
       return dir === "asc" ? cmp : -cmp;
     });
     return arr;
-  }, [data.per_destination, sortKey, dir]);
+  }, [filteredDestinations, sortKey, dir]);
 
   return (
     <div className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-4">
@@ -147,9 +156,18 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
       </div>
 
       <div className="pt-2 border-t border-[var(--border)]">
-        <h3 className="text-sm font-medium uppercase tracking-wider mb-1" style={{ color: "var(--warn)" }}>
-          Розподіл за окремими отримувачами ({data.per_destination.length})
-        </h3>
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-1">
+          <h3 className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--warn)" }}>
+            Розподіл за окремими отримувачами ({sorted.length}
+            {destQuery ? ` з ${data.per_destination.length}` : ""})
+          </h3>
+          <input
+            value={destQuery}
+            onChange={(e) => setDestQuery(e.target.value)}
+            placeholder="пошук адреси / сервісу…"
+            className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
+          />
+        </div>
         <p className="text-sm text-[var(--foreground)] opacity-80 mb-2">
           бірж серед отримувачів: {exchangeCount} · високоризикових: {highRiskCount} · натисніть на
           заголовок стовпця для сортування
@@ -254,6 +272,13 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
                   </Fragment>
                 );
               })}
+              {sorted.length === 0 && (
+                <tr>
+                  <td colSpan={3} className="px-4 py-6 text-center text-[var(--muted)]">
+                    Збігів не знайдено
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
