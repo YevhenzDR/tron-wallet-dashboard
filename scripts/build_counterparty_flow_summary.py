@@ -21,11 +21,18 @@ from pathlib import Path
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 FLOW_PATH = DATA_DIR / "counterparty_flow.json"
+WALLET_DATA_PATH = DATA_DIR / "wallet_data.json"
 OUT_PATH = DATA_DIR / "counterparty_flow_summary.json"
 
 
 def main():
     flow = json.loads(FLOW_PATH.read_text())
+    wallet_data = json.loads(WALLET_DATA_PATH.read_text())
+
+    # Reuse the classification already merged into wallet_data.json
+    # (Tronscan + MistTrack) so we don't need extra API calls just to know
+    # whether a destination is itself an exchange / high-risk address.
+    dest_info = {d["address"]: d for d in wallet_data["destinations"]}
 
     wallet_entry = None
     destinations = []
@@ -33,10 +40,15 @@ def main():
         if v.get("role") == "wallet":
             wallet_entry = {"address": addr, "counterparties": v.get("counterparties", [])}
         elif v.get("role") == "destination":
+            info = dest_info.get(addr, {})
             destinations.append({
                 "address": addr,
                 "received_from_wallet": v.get("received_from_wallet", 0),
                 "counterparties": v.get("counterparties", []),
+                "tag": info.get("tag", ""),
+                "is_exchange": info.get("is_exchange", False),
+                "risk_level": info.get("risk_level", ""),
+                "is_high_risk": info.get("is_high_risk", False),
             })
 
     destinations.sort(key=lambda d: -d["received_from_wallet"])
@@ -64,6 +76,10 @@ def main():
         per_destination.append({
             "address": d["address"],
             "received_from_wallet": received,
+            "tag": d["tag"],
+            "is_exchange": d["is_exchange"],
+            "risk_level": d["risk_level"],
+            "is_high_risk": d["is_high_risk"],
             "breakdown": breakdown,
         })
 

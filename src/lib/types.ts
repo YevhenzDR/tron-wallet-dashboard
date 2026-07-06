@@ -151,6 +151,10 @@ export interface FlowBreakdownEntry {
 export interface DestinationFlow {
   address: string;
   received_from_wallet: number;
+  tag: string;
+  is_exchange: boolean;
+  risk_level: string;
+  is_high_risk: boolean;
   breakdown: FlowBreakdownEntry[];
 }
 
