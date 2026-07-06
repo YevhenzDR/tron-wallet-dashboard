@@ -135,24 +135,23 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
             className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
           />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6">
-          {filteredEntities.map((e) => (
-            <div
-              key={e.name}
-              className="flex items-center justify-between gap-3 py-1.5 border-t border-[var(--border)]"
-            >
-              <span className="text-sm truncate">{e.name}</span>
-              <span className="text-sm mono shrink-0" style={{ color: "var(--exchange)" }}>
-                ≈ {formatUsdt(e.estimated_amount, 0)}
-              </span>
-            </div>
-          ))}
-          {filteredEntities.length === 0 && (
-            <div className="col-span-full py-4 text-center text-sm text-[var(--muted)]">
-              Збігів не знайдено
-            </div>
-          )}
-        </div>
+        {filteredEntities.length === 0 ? (
+          <div className="py-4 text-center text-sm text-[var(--muted)]">Збігів не знайдено</div>
+        ) : (
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-x-6">
+            {filteredEntities.map((e) => (
+              <div
+                key={e.name}
+                className="flex items-center justify-between gap-3 py-1.5 border-t border-[var(--border)] break-inside-avoid"
+              >
+                <span className="text-sm truncate">{e.name}</span>
+                <span className="text-sm mono shrink-0" style={{ color: "var(--exchange)" }}>
+                  ≈ {formatUsdt(e.estimated_amount, 0)}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="pt-2 border-t border-[var(--border)]">
