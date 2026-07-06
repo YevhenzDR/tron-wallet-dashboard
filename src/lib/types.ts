@@ -135,3 +135,37 @@ export interface WalletRisk {
   risk_report_url: string;
   generated_at: string;
 }
+
+export interface CounterpartyShare {
+  name: string;
+  amount?: number;
+  percent?: number;
+}
+
+export interface FlowBreakdownEntry {
+  name: string;
+  estimated_amount: number;
+  source_percent: number;
+}
+
+export interface DestinationFlow {
+  address: string;
+  received_from_wallet: number;
+  breakdown: FlowBreakdownEntry[];
+}
+
+export interface FlowEntity {
+  name: string;
+  estimated_amount: number;
+}
+
+export interface CounterpartyFlowSummary {
+  method_note: string;
+  wallet_own_distribution: CounterpartyShare[];
+  destinations_analyzed: number;
+  total_received_by_analyzed: number;
+  estimated_to_named_entities: number;
+  estimated_unattributed: number;
+  entities: FlowEntity[];
+  per_destination: DestinationFlow[];
+}

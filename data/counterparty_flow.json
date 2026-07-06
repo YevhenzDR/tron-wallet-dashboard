@@ -1,0 +1,1347 @@
+{
+ "TT3whB9h4rcvVPfxmnGNEsjvvgUHNox5iL": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 19989896.267,
+    "percent": 75.719
+   },
+   {
+    "name": "Binance",
+    "amount": 3434464.439,
+    "percent": 13.009
+   },
+   {
+    "name": "Bybit",
+    "amount": 1053279.172,
+    "percent": 3.99
+   },
+   {
+    "name": "OKX",
+    "amount": 595359.489,
+    "percent": 2.255
+   },
+   {
+    "name": "bitget",
+    "amount": 414306.07,
+    "percent": 1.569
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 385074.31,
+    "percent": 1.459
+   },
+   {
+    "name": "MEXC",
+    "amount": 161731.355,
+    "percent": 0.613
+   },
+   {
+    "name": "WellWallet.io",
+    "amount": 81324.061,
+    "percent": 0.308
+   },
+   {
+    "name": "@CryptoBot",
+    "amount": 65409.226,
+    "percent": 0.248
+   },
+   {
+    "name": "BingX",
+    "amount": 49908.516,
+    "percent": 0.189
+   },
+   {
+    "name": "001k.exchange",
+    "amount": 43414.516,
+    "percent": 0.164
+   },
+   {
+    "name": "Telegram Wallet",
+    "amount": 33214.96,
+    "percent": 0.126
+   },
+   {
+    "name": "htx",
+    "amount": 30086.15,
+    "percent": 0.114
+   },
+   {
+    "name": "Kucoin",
+    "amount": 25414.49,
+    "percent": 0.096
+   },
+   {
+    "name": "Kraken",
+    "amount": 14327.0,
+    "percent": 0.054
+   },
+   {
+    "name": "kyrrex.com",
+    "amount": 13924.71,
+    "percent": 0.053
+   },
+   {
+    "name": "Gate",
+    "amount": 3529.0,
+    "percent": 0.013
+   },
+   {
+    "name": "phemex",
+    "amount": 2375.26,
+    "percent": 0.009
+   },
+   {
+    "name": "xrocket.exchange",
+    "amount": 1800.0,
+    "percent": 0.007
+   },
+   {
+    "name": "ZixiPay",
+    "amount": 1400.0,
+    "percent": 0.005
+   }
+  ],
+  "role": "wallet"
+ },
+ "TG1aThkXb431xo3NsMT2WF8uyR2fshPd86": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 900711496.688,
+    "percent": 99.421
+   },
+   {
+    "name": "Binance",
+    "amount": 2279586.869,
+    "percent": 0.252
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 2272759.658,
+    "percent": 0.251
+   },
+   {
+    "name": "OKX",
+    "amount": 690000.0,
+    "percent": 0.076
+   },
+   {
+    "name": "buy.tronify.io",
+    "amount": 34.186,
+    "percent": 0.0
+   },
+   {
+    "name": "kyrrex.com",
+    "amount": 400.0,
+    "percent": 0.0
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 1573712.8613250002
+ },
+ "TGbK1zVTUidFScov3r9E4AsZ6y8oDyWkRK": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 16179917.808,
+    "percent": 81.831
+   },
+   {
+    "name": "WellWallet.io",
+    "amount": 3213000.0,
+    "percent": 16.25
+   },
+   {
+    "name": "Binance",
+    "amount": 352265.514,
+    "percent": 1.782
+   },
+   {
+    "name": "Bybit",
+    "amount": 18485.0,
+    "percent": 0.093
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 7239.425,
+    "percent": 0.037
+   },
+   {
+    "name": "changehero.io",
+    "amount": 1526.08,
+    "percent": 0.008
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 784050.0
+ },
+ "TDc3pAH7Fud9tNehw8gnTSr2d3n4haxLk3": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 90285607.022,
+    "percent": 87.992
+   },
+   {
+    "name": "Binance",
+    "amount": 3143362.92,
+    "percent": 3.063
+   },
+   {
+    "name": "001k.exchange",
+    "amount": 2787427.06,
+    "percent": 2.717
+   },
+   {
+    "name": "Bybit",
+    "amount": 1747515.266,
+    "percent": 1.703
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 1745098.842,
+    "percent": 1.701
+   },
+   {
+    "name": "kyrrex.com",
+    "amount": 1190950.102,
+    "percent": 1.161
+   },
+   {
+    "name": "WellWallet.io",
+    "amount": 585215.102,
+    "percent": 0.57
+   },
+   {
+    "name": "MEXC",
+    "amount": 382333.066,
+    "percent": 0.373
+   },
+   {
+    "name": "OKX",
+    "amount": 105200.493,
+    "percent": 0.103
+   },
+   {
+    "name": "Gate",
+    "amount": 100000.0,
+    "percent": 0.097
+   },
+   {
+    "name": "cex.io",
+    "amount": 84278.0,
+    "percent": 0.082
+   },
+   {
+    "name": "htx",
+    "amount": 79261.362,
+    "percent": 0.077
+   },
+   {
+    "name": "Kucoin",
+    "amount": 64611.047,
+    "percent": 0.063
+   },
+   {
+    "name": "@CryptoBot",
+    "amount": 63840.0,
+    "percent": 0.062
+   },
+   {
+    "name": "BingX",
+    "amount": 62251.85,
+    "percent": 0.061
+   },
+   {
+    "name": "Kraken",
+    "amount": 62202.0,
+    "percent": 0.061
+   },
+   {
+    "name": "bitget",
+    "amount": 48427.869,
+    "percent": 0.047
+   },
+   {
+    "name": "speciewallet.io",
+    "amount": 25352.0,
+    "percent": 0.025
+   },
+   {
+    "name": "Poloniex",
+    "amount": 19424.199,
+    "percent": 0.019
+   },
+   {
+    "name": "Telegram Wallet",
+    "amount": 18635.02,
+    "percent": 0.018
+   },
+   {
+    "name": "Breet.io",
+    "amount": 3559.94,
+    "percent": 0.003
+   },
+   {
+    "name": "BitMart",
+    "amount": 2497.7,
+    "percent": 0.002
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 637285.315001
+ },
+ "TLEejdzApbq4GiX33sJemJG8zZJGt9gpVB": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 102754916.993,
+    "percent": 89.793
+   },
+   {
+    "name": "Binance",
+    "amount": 3817327.741,
+    "percent": 3.336
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 2598158.395,
+    "percent": 2.27
+   },
+   {
+    "name": "001k.exchange",
+    "amount": 1680124.841,
+    "percent": 1.468
+   },
+   {
+    "name": "Bybit",
+    "amount": 1435854.119,
+    "percent": 1.255
+   },
+   {
+    "name": "kyrrex.com",
+    "amount": 916732.968,
+    "percent": 0.801
+   },
+   {
+    "name": "MEXC",
+    "amount": 246993.358,
+    "percent": 0.216
+   },
+   {
+    "name": "WellWallet.io",
+    "amount": 193688.0,
+    "percent": 0.169
+   },
+   {
+    "name": "OKX",
+    "amount": 163503.981,
+    "percent": 0.143
+   },
+   {
+    "name": "alphapo.net",
+    "amount": 150000.0,
+    "percent": 0.131
+   },
+   {
+    "name": "htx",
+    "amount": 97396.92,
+    "percent": 0.085
+   },
+   {
+    "name": "Kucoin",
+    "amount": 68803.253,
+    "percent": 0.06
+   },
+   {
+    "name": "bitget",
+    "amount": 63378.239,
+    "percent": 0.055
+   },
+   {
+    "name": "@CryptoBot",
+    "amount": 60898.622,
+    "percent": 0.053
+   },
+   {
+    "name": "Kraken",
+    "amount": 58275.0,
+    "percent": 0.051
+   },
+   {
+    "name": "BingX",
+    "amount": 39875.312,
+    "percent": 0.035
+   },
+   {
+    "name": "Rapira",
+    "amount": 30452.0,
+    "percent": 0.027
+   },
+   {
+    "name": "Gate",
+    "amount": 23652.0,
+    "percent": 0.021
+   },
+   {
+    "name": "Bitrue",
+    "amount": 22772.0,
+    "percent": 0.02
+   },
+   {
+    "name": "ChangeNow",
+    "amount": 7000.0,
+    "percent": 0.006
+   },
+   {
+    "name": "Telegram Wallet",
+    "amount": 5251.0,
+    "percent": 0.005
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 517649.746699
+ },
+ "TWXpGZg93vYhp6yoKJcBr5yF5xT11ikEFi": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 14066174.813,
+    "percent": 52.946
+   },
+   {
+    "name": "Kraken",
+    "amount": 8736432.706,
+    "percent": 32.885
+   },
+   {
+    "name": "Binance",
+    "amount": 2381055.467,
+    "percent": 8.963
+   },
+   {
+    "name": "001k.exchange",
+    "amount": 1198177.0,
+    "percent": 4.51
+   },
+   {
+    "name": "WellWallet.io",
+    "amount": 185000.0,
+    "percent": 0.696
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 493000.0
+ },
+ "TXmopX4Kv6jr8QDF7rJGeGSV1uBjyKGKXi": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 2267603.108,
+    "percent": 73.132
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 403997.0,
+    "percent": 13.029
+   },
+   {
+    "name": "Binance",
+    "amount": 125758.0,
+    "percent": 4.056
+   },
+   {
+    "name": "Bitfinex",
+    "amount": 115614.416,
+    "percent": 3.729
+   },
+   {
+    "name": "Bybit",
+    "amount": 89993.0,
+    "percent": 2.902
+   },
+   {
+    "name": "ChangeNow",
+    "amount": 41420.0,
+    "percent": 1.336
+   },
+   {
+    "name": "WellWallet.io",
+    "amount": 30000.0,
+    "percent": 0.968
+   },
+   {
+    "name": "MEXC",
+    "amount": 19999.0,
+    "percent": 0.645
+   },
+   {
+    "name": "Kucoin",
+    "amount": 4024.0,
+    "percent": 0.13
+   },
+   {
+    "name": "Gate",
+    "amount": 2000.0,
+    "percent": 0.065
+   },
+   {
+    "name": "Poloniex",
+    "amount": 276.718,
+    "percent": 0.009
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 440000.0
+ },
+ "TRTRE7fXWSFNQ6g8YGyGcMNxA9DtPCgT3a": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 12263358.643,
+    "percent": 72.332
+   },
+   {
+    "name": "001k.exchange",
+    "amount": 2502425.847,
+    "percent": 14.76
+   },
+   {
+    "name": "Binance",
+    "amount": 847504.725,
+    "percent": 4.999
+   },
+   {
+    "name": "WellWallet.io",
+    "amount": 604629.0,
+    "percent": 3.566
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 380782.52,
+    "percent": 2.246
+   },
+   {
+    "name": "Bybit",
+    "amount": 108743.411,
+    "percent": 0.641
+   },
+   {
+    "name": "MEXC",
+    "amount": 78284.136,
+    "percent": 0.462
+   },
+   {
+    "name": "BingX",
+    "amount": 70614.5,
+    "percent": 0.417
+   },
+   {
+    "name": "kyrrex.com",
+    "amount": 55317.0,
+    "percent": 0.326
+   },
+   {
+    "name": "OKX",
+    "amount": 22652.532,
+    "percent": 0.134
+   },
+   {
+    "name": "Telegram Wallet",
+    "amount": 8386.3,
+    "percent": 0.049
+   },
+   {
+    "name": "Bridgers.xyz Swap",
+    "amount": 5342.061,
+    "percent": 0.032
+   },
+   {
+    "name": "XT",
+    "amount": 2400.0,
+    "percent": 0.014
+   },
+   {
+    "name": "Kucoin",
+    "amount": 1460.0,
+    "percent": 0.009
+   },
+   {
+    "name": "redotpay.com",
+    "amount": 1000.0,
+    "percent": 0.006
+   },
+   {
+    "name": "DigiFinex",
+    "amount": 774.0,
+    "percent": 0.005
+   },
+   {
+    "name": "Poloniex",
+    "amount": 310.0,
+    "percent": 0.002
+   },
+   {
+    "name": "buy.tronify.io",
+    "amount": 119.117,
+    "percent": 0.001
+   },
+   {
+    "name": "Gate",
+    "amount": 50.0,
+    "percent": 0.0
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 360000.0
+ },
+ "TDRduS9bksLeaHXgqDUSxx86WuxDeuVzqe": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 1004530.257,
+    "percent": 63.491
+   },
+   {
+    "name": "bitget",
+    "amount": 488376.845,
+    "percent": 30.867
+   },
+   {
+    "name": "Binance",
+    "amount": 89265.0,
+    "percent": 5.642
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 357480.58999999997
+ },
+ "TN6TifNvvGJWpWN1sz241bCsEhmVb5MLGC": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 3222742.409,
+    "percent": 53.94
+   },
+   {
+    "name": "Binance",
+    "amount": 2713125.655,
+    "percent": 45.411
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 36469.0,
+    "percent": 0.61
+   },
+   {
+    "name": "Bybit",
+    "amount": 2271.019,
+    "percent": 0.038
+   },
+   {
+    "name": "binance gas",
+    "amount": 52.944,
+    "percent": 0.001
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 337358.999779
+ },
+ "THmT3BWydAJGzGPBxAJdydqVMPvGLF4ePH": {
+  "counterparties": [
+   {
+    "name": "OKX",
+    "amount": 4192746.44,
+    "percent": 45.996
+   },
+   {
+    "name": "Unknown",
+    "amount": 4100544.355,
+    "percent": 44.985
+   },
+   {
+    "name": "Gate",
+    "amount": 341484.5,
+    "percent": 3.746
+   },
+   {
+    "name": "Binance",
+    "amount": 189151.5,
+    "percent": 2.075
+   },
+   {
+    "name": "Bybit",
+    "amount": 134871.0,
+    "percent": 1.48
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 106988.0,
+    "percent": 1.174
+   },
+   {
+    "name": "BingX",
+    "amount": 48798.433,
+    "percent": 0.535
+   },
+   {
+    "name": "htx",
+    "amount": 852.0,
+    "percent": 0.009
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 302881.4
+ },
+ "TMTYWZh9DMuMEPzdCHG6cJ5iFTZEwT9LTX": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 48536550.185,
+    "percent": 88.095
+   },
+   {
+    "name": "Binance",
+    "amount": 1623595.485,
+    "percent": 2.947
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 1194398.686,
+    "percent": 2.168
+   },
+   {
+    "name": "kyrrex.com",
+    "amount": 1159188.3,
+    "percent": 2.104
+   },
+   {
+    "name": "001k.exchange",
+    "amount": 830329.724,
+    "percent": 1.507
+   },
+   {
+    "name": "Bybit",
+    "amount": 829983.26,
+    "percent": 1.506
+   },
+   {
+    "name": "alphapo.net",
+    "amount": 250000.0,
+    "percent": 0.454
+   },
+   {
+    "name": "OKX",
+    "amount": 159235.276,
+    "percent": 0.289
+   },
+   {
+    "name": "WellWallet.io",
+    "amount": 134568.871,
+    "percent": 0.244
+   },
+   {
+    "name": "bitget",
+    "amount": 93693.12,
+    "percent": 0.17
+   },
+   {
+    "name": "MEXC",
+    "amount": 83357.249,
+    "percent": 0.151
+   },
+   {
+    "name": "htx",
+    "amount": 77369.09,
+    "percent": 0.14
+   },
+   {
+    "name": "Kucoin",
+    "amount": 48941.1,
+    "percent": 0.089
+   },
+   {
+    "name": "Bitrue",
+    "amount": 22823.199,
+    "percent": 0.041
+   },
+   {
+    "name": "speciewallet.io",
+    "amount": 13590.0,
+    "percent": 0.025
+   },
+   {
+    "name": "cropty.io",
+    "amount": 11668.0,
+    "percent": 0.021
+   },
+   {
+    "name": "BingX",
+    "amount": 7915.4,
+    "percent": 0.014
+   },
+   {
+    "name": "@CryptoBot",
+    "amount": 6850.0,
+    "percent": 0.012
+   },
+   {
+    "name": "Poloniex",
+    "amount": 4854.36,
+    "percent": 0.009
+   },
+   {
+    "name": "Telegram Wallet",
+    "amount": 3724.74,
+    "percent": 0.007
+   },
+   {
+    "name": "Gate",
+    "amount": 2885.3,
+    "percent": 0.005
+   },
+   {
+    "name": "buy.tronify.io",
+    "amount": 22.052,
+    "percent": 0.0
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 300200.0
+ },
+ "TEazfGZweYZS46hyLDpxBaFqV4qyc8qYPq": {
+  "counterparties": [
+   {
+    "name": "Bybit",
+    "amount": 1600976.548,
+    "percent": 45.912
+   },
+   {
+    "name": "Unknown",
+    "amount": 1484194.994,
+    "percent": 42.563
+   },
+   {
+    "name": "Binance",
+    "amount": 236183.046,
+    "percent": 6.773
+   },
+   {
+    "name": "BingX",
+    "amount": 165637.609,
+    "percent": 4.75
+   },
+   {
+    "name": "001k.exchange",
+    "amount": 100.0,
+    "percent": 0.003
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 297441.67
+ },
+ "TYwvU1W72RDjs5akHn6qYYfRbn4d76dXZM": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 15598862.686,
+    "percent": 99.776
+   },
+   {
+    "name": "Rapira",
+    "amount": 20120.0,
+    "percent": 0.129
+   },
+   {
+    "name": "Binance",
+    "amount": 11806.55,
+    "percent": 0.076
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 2500.0,
+    "percent": 0.016
+   },
+   {
+    "name": "Bybit",
+    "amount": 283.0,
+    "percent": 0.002
+   },
+   {
+    "name": "HitBTC",
+    "amount": 100.0,
+    "percent": 0.001
+   },
+   {
+    "name": "app.near-intents.org",
+    "amount": 132.532,
+    "percent": 0.001
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 277144.24
+ },
+ "TP7Ee5Le3jjs86XeFjaGrvYdJPCLmLNe19": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 2402917.33,
+    "percent": 51.793
+   },
+   {
+    "name": "Binance",
+    "amount": 2234418.49,
+    "percent": 48.161
+   },
+   {
+    "name": "OKX",
+    "amount": 2032.656,
+    "percent": 0.044
+   },
+   {
+    "name": "binance gas",
+    "amount": 75.611,
+    "percent": 0.002
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 264670.358624
+ },
+ "TAaKaK2B72pupXeSfxuCo19Yu6njcuA7jS": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 5749830.762,
+    "percent": 96.322
+   },
+   {
+    "name": "Binance",
+    "amount": 214702.494,
+    "percent": 3.597
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 4850.0,
+    "percent": 0.081
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 221871.39953500003
+ },
+ "TVgts5sw8tJn8MeWY9Y2ffdA9Km3HZYour": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 4266731.255,
+    "percent": 55.644
+   },
+   {
+    "name": "Binance",
+    "amount": 3167575.862,
+    "percent": 41.309
+   },
+   {
+    "name": "001k.exchange",
+    "amount": 173948.0,
+    "percent": 2.269
+   },
+   {
+    "name": "Bybit",
+    "amount": 58674.3,
+    "percent": 0.765
+   },
+   {
+    "name": "Qmall.io",
+    "amount": 1032.182,
+    "percent": 0.013
+   },
+   {
+    "name": "binance gas",
+    "amount": 5.585,
+    "percent": 0.0
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 200000.0
+ },
+ "THnHRc1iu87iZ92QSji8DaApQcgpJuM1Av": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 68410784.271,
+    "percent": 83.75
+   },
+   {
+    "name": "Binance",
+    "amount": 4792060.193,
+    "percent": 5.867
+   },
+   {
+    "name": "Bybit",
+    "amount": 1989973.68,
+    "percent": 2.436
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 1887857.915,
+    "percent": 2.311
+   },
+   {
+    "name": "001k.exchange",
+    "amount": 1742231.633,
+    "percent": 2.133
+   },
+   {
+    "name": "WellWallet.io",
+    "amount": 536114.019,
+    "percent": 0.656
+   },
+   {
+    "name": "ChangeNow",
+    "amount": 458333.98,
+    "percent": 0.561
+   },
+   {
+    "name": "htx",
+    "amount": 375570.475,
+    "percent": 0.46
+   },
+   {
+    "name": "MEXC",
+    "amount": 341900.215,
+    "percent": 0.419
+   },
+   {
+    "name": "kyrrex.com",
+    "amount": 239928.0,
+    "percent": 0.294
+   },
+   {
+    "name": "OKX",
+    "amount": 226287.62,
+    "percent": 0.277
+   },
+   {
+    "name": "bitget",
+    "amount": 196016.719,
+    "percent": 0.24
+   },
+   {
+    "name": "BingX",
+    "amount": 157224.4,
+    "percent": 0.192
+   },
+   {
+    "name": "Gate",
+    "amount": 128565.301,
+    "percent": 0.157
+   },
+   {
+    "name": "FixedFloat",
+    "amount": 77379.879,
+    "percent": 0.095
+   },
+   {
+    "name": "Poloniex",
+    "amount": 45400.0,
+    "percent": 0.056
+   },
+   {
+    "name": "Kucoin",
+    "amount": 39600.0,
+    "percent": 0.048
+   },
+   {
+    "name": "@CryptoBot",
+    "amount": 26176.6,
+    "percent": 0.032
+   },
+   {
+    "name": "Telegram Wallet",
+    "amount": 13496.056,
+    "percent": 0.017
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 185137.78
+ },
+ "TC19zeYn1YzESpVHpCjFB4CxhCxX2YovRE": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 31811887.611,
+    "percent": 78.312
+   },
+   {
+    "name": "Binance",
+    "amount": 5115887.839,
+    "percent": 12.594
+   },
+   {
+    "name": "Bybit",
+    "amount": 1296791.332,
+    "percent": 3.192
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 932814.624,
+    "percent": 2.296
+   },
+   {
+    "name": "001k.exchange",
+    "amount": 326313.629,
+    "percent": 0.803
+   },
+   {
+    "name": "OKX",
+    "amount": 236963.956,
+    "percent": 0.583
+   },
+   {
+    "name": "BingX",
+    "amount": 174592.202,
+    "percent": 0.43
+   },
+   {
+    "name": "htx",
+    "amount": 174014.422,
+    "percent": 0.428
+   },
+   {
+    "name": "MEXC",
+    "amount": 109610.115,
+    "percent": 0.27
+   },
+   {
+    "name": "bitget",
+    "amount": 92163.967,
+    "percent": 0.227
+   },
+   {
+    "name": "Gate",
+    "amount": 64465.92,
+    "percent": 0.159
+   },
+   {
+    "name": "WellWallet.io",
+    "amount": 62372.381,
+    "percent": 0.154
+   },
+   {
+    "name": "@CryptoBot",
+    "amount": 52734.61,
+    "percent": 0.13
+   },
+   {
+    "name": "kyrrex.com",
+    "amount": 50000.0,
+    "percent": 0.123
+   },
+   {
+    "name": "Telegram Wallet",
+    "amount": 26634.98,
+    "percent": 0.066
+   },
+   {
+    "name": "Kucoin",
+    "amount": 16228.5,
+    "percent": 0.04
+   },
+   {
+    "name": "MaiCoin",
+    "amount": 14003.2,
+    "percent": 0.034
+   },
+   {
+    "name": "Rapira",
+    "amount": 11691.166,
+    "percent": 0.029
+   },
+   {
+    "name": "ChangeNow",
+    "amount": 10205.0,
+    "percent": 0.025
+   },
+   {
+    "name": "Kraken",
+    "amount": 9770.0,
+    "percent": 0.024
+   },
+   {
+    "name": "Aifory.pro",
+    "amount": 9288.54,
+    "percent": 0.023
+   },
+   {
+    "name": "revolut.com",
+    "amount": 5794.0,
+    "percent": 0.014
+   },
+   {
+    "name": "Coinex",
+    "amount": 5000.0,
+    "percent": 0.012
+   },
+   {
+    "name": "westwallet.io",
+    "amount": 4118.963,
+    "percent": 0.01
+   },
+   {
+    "name": "PARiBU",
+    "amount": 3700.0,
+    "percent": 0.009
+   },
+   {
+    "name": "Butter Network",
+    "amount": 2493.202,
+    "percent": 0.006
+   },
+   {
+    "name": "DigiFinex",
+    "amount": 2200.0,
+    "percent": 0.005
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 178282.2816
+ },
+ "TZBo4RdoLqU16A4FHtEV4f3KZwyCkJ4578": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 1163266.706,
+    "percent": 99.997
+   },
+   {
+    "name": "Binance",
+    "amount": 31.75,
+    "percent": 0.003
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 166695.9
+ },
+ "TGJ4W7Gmcp9m8vVkpxpYzBEEppRPM8rojW": {
+  "counterparties": [
+   {
+    "name": "Unknown",
+    "amount": 34603875.336,
+    "percent": 79.66
+   },
+   {
+    "name": "Binance",
+    "amount": 4172934.275,
+    "percent": 9.606
+   },
+   {
+    "name": "001k.exchange",
+    "amount": 1684060.542,
+    "percent": 3.877
+   },
+   {
+    "name": "Bybit",
+    "amount": 962199.235,
+    "percent": 2.215
+   },
+   {
+    "name": "WhiteBIT",
+    "amount": 955121.37,
+    "percent": 2.199
+   },
+   {
+    "name": "kyrrex.com",
+    "amount": 278362.597,
+    "percent": 0.641
+   },
+   {
+    "name": "OKX",
+    "amount": 244419.205,
+    "percent": 0.563
+   },
+   {
+    "name": "MEXC",
+    "amount": 105844.157,
+    "percent": 0.244
+   },
+   {
+    "name": "@CryptoBot",
+    "amount": 82652.281,
+    "percent": 0.19
+   },
+   {
+    "name": "htx",
+    "amount": 74691.25,
+    "percent": 0.172
+   },
+   {
+    "name": "Telegram Wallet",
+    "amount": 58471.67,
+    "percent": 0.135
+   },
+   {
+    "name": "bitget",
+    "amount": 57399.496,
+    "percent": 0.132
+   },
+   {
+    "name": "Kucoin",
+    "amount": 33723.6,
+    "percent": 0.078
+   },
+   {
+    "name": "WellWallet.io",
+    "amount": 33246.59,
+    "percent": 0.077
+   },
+   {
+    "name": "BingX",
+    "amount": 29855.451,
+    "percent": 0.069
+   },
+   {
+    "name": "Gate",
+    "amount": 20282.33,
+    "percent": 0.047
+   },
+   {
+    "name": "Kraken",
+    "amount": 14865.0,
+    "percent": 0.034
+   },
+   {
+    "name": "Poloniex",
+    "amount": 9770.0,
+    "percent": 0.022
+   },
+   {
+    "name": "redotpay.com",
+    "amount": 7542.0,
+    "percent": 0.017
+   },
+   {
+    "name": "BTCTurk",
+    "amount": 2928.0,
+    "percent": 0.007
+   },
+   {
+    "name": "FixedFloat",
+    "amount": 2416.066,
+    "percent": 0.006
+   },
+   {
+    "name": "westwallet.io",
+    "amount": 2472.8,
+    "percent": 0.006
+   },
+   {
+    "name": "cex.io",
+    "amount": 2509.2,
+    "percent": 0.006
+   }
+  ],
+  "role": "destination",
+  "received_from_wallet": 159764.332639
+ }
+}
