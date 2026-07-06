@@ -56,3 +56,35 @@ body {
   background: var(--border);
   border-radius: 4px;
 }
+
+@media print {
+  /* Preserve the dark theme + coloured badges/bars exactly as shown on
+     screen, so the printout matches the evidence the analyst reviewed. */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide interactive-only chrome that shouldn't appear on the exhibit. */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Un-clip vertical scroll boxes so the source/destination/circular
+     tables print every row rather than just the scrolled-visible slice.
+     The transaction ledger is paginated in state, so it still prints the
+     current page only — matching "print whatever is on the page now". */
+  .scrollbar-thin {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Avoid splitting a card/chart across a page break where possible. */
+  .report-card {
+    break-inside: avoid;
+  }
+
+  @page {
+    margin: 12mm;
+  }
+}

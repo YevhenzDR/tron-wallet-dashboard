@@ -13,6 +13,7 @@ import TypologyNotes from "@/components/TypologyNotes";
 import DestinationTraceTable from "@/components/DestinationTraceTable";
 import TransactionLedgerTable from "@/components/TransactionLedger";
 import RiskExposure from "@/components/RiskExposure";
+import PrintButton from "@/components/PrintButton";
 
 function LegendDot({ color, label }: { color: string; label: string }) {
   return (
@@ -33,9 +34,12 @@ export default function Home() {
   return (
     <main className="flex-1 w-full max-w-[1400px] mx-auto px-4 sm:px-8 py-8 sm:py-10 flex flex-col gap-8">
       <header className="flex flex-col gap-1 border-b border-[var(--border)] pb-5">
-        <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.15em] text-[var(--muted)]">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
-          Аналіз он-чейн потоків · TRON / USDT
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.15em] text-[var(--muted)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
+            Аналіз он-чейн потоків · TRON / USDT
+          </div>
+          <PrintButton />
         </div>
         <h1 className="text-lg sm:text-2xl font-semibold mt-1 mono break-all">
           <a
