@@ -37,6 +37,13 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
   const [expanded, setExpanded] = useState<string | null>(data.per_destination[0]?.address ?? null);
   const [sortKey, setSortKey] = useState<SortKey>("received");
   const [dir, setDir] = useState<SortDir>("desc");
+  const [entityQuery, setEntityQuery] = useState("");
+
+  const filteredEntities = useMemo(() => {
+    const q = entityQuery.trim().toLowerCase();
+    if (!q) return data.entities;
+    return data.entities.filter((e) => e.name.toLowerCase().includes(q));
+  }, [data.entities, entityQuery]);
 
   const handleSort = (key: SortKey) => {
     if (key === sortKey) {
@@ -107,21 +114,35 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
       </div>
 
       <div>
-        <h3 className="text-sm font-medium uppercase tracking-wider mb-2" style={{ color: "var(--warn)" }}>
-          За сервісами ({data.entities.length})
-        </h3>
-        <div className="flex flex-col">
-          {data.entities.map((e) => (
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
+          <h3 className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--warn)" }}>
+            За сервісами ({filteredEntities.length}
+            {entityQuery ? ` з ${data.entities.length}` : ""})
+          </h3>
+          <input
+            value={entityQuery}
+            onChange={(e) => setEntityQuery(e.target.value)}
+            placeholder="пошук сервісу…"
+            className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
+          />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6">
+          {filteredEntities.map((e) => (
             <div
               key={e.name}
-              className="flex items-center justify-between gap-3 py-1.5 border-t border-[var(--border)] first:border-t-0"
+              className="flex items-center justify-between gap-3 py-1.5 border-t border-[var(--border)]"
             >
-              <span className="text-sm">{e.name}</span>
-              <span className="text-sm mono" style={{ color: "var(--exchange)" }}>
-                ≈ {formatUsdt(e.estimated_amount, 0)} USDT
+              <span className="text-sm truncate">{e.name}</span>
+              <span className="text-sm mono shrink-0" style={{ color: "var(--exchange)" }}>
+                ≈ {formatUsdt(e.estimated_amount, 0)}
               </span>
             </div>
           ))}
+          {filteredEntities.length === 0 && (
+            <div className="col-span-full py-4 text-center text-sm text-[var(--muted)]">
+              Збігів не знайдено
+            </div>
+          )}
         </div>
       </div>
 
