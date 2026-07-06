@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Transaction, TransactionLedger as TransactionLedgerData } from "@/lib/types";
 import { formatCount, formatDateTime, formatUsdt, tronscanTxUrl } from "@/lib/format";
 import AddressLink from "./AddressLink";
 import SortableTh, { type SortDir } from "./SortableTh";
+import { PRINT_SHOW_ALL_EVENT } from "./PrintButton";
 
 type SortKey = "time" | "amount";
 type DirectionFilter = "all" | "in" | "out";
@@ -53,6 +54,16 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
   const [sortKey, setSortKey] = useState<SortKey>("time");
   const [dir, setDir] = useState<SortDir>("desc");
   const [page, setPage] = useState(0);
+  const [printAll, setPrintAll] = useState(false);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<{ showAll: boolean }>).detail;
+      setPrintAll(detail.showAll);
+    };
+    window.addEventListener(PRINT_SHOW_ALL_EVENT, handler);
+    return () => window.removeEventListener(PRINT_SHOW_ALL_EVENT, handler);
+  }, []);
 
   const handleSort = (key: SortKey) => {
     if (key === sortKey) {
@@ -92,7 +103,9 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
 
   const pageCount = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
   const currentPage = Math.min(page, pageCount - 1);
-  const pageRows = sorted.slice(currentPage * PAGE_SIZE, currentPage * PAGE_SIZE + PAGE_SIZE);
+  const pageRows = printAll
+    ? sorted
+    : sorted.slice(currentPage * PAGE_SIZE, currentPage * PAGE_SIZE + PAGE_SIZE);
 
   return (
     <div className="report-card rounded-md overflow-hidden flex flex-col">
@@ -106,7 +119,7 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
             показано: {formatCount(sorted.length)}
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="no-print flex flex-wrap items-center gap-2">
           <div className="flex gap-1 text-xs">
             {(["all", "in", "out"] as DirectionFilter[]).map((d) => (
               <button
@@ -220,7 +233,7 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
         </table>
       </div>
 
-      <div className="flex items-center justify-end gap-3 px-4 py-3 border-t border-[var(--border)] text-xs text-[var(--muted)]">
+      <div className="no-print flex items-center justify-end gap-3 px-4 py-3 border-t border-[var(--border)] text-xs text-[var(--muted)]">
         <span>
           сторінка {currentPage + 1} з {pageCount}
         </span>

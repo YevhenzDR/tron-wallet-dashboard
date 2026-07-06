@@ -70,11 +70,18 @@ body {
     display: none !important;
   }
 
-  /* Un-clip vertical scroll boxes so the source/destination/circular
-     tables print every row rather than just the scrolled-visible slice.
-     The transaction ledger is paginated in state, so it still prints the
-     current page only — matching "print whatever is on the page now". */
+  /* By default, keep scroll boxes clipped to their on-screen size so the
+     "print current view" button matches exactly what's visible — not
+     every hidden row. Chrome tends to expand overflow:auto containers
+     when printing; forcing hidden pins them to their current height. */
   .scrollbar-thin {
+    overflow: hidden !important;
+  }
+
+  /* The "print everything" button adds this class to <body> right before
+     printing (and removes it right after) to expand every scroll-clipped
+     table so all rows are included. */
+  body.print-expand-all .scrollbar-thin {
     max-height: none !important;
     overflow: visible !important;
   }
