@@ -21,21 +21,24 @@ function shortenHash(hash: string): string {
   return `${hash.slice(0, 10)}…${hash.slice(-8)}`;
 }
 
-function csvHyperlink(url: string, label: string): string {
-  return `"=HYPERLINK(""${url}"",""${label}"")"`;
-}
-
 function toCsv(rows: Transaction[]): string {
-  const header = "time,direction,counterparty,amount_usdt,tag,is_exchange,tx_hash";
+  // Plain bare URLs (not a HYPERLINK() formula) so Excel/Sheets auto-linkify them
+  // regardless of the spreadsheet's locale -- HYPERLINK()'s comma argument
+  // separator only works in US-locale sheets; e.g. Ukrainian locale expects
+  // semicolons and silently renders the formula as literal text instead.
+  const header =
+    "time,direction,counterparty,counterparty_url,amount_usdt,tag,is_exchange,tx_hash,tx_url";
   const lines = rows.map((r) =>
     [
       r.time,
       r.direction,
-      csvHyperlink(tronscanUrl(r.counterparty), r.counterparty),
+      r.counterparty,
+      tronscanUrl(r.counterparty),
       r.amount,
       `"${r.tag.replace(/"/g, '""')}"`,
       r.is_exchange,
-      csvHyperlink(tronscanTxUrl(r.hash), r.hash),
+      r.hash,
+      tronscanTxUrl(r.hash),
     ].join(",")
   );
   return [header, ...lines].join("\n");
