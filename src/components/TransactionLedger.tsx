@@ -22,7 +22,10 @@ function shortenHash(hash: string): string {
 }
 
 function csvHyperlink(url: string, label: string): string {
-  return `"=HYPERLINK(""${url}"",""${label}"")"`;
+  // Semicolon argument separator: Ukrainian-locale Excel/Sheets (this
+  // dashboard's actual audience) expect ";" for formula arguments, not ",".
+  // A comma-separated HYPERLINK() silently renders as literal text there.
+  return `"=HYPERLINK(""${url}"";""${label}"")"`;
 }
 
 function toCsv(rows: Transaction[]): string {
