@@ -214,6 +214,7 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
                   dir={dir}
                   onClick={handleSort}
                   align="right"
+                  padX="pl-4 pr-6"
                 />
               </tr>
             </thead>
@@ -253,7 +254,7 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
                           {CATEGORY_LABEL[cat]}
                         </span>
                       </td>
-                      <td className="px-4 py-2 text-right" style={{ color: "var(--outflow)" }}>
+                      <td className="pl-4 pr-6 py-2 text-right" style={{ color: "var(--outflow)" }}>
                         {formatUsdt(d.received_from_wallet)}
                       </td>
                     </tr>
