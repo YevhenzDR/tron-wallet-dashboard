@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { CircularCounterparty } from "@/lib/types";
 import { formatUsdt } from "@/lib/format";
+import { csvAddressCell, csvField, downloadCsv } from "@/lib/csv";
 import AddressLink from "./AddressLink";
 import SortableTh, { type SortDir } from "./SortableTh";
 
@@ -16,6 +17,23 @@ const DEFAULT_DIR: Record<SortKey, SortDir> = {
   out_count: "desc",
   net: "desc",
 };
+
+function toCsv(rows: CircularCounterparty[]): string {
+  const header = "address,tag,is_exchange,in_total_usdt,in_count,out_total_usdt,out_count,net_usdt";
+  const lines = rows.map((r) =>
+    [
+      csvAddressCell(r.address),
+      csvField(r.tag),
+      r.is_exchange,
+      r.in_total,
+      r.in_count,
+      r.out_total,
+      r.out_count,
+      r.net,
+    ].join(",")
+  );
+  return [header, ...lines].join("\n");
+}
 
 export default function CircularTable({ rows }: { rows: CircularCounterparty[] }) {
   const [sortKey, setSortKey] = useState<SortKey>("in_total");
@@ -37,14 +55,22 @@ export default function CircularTable({ rows }: { rows: CircularCounterparty[] }
 
   return (
     <div className="report-card rounded-md overflow-hidden">
-      <div className="px-4 py-3 border-b border-[var(--border)]">
-        <h3 className="text-sm font-medium" style={{ color: "var(--warn)" }}>
-          Циркулярні контрагенти
-        </h3>
-        <p className="text-sm text-[var(--foreground)] opacity-80 mt-1">
-          Адреси, що фігурують і як джерело, і як отримувач — виявлено: {rows.length}. Натисніть на
-          заголовок стовпця для сортування.
-        </p>
+      <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-[var(--border)]">
+        <div>
+          <h3 className="text-sm font-medium" style={{ color: "var(--warn)" }}>
+            Циркулярні контрагенти
+          </h3>
+          <p className="text-sm text-[var(--foreground)] opacity-80 mt-1">
+            Адреси, що фігурують і як джерело, і як отримувач — виявлено: {rows.length}. Натисніть на
+            заголовок стовпця для сортування.
+          </p>
+        </div>
+        <button
+          onClick={() => downloadCsv("circular-counterparties.csv", toCsv(sorted))}
+          className="text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
+        >
+          експорт CSV
+        </button>
       </div>
       <div className="overflow-x-auto scrollbar-thin max-h-96 overflow-y-auto">
         <table className="w-full text-xs mono">
