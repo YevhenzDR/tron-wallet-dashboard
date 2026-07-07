@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { Transaction, TransactionLedger as TransactionLedgerData } from "@/lib/types";
-import { formatCount, formatDateTime, formatUsdt, tronscanTxUrl, tronscanUrl } from "@/lib/format";
+import { formatCount, formatDateTime, formatUsdt, tronscanTxUrl } from "@/lib/format";
+import { csvAddressCell, csvField, csvHyperlink, downloadCsv } from "@/lib/csv";
 import AddressLink from "./AddressLink";
 import SortableTh, { type SortDir } from "./SortableTh";
 import { PRINT_SHOW_ALL_EVENT } from "./PrintButton";
@@ -21,38 +22,20 @@ function shortenHash(hash: string): string {
   return `${hash.slice(0, 10)}…${hash.slice(-8)}`;
 }
 
-function csvHyperlink(url: string, label: string): string {
-  // Semicolon argument separator: Ukrainian-locale Excel/Sheets (this
-  // dashboard's actual audience) expect ";" for formula arguments, not ",".
-  // A comma-separated HYPERLINK() silently renders as literal text there.
-  return `"=HYPERLINK(""${url}"";""${label}"")"`;
-}
-
 function toCsv(rows: Transaction[]): string {
   const header = "time,direction,counterparty,amount_usdt,tag,is_exchange,tx_hash";
   const lines = rows.map((r) =>
     [
       r.time,
       r.direction,
-      csvHyperlink(tronscanUrl(r.counterparty), r.counterparty),
+      csvAddressCell(r.counterparty),
       r.amount,
-      `"${r.tag.replace(/"/g, '""')}"`,
+      csvField(r.tag),
       r.is_exchange,
       csvHyperlink(tronscanTxUrl(r.hash), r.hash),
     ].join(",")
   );
   return [header, ...lines].join("\n");
-}
-
-function downloadCsv(rows: Transaction[]) {
-  const csv = toCsv(rows);
-  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "transactions.csv";
-  a.click();
-  URL.revokeObjectURL(url);
 }
 
 export default function TransactionLedgerTable({ data }: { data: TransactionLedgerData }) {
@@ -155,7 +138,7 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
             className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
           />
           <button
-            onClick={() => downloadCsv(sorted)}
+            onClick={() => downloadCsv("transactions.csv", toCsv(sorted))}
             className="text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
           >
             експорт CSV

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import type { Counterparty } from "@/lib/types";
 import { formatUsdt } from "@/lib/format";
+import { csvAddressCell, csvField, downloadCsv } from "@/lib/csv";
 import AddressLink from "./AddressLink";
 import SortableTh, { type SortDir } from "./SortableTh";
 
@@ -13,6 +14,22 @@ const DEFAULT_DIR: Record<SortKey, SortDir> = {
   total: "desc",
   count: "desc",
 };
+
+function toCsv(rows: Counterparty[]): string {
+  const header = "address,tag,is_exchange,is_high_risk,risk_level,total_usdt,tx_count";
+  const lines = rows.map((r) =>
+    [
+      csvAddressCell(r.address),
+      csvField(r.tag),
+      r.is_exchange,
+      r.is_high_risk,
+      csvField(r.risk_level),
+      r.total,
+      r.count,
+    ].join(",")
+  );
+  return [header, ...lines].join("\n");
+}
 
 export default function CounterpartyTable({
   title,
@@ -67,12 +84,20 @@ export default function CounterpartyTable({
             унікальних адрес: {rows.length.toLocaleString("uk-UA")} · бірж: {exchangeCount}
           </p>
         </div>
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="пошук адреси / мітки…"
-          className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
-        />
+        <div className="flex items-center gap-2">
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="пошук адреси / мітки…"
+            className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
+          />
+          <button
+            onClick={() => downloadCsv(`${direction === "in" ? "sources" : "destinations"}.csv`, toCsv(sorted))}
+            className="text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
+          >
+            експорт CSV
+          </button>
+        </div>
       </div>
       <div className="overflow-x-auto scrollbar-thin max-h-96 overflow-y-auto">
         <table className="w-full text-xs mono">

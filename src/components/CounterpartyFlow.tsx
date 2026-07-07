@@ -3,12 +3,28 @@
 import { Fragment, useMemo, useState } from "react";
 import type { DestinationFlow, CounterpartyFlowSummary } from "@/lib/types";
 import { formatUsdt } from "@/lib/format";
+import { csvAddressCell, csvField, downloadCsv } from "@/lib/csv";
 import AddressLink from "./AddressLink";
 import SortableTh, { type SortDir } from "./SortableTh";
 
 function pct(part: number, whole: number): string {
   if (!whole) return "0";
   return ((part / whole) * 100).toLocaleString("uk-UA", { maximumFractionDigits: 1 });
+}
+
+function toCsv(rows: DestinationFlow[]): string {
+  const header = "address,tag,is_exchange,is_high_risk,risk_level,received_from_wallet_usdt";
+  const lines = rows.map((r) =>
+    [
+      csvAddressCell(r.address),
+      csvField(r.tag),
+      r.is_exchange,
+      r.is_high_risk,
+      csvField(r.risk_level),
+      r.received_from_wallet,
+    ].join(",")
+  );
+  return [header, ...lines].join("\n");
 }
 
 type Category = "exchange" | "high_risk" | "regular";
@@ -160,12 +176,20 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
             Розподіл за окремими отримувачами ({sorted.length}
             {destQuery ? ` з ${data.per_destination.length}` : ""})
           </h3>
-          <input
-            value={destQuery}
-            onChange={(e) => setDestQuery(e.target.value)}
-            placeholder="пошук адреси / сервісу…"
-            className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
-          />
+          <div className="flex items-center gap-2">
+            <input
+              value={destQuery}
+              onChange={(e) => setDestQuery(e.target.value)}
+              placeholder="пошук адреси / сервісу…"
+              className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
+            />
+            <button
+              onClick={() => downloadCsv("destination-distribution.csv", toCsv(sorted))}
+              className="text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
+            >
+              експорт CSV
+            </button>
+          </div>
         </div>
         <p className="text-sm text-[var(--foreground)] opacity-80 mb-2">
           бірж серед отримувачів: {exchangeCount} · високоризикових: {highRiskCount} · натисніть на
