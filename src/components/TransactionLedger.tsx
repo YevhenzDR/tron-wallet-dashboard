@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { Transaction, TransactionLedger as TransactionLedgerData } from "@/lib/types";
-import { formatCount, formatDateTime, formatUsdt, tronscanTxUrl } from "@/lib/format";
+import { formatCount, formatDateTime, formatUsdt, tronscanTxUrl, tronscanUrl } from "@/lib/format";
 import AddressLink from "./AddressLink";
 import SortableTh, { type SortDir } from "./SortableTh";
 import { PRINT_SHOW_ALL_EVENT } from "./PrintButton";
@@ -21,17 +21,21 @@ function shortenHash(hash: string): string {
   return `${hash.slice(0, 10)}…${hash.slice(-8)}`;
 }
 
+function csvHyperlink(url: string, label: string): string {
+  return `"=HYPERLINK(""${url}"",""${label}"")"`;
+}
+
 function toCsv(rows: Transaction[]): string {
   const header = "time,direction,counterparty,amount_usdt,tag,is_exchange,tx_hash";
   const lines = rows.map((r) =>
     [
       r.time,
       r.direction,
-      r.counterparty,
+      csvHyperlink(tronscanUrl(r.counterparty), r.counterparty),
       r.amount,
       `"${r.tag.replace(/"/g, '""')}"`,
       r.is_exchange,
-      r.hash,
+      csvHyperlink(tronscanTxUrl(r.hash), r.hash),
     ].join(",")
   );
   return [header, ...lines].join("\n");
