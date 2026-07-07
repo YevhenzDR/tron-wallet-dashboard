@@ -57,13 +57,6 @@ const ACTIVITY_LABEL: Record<string, string> = {
   "Terrorism Financing": "фінансування тероризму",
 };
 
-function riskLevelColor(level: string): string {
-  const l = level.toLowerCase();
-  if (l === "severe" || l === "high") return "var(--outflow)";
-  if (l === "moderate") return "var(--warn)";
-  return "var(--muted)";
-}
-
 function RiskRow({ entry }: { entry: RiskDetailEntry }) {
   const isEntity = entry.risk_type === "sanctioned_entity";
   const label = isEntity ? entry.entity : ACTIVITY_LABEL[entry.entity] ?? entry.entity;
@@ -117,23 +110,15 @@ export default function RiskExposure({ risk }: { risk: WalletRisk }) {
       className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-4"
       style={{ borderColor: "var(--danger)" }}
     >
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h2 className="text-base font-medium" style={{ color: "var(--danger)" }}>
-            Ризикова та санкційна експозиція
-          </h2>
-          <p className="text-sm text-[var(--foreground)] opacity-80 mt-1 leading-relaxed">
-            Аналіз багатоступеневих (мульти-хоп) зв&apos;язків гаманця з відомими санкційними/високоризиковими
-            організаціями та випадками незаконної діяльності — на відміну від простих публічних тегів,
-            враховує кошти, що пройшли через посередницькі адреси.
-          </p>
-        </div>
-        <div className="text-right shrink-0">
-          <div className="text-2xl font-semibold mono" style={{ color: riskLevelColor(risk.risk_level) }}>
-            {risk.score}/100
-          </div>
-          <div className="text-xs text-[var(--muted)]">рівень ризику: {risk.risk_level}</div>
-        </div>
+      <div>
+        <h2 className="text-base font-medium" style={{ color: "var(--danger)" }}>
+          Ризикова та санкційна експозиція
+        </h2>
+        <p className="text-sm text-[var(--foreground)] opacity-80 mt-1 leading-relaxed">
+          Аналіз багатоступеневих (мульти-хоп) зв&apos;язків гаманця з відомими санкційними/високоризиковими
+          організаціями та випадками незаконної діяльності — на відміну від простих публічних тегів,
+          враховує кошти, що пройшли через посередницькі адреси.
+        </p>
       </div>
 
       {entityHits.length > 0 && (
