@@ -6,15 +6,15 @@ import { buildSankeyData, type SankeyNodeDatum } from "@/lib/sankey";
 import { formatUsdt, tronscanUrl } from "@/lib/format";
 
 const NODE_COLORS: Record<SankeyNodeDatum["nodeType"], string> = {
-  source: "#3dd6c1",
-  "other-source": "#4a5568",
-  wallet: "#e8b84a",
-  destination: "#e8785a",
-  "other-destination": "#4a5568",
+  source: "#00ecfc",
+  "other-source": "#404042",
+  wallet: "#fff185",
+  destination: "#fa7a89",
+  "other-destination": "#404042",
 };
 
 function nodeColor(node: SankeyNodeDatum): string {
-  if (node.isExchange) return "#8b7cf6";
+  if (node.isExchange) return "#6b81ff";
   return NODE_COLORS[node.nodeType];
 }
 

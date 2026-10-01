@@ -11,7 +11,7 @@ export function TagBadge({
 }) {
   if (!tag) return null;
   const style = isExchange
-    ? { color: "var(--exchange)", borderColor: "var(--exchange)", background: "rgba(139, 124, 246, 0.08)" }
+    ? { color: "var(--exchange)", borderColor: "var(--exchange)", background: "rgba(107, 129, 255, 0.1)" }
     : { color: "var(--muted)", borderColor: "var(--border)" };
   const label = isExchange ? `EXCHANGE · ${tag}` : tag;
 
@@ -47,7 +47,7 @@ export function RiskBadge({ isHighRisk, riskLevel }: { isHighRisk: boolean; risk
   return (
     <span
       className="inline-flex items-center gap-1 align-middle text-[10px] leading-none px-1.5 py-1 rounded border whitespace-nowrap"
-      style={{ color: "var(--danger)", borderColor: "var(--danger)", background: "rgba(232, 120, 90, 0.08)" }}
+      style={{ color: "var(--danger)", borderColor: "var(--danger)", background: "rgba(255, 82, 77, 0.1)" }}
       title={`MistTrack risk level: ${riskLevel}`}
     >
       ⚠ RISK: {riskLevel === "Severe" ? "SEVERE" : "HIGH"}

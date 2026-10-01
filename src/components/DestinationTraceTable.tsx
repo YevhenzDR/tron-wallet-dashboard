@@ -80,7 +80,7 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
                       style={{
                         color: "var(--exchange)",
                         borderColor: "var(--exchange)",
-                        background: "rgba(139, 124, 246, 0.08)",
+                        background: "rgba(107, 129, 255, 0.1)",
                       }}
                     >
                       → exchange: {formatUsdt(t.exchange_out_total, 0)} USDT

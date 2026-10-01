@@ -30,14 +30,14 @@ export default function PrintButton() {
     <div className="no-print flex items-center gap-2">
       <button
         onClick={printEverything}
-        className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
+        className="xv-control inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
         title="Expand all tables (every row, every ledger page) and print everything"
       >
         🖨 Print everything
       </button>
       <button
         onClick={printCurrentView}
-        className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
+        className="xv-control inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
         title="Print exactly what is visible on screen now (current filters, ledger page)"
       >
         🖨 Print current view

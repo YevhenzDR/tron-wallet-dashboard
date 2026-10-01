@@ -85,11 +85,11 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <LegendDot color="#3dd6c1" label="source wallet" />
-            <LegendDot color="#e8785a" label="recipient wallet" />
-            <LegendDot color="#8b7cf6" label="exchange" />
-            <LegendDot color="#e8b84a" label="investigated wallet" />
-            <LegendDot color="#4a5568" label="others (grouped)" />
+            <LegendDot color="#00ecfc" label="source wallet" />
+            <LegendDot color="#fa7a89" label="recipient wallet" />
+            <LegendDot color="#6b81ff" label="exchange" />
+            <LegendDot color="#fff185" label="investigated wallet" />
+            <LegendDot color="#404042" label="others (grouped)" />
           </div>
         </div>
         <SankeyFlow

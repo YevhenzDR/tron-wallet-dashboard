@@ -89,11 +89,11 @@ export default function CounterpartyTable({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="search address / label…"
-            className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
+            className="xv-control mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
           />
           <button
             onClick={() => downloadCsv(`${direction === "in" ? "sources" : "destinations"}.csv`, toCsv(sorted))}
-            className="text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
+            className="xv-control text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
           >
             export CSV
           </button>

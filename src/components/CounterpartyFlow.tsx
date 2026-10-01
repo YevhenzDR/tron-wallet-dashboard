@@ -151,7 +151,7 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
             value={entityQuery}
             onChange={(e) => setEntityQuery(e.target.value)}
             placeholder="search service…"
-            className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
+            className="xv-control mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
           />
         </div>
         {filteredEntities.length === 0 ? (
@@ -184,11 +184,11 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
               value={destQuery}
               onChange={(e) => setDestQuery(e.target.value)}
               placeholder="search address / service…"
-              className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
+              className="xv-control mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
             />
             <button
               onClick={() => downloadCsv("destination-distribution.csv", toCsv(sorted))}
-              className="text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
+              className="xv-control text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
             >
               export CSV
             </button>

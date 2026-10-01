@@ -67,7 +67,7 @@ export default function CircularTable({ rows }: { rows: CircularCounterparty[] }
         </div>
         <button
           onClick={() => downloadCsv("circular-counterparties.csv", toCsv(sorted))}
-          className="text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
+          className="xv-control text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
         >
           export CSV
         </button>

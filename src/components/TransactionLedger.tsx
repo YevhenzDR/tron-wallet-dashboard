@@ -118,10 +118,10 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
                   setDirection(d);
                   setPage(0);
                 }}
-                className={`px-2 py-1.5 rounded border text-xs transition-colors ${
+                className={`px-2 py-1.5 rounded-[9px] border text-xs transition-colors ${
                   direction === d
                     ? "border-[var(--warn)] text-[var(--warn)]"
-                    : "border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)]"
+                    : "border-[var(--outline)] text-[var(--muted)] hover:text-[var(--foreground)]"
                 }`}
               >
                 {d === "all" ? "all" : d === "in" ? "incoming" : "outgoing"}
@@ -135,11 +135,11 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
               setPage(0);
             }}
             placeholder="search address / label / hash…"
-            className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
+            className="xv-control mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
           />
           <button
             onClick={() => downloadCsv("transactions.csv", toCsv(sorted))}
-            className="text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
+            className="xv-control text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
           >
             export CSV
           </button>
@@ -231,14 +231,14 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
           <button
             onClick={() => setPage((p) => Math.max(0, p - 1))}
             disabled={currentPage === 0}
-            className="px-2 py-1 rounded border border-[var(--border)] disabled:opacity-30 hover:text-[var(--foreground)] transition-colors"
+            className="xv-control px-2 py-1 rounded border border-[var(--border)] disabled:opacity-30 hover:text-[var(--foreground)] transition-colors"
           >
             ← previous
           </button>
           <button
             onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
             disabled={currentPage >= pageCount - 1}
-            className="px-2 py-1 rounded border border-[var(--border)] disabled:opacity-30 hover:text-[var(--foreground)] transition-colors"
+            className="xv-control px-2 py-1 rounded border border-[var(--border)] disabled:opacity-30 hover:text-[var(--foreground)] transition-colors"
           >
             next →
           </button>
