@@ -54,7 +54,7 @@ export function buildSankeyData(
 
   if (otherSources.length > 0) {
     nodes.push({
-      name: `Інші джерела (${otherSources.length})`,
+      name: `Other sources (${otherSources.length})`,
       address: null,
       total: otherSources.reduce((sum, s) => sum + s.total, 0),
       count: otherSources.reduce((sum, s) => sum + s.count, 0),
@@ -90,7 +90,7 @@ export function buildSankeyData(
 
   if (otherDestinations.length > 0) {
     nodes.push({
-      name: `Інші отримувачі (${otherDestinations.length})`,
+      name: `Other recipients (${otherDestinations.length})`,
       address: null,
       total: otherDestinations.reduce((sum, d) => sum + d.total, 0),
       count: otherDestinations.reduce((sum, d) => sum + d.count, 0),

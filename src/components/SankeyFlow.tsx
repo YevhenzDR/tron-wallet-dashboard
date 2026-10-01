@@ -31,7 +31,7 @@ function CustomNode(props: SankeyNodeProps) {
   const subY = isWallet ? y + height + 16 : y + height / 2 + 9;
 
   const subParts: string[] = [];
-  if (node.tag) subParts.push(node.isExchange ? `БІРЖА · ${node.tag}` : node.tag);
+  if (node.tag) subParts.push(node.isExchange ? `EXCHANGE · ${node.tag}` : node.tag);
   if (!isWallet) subParts.push(`${formatUsdt(node.total, 0)} USDT`);
   const subText = subParts.join(" · ");
 
@@ -40,8 +40,8 @@ function CustomNode(props: SankeyNodeProps) {
       <rect x={x} y={y} width={width} height={Math.max(height, 2)} fill={color} fillOpacity={0.9} rx={1.5}>
         <title>
           {node.name}
-          {node.tag ? ` (${node.tag})` : ""} — {formatUsdt(node.total)} USDT (транзакцій:{" "}
-          {node.count.toLocaleString("uk-UA")})
+          {node.tag ? ` (${node.tag})` : ""} — {formatUsdt(node.total)} USDT (transactions:{" "}
+          {node.count.toLocaleString("en-US")})
         </title>
       </rect>
       <text

@@ -52,52 +52,52 @@ export default function KpiCards({ kpis }: { kpis: Kpis }) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
       <Card
-        label="Всього надійшло"
+        label="Total received"
         value={`${formatUsdt(kpis.total_in)} USDT`}
-        sub={`транзакцій: ${formatCount(kpis.incoming_tx_count)}`}
+        sub={`transactions: ${formatCount(kpis.incoming_tx_count)}`}
         accent="inflow"
       />
       <Card
-        label="Всього відправлено"
+        label="Total sent"
         value={`${formatUsdt(kpis.total_out)} USDT`}
-        sub={`транзакцій: ${formatCount(kpis.outgoing_tx_count)}`}
+        sub={`transactions: ${formatCount(kpis.outgoing_tx_count)}`}
         accent="outflow"
       />
       <Card
-        label="Залишок"
+        label="Balance"
         value={`${formatUsdt(kpis.residual)} USDT`}
-        sub="надходження − відправлення"
+        sub="received − sent"
         accent="warn"
       />
       <Card
-        label="Активні дні"
+        label="Active days"
         value={`${kpis.active_days}`}
         sub={`${formatDate(kpis.first_tx_time)} — ${formatDate(kpis.last_tx_time)}`}
       />
       <Card
-        label="Унікальні джерела"
+        label="Unique sources"
         value={formatCount(kpis.unique_sources)}
-        sub={`бірж: ${kpis.exchange_source_count} · високоризикових: ${kpis.high_risk_source_count} · звичайних гаманців: ${formatCount(
+        sub={`exchanges: ${kpis.exchange_source_count} · high-risk: ${kpis.high_risk_source_count} · regular wallets: ${formatCount(
           kpis.unique_sources - kpis.exchange_source_count
         )}`}
       />
       <Card
-        label="Унікальні отримувачі"
+        label="Unique recipients"
         value={formatCount(kpis.unique_destinations)}
-        sub={`бірж: ${kpis.exchange_destination_count} · високоризикових: ${kpis.high_risk_destination_count} · звичайних гаманців: ${formatCount(
+        sub={`exchanges: ${kpis.exchange_destination_count} · high-risk: ${kpis.high_risk_destination_count} · regular wallets: ${formatCount(
           kpis.unique_destinations - kpis.exchange_destination_count
         )}`}
       />
       <Card
-        label="Циркулярні контрагенти"
+        label="Circular counterparties"
         value={formatCount(kpis.circular_counterparty_count)}
-        sub="адреси з обох сторін потоку"
+        sub="addresses on both sides of the flow"
         accent="warn"
       />
       <Card
-        label="Досліджуваний гаманець"
+        label="Investigated wallet"
         value={kpis.wallet_address}
-        sub={kpis.wallet_tag ? kpis.wallet_tag : "звичайний гаманець · відкрити в Tronscan"}
+        sub={kpis.wallet_tag ? kpis.wallet_tag : "regular wallet · open in Tronscan"}
         href={tronscanUrl(kpis.wallet_address)}
       />
     </div>

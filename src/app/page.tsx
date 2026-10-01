@@ -40,7 +40,7 @@ export default function Home() {
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.15em] text-[var(--muted)]">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
-            Аналіз он-чейн потоків · TRON / USDT
+            On-chain flow analysis · TRON / USDT
           </div>
           <PrintButton />
         </div>
@@ -55,7 +55,7 @@ export default function Home() {
           </a>
         </h1>
         <p className="text-sm text-[var(--muted)] mono">
-          {formatDateTime(kpis.first_tx_time)} → {formatDateTime(kpis.last_tx_time)} · активних днів:{" "}
+          {formatDateTime(kpis.first_tx_time)} → {formatDateTime(kpis.last_tx_time)} · active days:{" "}
           {kpis.active_days}
         </p>
       </header>
@@ -77,19 +77,19 @@ export default function Home() {
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <h2 className="text-sm font-medium">
-              Потоки коштів — топ-15 джерел → гаманець → топ-15 отримувачів
+              Fund flows — top 15 sources → wallet → top 15 recipients
             </h2>
             <p className="text-xs text-[var(--muted)] mt-0.5">
-              Решту контрагентів згруповано як «Інші». Товщина зв&apos;язку пропорційна обсягу USDT. Натисніть
-              на адресу, щоб відкрити її в Tronscan.
+              Remaining counterparties are grouped as “Others”. Link thickness is proportional to USDT volume.
+              Click an address to open it in Tronscan.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <LegendDot color="#3dd6c1" label="гаманець-джерело" />
-            <LegendDot color="#e8785a" label="гаманець-отримувач" />
-            <LegendDot color="#8b7cf6" label="біржа" />
-            <LegendDot color="#e8b84a" label="досліджуваний гаманець" />
-            <LegendDot color="#4a5568" label="інші (згруповано)" />
+            <LegendDot color="#3dd6c1" label="source wallet" />
+            <LegendDot color="#e8785a" label="recipient wallet" />
+            <LegendDot color="#8b7cf6" label="exchange" />
+            <LegendDot color="#e8b84a" label="investigated wallet" />
+            <LegendDot color="#4a5568" label="others (grouped)" />
           </div>
         </div>
         <SankeyFlow
@@ -102,9 +102,9 @@ export default function Home() {
 
       <section className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-3">
         <div>
-          <h2 className="text-sm font-medium">Денний обсяг — надходження / відправлення</h2>
+          <h2 className="text-sm font-medium">Daily volume — inflow / outflow</h2>
           <p className="text-xs text-[var(--muted)] mt-0.5">
-            Дзеркальна шкала: надходження відкладено вгору від осі, відправлення — вниз.
+            Mirrored scale: inflows are plotted above the axis, outflows below.
           </p>
         </div>
         <DailyVolumeTimeline data={daily_volumes} />
@@ -113,11 +113,11 @@ export default function Home() {
       <section className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-3">
         <div>
           <h2 className="text-base font-medium" style={{ color: "var(--warn)" }}>
-            Активність за годинами доби (UTC) — ознака ручного керування
+            Activity by hour of day (UTC) — sign of manual operation
           </h2>
           <p className="text-base text-[var(--foreground)] mt-1 leading-relaxed">
-            Розподіл кількості транзакцій за годиною доби. Затінена ділянка — нічна пауза, коли гаманець
-            повністю неактивний.
+            Distribution of transaction count by hour of day. The shaded area is the nightly pause, when the
+            wallet is completely inactive.
           </p>
         </div>
         <HourlyActivityChart data={hourly_activity} />
@@ -136,8 +136,8 @@ export default function Home() {
       </section>
 
       <section className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-        <CounterpartyTable title="Топ джерел (надходження)" rows={sources} direction="in" />
-        <CounterpartyTable title="Топ отримувачів (відправлення)" rows={destinations} direction="out" />
+        <CounterpartyTable title="Top sources (inflow)" rows={sources} direction="in" />
+        <CounterpartyTable title="Top recipients (outflow)" rows={destinations} direction="out" />
       </section>
 
       <section>
@@ -149,9 +149,9 @@ export default function Home() {
       </section>
 
       <footer className="text-[11px] text-[var(--muted)] border-t border-[var(--border)] pt-4 pb-2">
-        Складено на основі он-чейн записів переказів USDT. Мітки бірж та рівні ризику поєднують публічні
-        теги адрес Tronscan із мульти-хоп аналізом MistTrack; адреси без тегів вважаються звичайними
-        гаманцями. Усі адреси ведуть на блокчейн-оглядач Tronscan.
+        Compiled from on-chain USDT transfer records. Exchange labels and risk levels combine public
+        Tronscan address tags with MistTrack multi-hop analysis; untagged addresses are treated as regular
+        wallets. All addresses link to the Tronscan block explorer.
       </footer>
     </main>
   );

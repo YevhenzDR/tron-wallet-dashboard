@@ -31,16 +31,16 @@ export default function PrintButton() {
       <button
         onClick={printEverything}
         className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
-        title="Розгорнути всі таблиці (усі рядки, усі сторінки реєстру) і надрукувати повністю"
+        title="Expand all tables (every row, every ledger page) and print everything"
       >
-        🖨 Друк усієї інформації
+        🖨 Print everything
       </button>
       <button
         onClick={printCurrentView}
         className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
-        title="Надрукувати точно те, що зараз видно на екрані (поточні фільтри, сторінка реєстру)"
+        title="Print exactly what is visible on screen now (current filters, ledger page)"
       >
-        🖨 Друк поточної сторінки
+        🖨 Print current view
       </button>
     </div>
   );

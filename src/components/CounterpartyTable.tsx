@@ -58,7 +58,7 @@ export default function CounterpartyTable({
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return rows;
-    if (q === "exchange" || q === "біржа" || q === "біржі") return rows.filter((r) => r.is_exchange);
+    if (q === "exchange" || q === "exchanges") return rows.filter((r) => r.is_exchange);
     return rows.filter(
       (r) => r.address.toLowerCase().includes(q) || r.tag.toLowerCase().includes(q)
     );
@@ -81,21 +81,21 @@ export default function CounterpartyTable({
             {title}
           </h3>
           <p className="text-sm text-[var(--foreground)] opacity-80 mt-1">
-            унікальних адрес: {rows.length.toLocaleString("uk-UA")} · бірж: {exchangeCount}
+            unique addresses: {rows.length.toLocaleString("en-US")} · exchanges: {exchangeCount}
           </p>
         </div>
         <div className="flex items-center gap-2">
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="пошук адреси / мітки…"
+            placeholder="search address / label…"
             className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
           />
           <button
             onClick={() => downloadCsv(`${direction === "in" ? "sources" : "destinations"}.csv`, toCsv(sorted))}
             className="text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
           >
-            експорт CSV
+            export CSV
           </button>
         </div>
       </div>
@@ -103,9 +103,9 @@ export default function CounterpartyTable({
         <table className="w-full text-xs mono">
           <thead className="sticky top-0 bg-[var(--surface)]">
             <tr className="text-[var(--muted)] text-left">
-              <SortableTh label="Адреса" sortKey="address" activeKey={sortKey} dir={dir} onClick={handleSort} />
+              <SortableTh label="Address" sortKey="address" activeKey={sortKey} dir={dir} onClick={handleSort} />
               <SortableTh
-                label="Сума (USDT)"
+                label="Amount (USDT)"
                 sortKey="total"
                 activeKey={sortKey}
                 dir={dir}
@@ -113,7 +113,7 @@ export default function CounterpartyTable({
                 align="right"
               />
               <SortableTh
-                label="К-сть тр."
+                label="Tx count"
                 sortKey="count"
                 activeKey={sortKey}
                 dir={dir}
@@ -144,7 +144,7 @@ export default function CounterpartyTable({
             {sorted.length === 0 && (
               <tr>
                 <td colSpan={3} className="px-4 py-6 text-center text-[var(--muted)]">
-                  Збігів не знайдено
+                  No matches found
                 </td>
               </tr>
             )}

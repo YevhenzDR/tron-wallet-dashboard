@@ -38,15 +38,18 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
     <div className="report-card rounded-md overflow-hidden">
       <div className="px-4 py-3 border-b border-[var(--border)]">
         <h3 className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--warn)" }}>
-          Простеження на один крок вперед — топ отримувачів
+          One-hop forward trace — top recipients
         </h3>
         <p className="text-sm text-[var(--foreground)] mt-1.5 leading-relaxed">
-          Куди найбільші отримувачі коштів від досліджуваного гаманця відправляють USDT далі. Виявлено
-          відомих отримувачів-бірж: {data.summary.addresses_with_known_exchange_hits} з{" "}
-          {data.summary.addresses_traced} · обсяг на відомі біржові адреси:{" "}
+          Where the largest recipients of funds from the investigated wallet send USDT next. Recipients with
+          known exchange hits: {data.summary.addresses_with_known_exchange_hits} of{" "}
+          {data.summary.addresses_traced} · volume to known exchange addresses:{" "}
           {formatUsdt(data.summary.total_exchange_hit_volume)} USDT
         </p>
-        <p className="text-sm text-[var(--foreground)] mt-1.5 italic opacity-80">{data.note}</p>
+        <p className="text-sm text-[var(--foreground)] mt-1.5 italic opacity-80">
+          Labels combine public Tronscan tags and MistTrack multi-hop analysis. Coverage is still not
+          exhaustive for this hop — some addresses may remain unlabeled.
+        </p>
       </div>
       <div className="divide-y divide-[var(--border)] max-h-[560px] overflow-y-auto scrollbar-thin">
         {data.traced.map((t) => {
@@ -60,14 +63,14 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
                 <div className="min-w-0 flex-1 flex flex-col gap-0.5">
                   <AddressLink address={t.address} />
                   <p className="text-xs text-[var(--foreground)] opacity-80">
-                    отримав від гаманця: <span className="mono">{formatUsdt(t.received_from_wallet)} USDT</span>
+                    received from wallet: <span className="mono">{formatUsdt(t.received_from_wallet)} USDT</span>
                   </p>
                   <p className="text-xs text-[var(--foreground)] opacity-80">
-                    власний вихідний обіг (вся історія):{" "}
+                    own outgoing turnover (all-time):{" "}
                     <span className="mono">{formatUsdt(t.total_out_all_time)} USDT</span>
                   </p>
                   <p className="text-xs text-[var(--muted)]">
-                    {formatCount(t.out_tx_count)} тр. · {formatCount(t.unique_targets)} унікальних отримувачів
+                    {formatCount(t.out_tx_count)} tx · {formatCount(t.unique_targets)} unique recipients
                   </p>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
@@ -80,7 +83,7 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
                         background: "rgba(139, 124, 246, 0.08)",
                       }}
                     >
-                      → біржа: {formatUsdt(t.exchange_out_total, 0)} USDT
+                      → exchange: {formatUsdt(t.exchange_out_total, 0)} USDT
                     </span>
                   )}
                   <span className="text-xs text-[var(--muted)] mono">{isOpen ? "▲" : "▼"}</span>
@@ -92,7 +95,7 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
                     <thead>
                       <tr className="text-[var(--muted)] text-left">
                         <SortableTh
-                          label="Отримувач (наступний хоп)"
+                          label="Recipient (next hop)"
                           sortKey="address"
                           activeKey={sortKey}
                           dir={dir}
@@ -100,7 +103,7 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
                           padX=""
                         />
                         <SortableTh
-                          label="Сума (USDT)"
+                          label="Amount (USDT)"
                           sortKey="total"
                           activeKey={sortKey}
                           dir={dir}
@@ -109,7 +112,7 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
                           padX=""
                         />
                         <SortableTh
-                          label="К-сть тр."
+                          label="Tx count"
                           sortKey="count"
                           activeKey={sortKey}
                           dir={dir}
@@ -140,7 +143,7 @@ export default function DestinationTraceTable({ data }: { data: DestinationTrace
                       {t.top_targets.length === 0 && (
                         <tr>
                           <td colSpan={3} className="py-3 text-center text-[var(--muted)]">
-                            Вихідних переказів USDT не знайдено
+                            No outgoing USDT transfers found
                           </td>
                         </tr>
                       )}

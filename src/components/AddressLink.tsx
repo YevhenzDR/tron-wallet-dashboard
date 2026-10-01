@@ -13,7 +13,7 @@ export function TagBadge({
   const style = isExchange
     ? { color: "var(--exchange)", borderColor: "var(--exchange)", background: "rgba(139, 124, 246, 0.08)" }
     : { color: "var(--muted)", borderColor: "var(--border)" };
-  const label = isExchange ? `БІРЖА · ${tag}` : tag;
+  const label = isExchange ? `EXCHANGE · ${tag}` : tag;
 
   if (isExchange && onTagClick) {
     return (
@@ -25,7 +25,7 @@ export function TagBadge({
         }}
         className="inline-block align-middle text-[10px] leading-none px-1.5 py-1 rounded border whitespace-nowrap hover:brightness-125 transition-[filter] cursor-pointer"
         style={style}
-        title={`Показати всі транзакції з міткою «${tag}»`}
+        title={`Show all transactions labeled “${tag}”`}
       >
         {label}
       </button>
@@ -50,7 +50,7 @@ export function RiskBadge({ isHighRisk, riskLevel }: { isHighRisk: boolean; risk
       style={{ color: "var(--danger)", borderColor: "var(--danger)", background: "rgba(232, 120, 90, 0.08)" }}
       title={`MistTrack risk level: ${riskLevel}`}
     >
-      ⚠ РИЗИК: {riskLevel === "Severe" ? "КРИТИЧНИЙ" : "ВИСОКИЙ"}
+      ⚠ RISK: {riskLevel === "Severe" ? "SEVERE" : "HIGH"}
     </span>
   );
 }

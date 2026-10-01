@@ -1,4 +1,4 @@
-const LOCALE = "uk-UA";
+const LOCALE = "en-US";
 
 export function tronscanUrl(address: string): string {
   return `https://tronscan.org/#/address/${address}`;

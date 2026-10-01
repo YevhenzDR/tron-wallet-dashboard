@@ -8,27 +8,27 @@ interface EntityNote {
 
 const ENTITY_NOTES: Record<string, EntityNote> = {
   "garantex.io": {
-    note: "Російська біржа. Санкції OFAC США (SDN-список, квітень 2022) за сприяння транзакціям для програм-вимагачів і даркнет-ринків; вилучена правоохоронними органами у 2025 р. Як російська фінансова структура, підпадає під санкції РНБО України.",
+    note: "Russian exchange. Sanctioned by US OFAC (SDN list, April 2022) for facilitating transactions for ransomware operators and darknet markets; seized by law enforcement in 2025. As a Russian financial entity, it falls under Ukraine's NSDC sanctions.",
     confirmed: true,
   },
   rapira: {
-    note: "Російська біржа. Як російська фінансова структура підпадає під санкції РНБО України. Статус щодо санкцій OFAC США потребує окремої перевірки.",
+    note: "Russian exchange. As a Russian financial entity, it falls under Ukraine's NSDC sanctions. Its US OFAC sanctions status requires separate verification.",
     confirmed: true,
   },
   "grinex.io": {
-    note: "Російська біржа. Як російська фінансова структура підпадає під санкції РНБО України. Статус щодо санкцій OFAC США потребує окремої перевірки.",
+    note: "Russian exchange. As a Russian financial entity, it falls under Ukraine's NSDC sanctions. Its US OFAC sanctions status requires separate verification.",
     confirmed: true,
   },
   "cryptex.net": {
-    note: "Російська біржа/OTC-платформа. Як російська фінансова структура підпадає під санкції РНБО України. Статус щодо санкцій OFAC США потребує окремої перевірки.",
+    note: "Russian exchange/OTC platform. As a Russian financial entity, it falls under Ukraine's NSDC sanctions. Its US OFAC sanctions status requires separate verification.",
     confirmed: true,
   },
   "nobitex.ir": {
-    note: "Найбільша іранська біржа. Іран перебуває під всеосяжним торговельним ембарго OFAC США — будь-яка іранська фінансова установа підпадає під санкційний режим за юрисдикційною ознакою.",
+    note: "Largest Iranian exchange. Iran is under a comprehensive US OFAC trade embargo — any Iranian financial institution falls under the sanctions regime by jurisdiction.",
     confirmed: true,
   },
   huionepay: {
-    note: "Група Huione (Камбоджа). У 2025 р. FinCEN США застосувало щодо групи спеціальний захід за Розділом 311 Патріотичного акту як до установи, що викликає основне занепокоєння щодо відмивання коштів (пов'язана з мережами шахрайських кол-центрів у Південно-Східній Азії).",
+    note: "Huione Group (Cambodia). In 2025 US FinCEN applied a special measure under Section 311 of the USA PATRIOT Act, designating the group a primary money laundering concern (linked to scam call-center networks in Southeast Asia).",
     confirmed: true,
   },
 };
@@ -36,25 +36,25 @@ const ENTITY_NOTES: Record<string, EntityNote> = {
 function entityNote(entity: string): EntityNote {
   return (
     ENTITY_NOTES[entity.toLowerCase()] ?? {
-      note: "Потребує перевірки за офіційним державним реєстром санкцій (напр. OFAC SDN, реєстр санкцій РНБО України). Конкретний санкційний статус не підтверджено.",
+      note: "Requires verification against an official government sanctions registry (e.g. OFAC SDN, Ukraine's NSDC sanctions registry). Specific sanctions status is not confirmed.",
       confirmed: false,
     }
   );
 }
 
 const RISK_TYPE_LABEL: Record<string, string> = {
-  sanctioned_entity: "санкційна/високоризикова організація",
-  illicit_activity: "незаконна діяльність",
+  sanctioned_entity: "sanctioned/high-risk entity",
+  illicit_activity: "illicit activity",
 };
 
 const ACTIVITY_LABEL: Record<string, string> = {
-  Theft: "крадіжка коштів",
-  "OFAC Sanctions": "загальна позначка санкцій OFAC",
-  "USDT Banned Address": "адреса у чорному списку USDT (Tether)",
-  "WOO X Exploiter": "експлойт біржі WOO X",
-  Phishing: "фішинг",
-  "Dusting Attack": "dusting-атака (мітка для деанонімізації)",
-  "Terrorism Financing": "фінансування тероризму",
+  Theft: "theft of funds",
+  "OFAC Sanctions": "general OFAC sanctions flag",
+  "USDT Banned Address": "USDT (Tether) blacklisted address",
+  "WOO X Exploiter": "WOO X exchange exploit",
+  Phishing: "phishing",
+  "Dusting Attack": "dusting attack (de-anonymization marker)",
+  "Terrorism Financing": "terrorism financing",
 };
 
 function RiskRow({ entry }: { entry: RiskDetailEntry }) {
@@ -80,7 +80,7 @@ function RiskRow({ entry }: { entry: RiskDetailEntry }) {
           </span>
           {note && !note.confirmed && (
             <span className="text-[10px] px-1.5 py-0.5 rounded border border-[var(--border)] text-[var(--muted)] whitespace-nowrap">
-              потребує перевірки
+              needs verification
             </span>
           )}
         </div>
@@ -90,10 +90,10 @@ function RiskRow({ entry }: { entry: RiskDetailEntry }) {
       </div>
       <p className="text-sm text-[var(--foreground)] opacity-80 mt-1.5 leading-relaxed">
         {entry.exposure_type === "direct"
-          ? `Пряме (1 крок) підключення до цієї позначки.`
-          : `Непряме підключення через ${hops - 1} посередників (${entry.hop_num} ${
-              entry.hop_num === 1 ? "крок" : "кроки"
-            } до гаманця).`}
+          ? `Direct (1-hop) connection to this flag.`
+          : `Indirect connection via ${hops - 1} intermediaries (${entry.hop_num} ${
+              entry.hop_num === 1 ? "hop" : "hops"
+            } to the wallet).`}
       </p>
       {note && <p className="text-sm text-[var(--foreground)] opacity-80 mt-1.5 leading-relaxed">{note.note}</p>}
     </div>
@@ -112,19 +112,19 @@ export default function RiskExposure({ risk }: { risk: WalletRisk }) {
     >
       <div>
         <h2 className="text-base font-medium" style={{ color: "var(--danger)" }}>
-          Ризикова та санкційна експозиція
+          Risk and sanctions exposure
         </h2>
         <p className="text-sm text-[var(--foreground)] opacity-80 mt-1 leading-relaxed">
-          Аналіз багатоступеневих (мульти-хоп) зв&apos;язків гаманця з відомими санкційними/високоризиковими
-          організаціями та випадками незаконної діяльності — на відміну від простих публічних тегів,
-          враховує кошти, що пройшли через посередницькі адреси.
+          Analysis of the wallet&apos;s multi-hop connections to known sanctioned/high-risk entities and
+          illicit-activity cases — unlike simple public tags, it accounts for funds that passed through
+          intermediary addresses.
         </p>
       </div>
 
       {entityHits.length > 0 && (
         <div>
           <h3 className="text-sm font-medium uppercase tracking-wider mb-1" style={{ color: "var(--warn)" }}>
-            Санкційні / високоризикові організації ({entityHits.length})
+            Sanctioned / high-risk entities ({entityHits.length})
           </h3>
           {entityHits.map((e, i) => (
             <RiskRow key={e.entity + i} entry={e} />
@@ -135,7 +135,7 @@ export default function RiskExposure({ risk }: { risk: WalletRisk }) {
       {activityHits.length > 0 && (
         <div>
           <h3 className="text-sm font-medium uppercase tracking-wider mb-1" style={{ color: "var(--warn)" }}>
-            Позначки незаконної діяльності ({activityHits.length})
+            Illicit activity flags ({activityHits.length})
           </h3>
           {activityHits.map((e, i) => (
             <RiskRow key={e.entity + i} entry={e} />
@@ -144,9 +144,9 @@ export default function RiskExposure({ risk }: { risk: WalletRisk }) {
       )}
 
       <p className="text-xs text-[var(--muted)] italic pt-2 border-t border-[var(--border)]">
-        Дані отримано через MistTrack (аналіз мульти-хоп зв&apos;язків). Санкційний статус, позначений як
-        &quot;потребує перевірки&quot;, не підтверджено з офіційним державним реєстром і не повинен
-        використовуватись як остаточний доказ без незалежної перевірки.
+        Data obtained via MistTrack (multi-hop link analysis). Sanctions status marked as
+        &quot;needs verification&quot; has not been confirmed against an official government registry and
+        should not be used as conclusive evidence without independent verification.
       </p>
     </div>
   );

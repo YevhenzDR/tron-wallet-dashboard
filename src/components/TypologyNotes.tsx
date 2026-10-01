@@ -4,7 +4,7 @@ import AddressLink from "./AddressLink";
 
 function pct(part: number, whole: number): string {
   if (!whole) return "0";
-  return (part / whole * 100).toLocaleString("uk-UA", { maximumFractionDigits: 1 });
+  return (part / whole * 100).toLocaleString("en-US", { maximumFractionDigits: 1 });
 }
 
 export default function TypologyNotes({
@@ -32,56 +32,56 @@ export default function TypologyNotes({
     <div className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-4 text-sm">
       <div>
         <h2 className="text-base font-medium" style={{ color: "var(--warn)" }}>
-          Типологічні нотатки — попередній висновок
+          Typology notes — preliminary conclusion
         </h2>
         <p className="text-sm text-[var(--foreground)] mt-1 leading-relaxed">
-          Автоматично сформовано на основі агрегованих показників нижче. Мітки бірж поєднують публічні
-          теги Tronscan із результатами мульти-хоп аналізу MistTrack (кластеризація адрес та зв&apos;язки
-          через посередників, а не лише прямі публічні теги). Незважаючи на це, покриття все ще{" "}
-          <span className="font-medium">не є вичерпним</span> — частина персональних депозитних адрес
-          користувачів бірж залишається непозначеною. Кількість «біржових» адрес у цьому звіті варто
-          розглядати як нижню межу, а не остаточне число.
+          Generated automatically from the aggregate metrics below. Exchange labels combine public Tronscan
+          tags with MistTrack multi-hop analysis (address clustering and links through intermediaries, not
+          just direct public tags). Even so, coverage is still{" "}
+          <span className="font-medium">not exhaustive</span> — some personal exchange deposit addresses
+          remain unlabeled. The number of “exchange” addresses in this report should be treated as a lower
+          bound, not a final count.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="flex flex-col gap-1.5">
           <h3 className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--warn)" }}>
-            Наскрізний транзитний вузол
+            Pass-through transit node
           </h3>
           <p className="text-sm text-[var(--foreground)] leading-relaxed">
-            Залишок на гаманці — лише {formatUsdt(kpis.residual)} USDT при обороті понад{" "}
-            {formatUsdt(kpis.total_in, 0)} USDT за {kpis.active_days} днів. Кошти від{" "}
-            {kpis.unique_sources.toLocaleString("uk-UA")} джерел консолідуються та майже одразу
-            розподіляються на {kpis.unique_destinations.toLocaleString("uk-UA")} отримувачів. Це типова
-            поведінка транзитного/консолідаційного вузла в схемі лейерингу, а не кінцевої точки виведення
-            коштів.
+            The wallet balance is only {formatUsdt(kpis.residual)} USDT against a turnover of over{" "}
+            {formatUsdt(kpis.total_in, 0)} USDT in {kpis.active_days} days. Funds from{" "}
+            {kpis.unique_sources.toLocaleString("en-US")} sources are consolidated and almost immediately
+            distributed to {kpis.unique_destinations.toLocaleString("en-US")} recipients. This is typical
+            behavior of a transit/consolidation node in a layering scheme, not a final cash-out
+            point.
           </p>
         </div>
 
         <div className="flex flex-col gap-1.5">
           <h3 className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--warn)" }}>
-            Асиметрія біржових міток
+            Exchange label asymmetry
           </h3>
           <p className="text-sm text-[var(--foreground)] leading-relaxed">
-            {exchangeSources.length} з {kpis.unique_sources.toLocaleString("uk-UA")} джерел позначені як
-            біржі ({exchangeInflowPct}% від суми надходжень — {formatUsdt(exchangeInflowTotal, 0)} USDT).
+            {exchangeSources.length} of {kpis.unique_sources.toLocaleString("en-US")} sources are labeled as
+            exchanges ({exchangeInflowPct}% of total inflow — {formatUsdt(exchangeInflowTotal, 0)} USDT).
             {exchangeDestinations.length > 0 ? (
               <>
                 {" "}
-                Завдяки мульти-хоп аналізу MistTrack також виявлено {exchangeDestinations.length} з{" "}
-                {kpis.unique_destinations.toLocaleString("uk-UA")} отримувачів, позначених як біржові (
-                {exchangeOutflowPct}% від суми відправлень — {formatUsdt(exchangeOutflowTotal, 0)} USDT).
-                Це підтверджує пряме виведення коштів на біржі, а не лише транзит через посередницькі
-                адреси.
+                MistTrack multi-hop analysis also identified {exchangeDestinations.length} of{" "}
+                {kpis.unique_destinations.toLocaleString("en-US")} recipients labeled as exchanges (
+                {exchangeOutflowPct}% of total outflow — {formatUsdt(exchangeOutflowTotal, 0)} USDT).
+                This confirms direct cash-out to exchanges, not just transit through intermediary
+                addresses.
               </>
             ) : (
               <>
                 {" "}
-                Жодного отримувача не позначено як біржу. Це очікувано: гарячі гаманці бірж видно, коли
-                кошти <span className="font-medium">знімають</span> з біржі (вхід у цей гаманець), але
-                коли кошти <span className="font-medium">вносять</span> на біржу, вони йдуть на
-                одноразову депозитну адресу конкретного користувача, яку публічні теги не підписують.
+                No recipient is labeled as an exchange. This is expected: exchange hot wallets are visible when
+                funds are <span className="font-medium">withdrawn</span> from an exchange (inflow to this
+                wallet), but when funds are <span className="font-medium">deposited</span> to an exchange,
+                they go to a user-specific deposit address that public tags don&apos;t label.
               </>
             )}
           </p>
@@ -89,10 +89,11 @@ export default function TypologyNotes({
 
         <div className="flex flex-col gap-1.5">
           <h3 className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--warn)" }}>
-            Циркулярні контрагенти
+            Circular counterparties
           </h3>
           <p className="text-sm text-[var(--foreground)] leading-relaxed">
-            Виявлено {kpis.circular_counterparty_count} адрес по обидва боки потоку. Найбільша за сальдо
+            Found {kpis.circular_counterparty_count} addresses on both sides of the flow. The largest by net
+            balance
             —{" "}
             {topCircular ? (
               <span className="inline-block align-middle">
@@ -108,9 +109,9 @@ export default function TypologyNotes({
             {topCircular && (
               <>
                 {" "}
-                — надійшло {formatUsdt(topCircular.in_total, 0)} USDT, відправлено{" "}
-                {formatUsdt(topCircular.out_total, 0)} USDT. Активний зустрічний обмін коштами з
-                досліджуваним гаманцем — характерна ознака лейерингу через посередницькі адреси.
+                — received {formatUsdt(topCircular.in_total, 0)} USDT, sent{" "}
+                {formatUsdt(topCircular.out_total, 0)} USDT. Active two-way exchange of funds with the
+                investigated wallet is a hallmark of layering through intermediary addresses.
               </>
             )}
           </p>

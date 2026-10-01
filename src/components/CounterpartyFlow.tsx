@@ -9,7 +9,7 @@ import SortableTh, { type SortDir } from "./SortableTh";
 
 function pct(part: number, whole: number): string {
   if (!whole) return "0";
-  return ((part / whole) * 100).toLocaleString("uk-UA", { maximumFractionDigits: 1 });
+  return ((part / whole) * 100).toLocaleString("en-US", { maximumFractionDigits: 1 });
 }
 
 function toCsv(rows: DestinationFlow[]): string {
@@ -30,9 +30,9 @@ function toCsv(rows: DestinationFlow[]): string {
 type Category = "exchange" | "high_risk" | "regular";
 const CATEGORY_RANK: Record<Category, number> = { exchange: 0, high_risk: 1, regular: 2 };
 const CATEGORY_LABEL: Record<Category, string> = {
-  exchange: "Біржа",
-  high_risk: "Високоризиковий",
-  regular: "Гаманець",
+  exchange: "Exchange",
+  high_risk: "High-risk",
+  regular: "Wallet",
 };
 
 function categoryOf(d: DestinationFlow): Category {
@@ -105,54 +105,57 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
     <div className="report-card rounded-md p-4 sm:p-6 flex flex-col gap-4">
       <div>
         <h2 className="text-base font-medium" style={{ color: "var(--warn)" }}>
-          Куди зрештою потрапили кошти
+          Where the funds ultimately ended up
         </h2>
         <p className="text-base text-[var(--foreground)] mt-1 leading-relaxed">
-          Оцінка кінцевого напрямку коштів після виходу з досліджуваного гаманця, на основі власної
-          кластеризації контрагентів MistTrack для {data.destinations_analyzed} отримувачів (разом
-          отримали {formatUsdt(data.total_received_by_analyzed, 0)} USDT від гаманця).
+          Estimate of where funds ultimately went after leaving the investigated wallet, based on MistTrack&apos;s
+          own counterparty clustering for {data.destinations_analyzed} recipients (who together received{" "}
+          {formatUsdt(data.total_received_by_analyzed, 0)} USDT from the wallet).
         </p>
         <p className="text-sm text-[var(--foreground)] opacity-80 italic mt-2 leading-relaxed">
-          {data.method_note}
+          Estimate based on each recipient address&apos;s own counterparty distribution (MistTrack), applied
+          proportionally to the amount it received specifically from the investigated wallet. This is a
+          statistical estimate of the likely direction of funds, not a direct on-chain trace of the same
+          coins.
         </p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div className="rounded-md border border-[var(--border)] px-4 py-3">
           <div className="text-[11px] uppercase tracking-wider text-[var(--muted)]">
-            Оцінено як біржі / відомі сервіси
+            Estimated to exchanges / known services
           </div>
           <div className="text-xl font-medium mono mt-1" style={{ color: "var(--exchange)" }}>
             {formatUsdt(data.estimated_to_named_entities, 0)} USDT
           </div>
-          <div className="text-sm text-[var(--foreground)] opacity-80 mt-0.5">{knownPct}% проаналізованої суми</div>
+          <div className="text-sm text-[var(--foreground)] opacity-80 mt-0.5">{knownPct}% of analyzed amount</div>
         </div>
         <div className="rounded-md border border-[var(--border)] px-4 py-3">
           <div className="text-[11px] uppercase tracking-wider text-[var(--muted)]">
-            Без атрибуції (проміжні адреси)
+            Unattributed (intermediary addresses)
           </div>
           <div className="text-xl font-medium mono mt-1 text-[var(--muted)]">
             {formatUsdt(data.estimated_unattributed, 0)} USDT
           </div>
-          <div className="text-sm text-[var(--foreground)] opacity-80 mt-0.5">{unknownPct}% проаналізованої суми</div>
+          <div className="text-sm text-[var(--foreground)] opacity-80 mt-0.5">{unknownPct}% of analyzed amount</div>
         </div>
       </div>
 
       <div>
         <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
           <h3 className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--warn)" }}>
-            За сервісами ({filteredEntities.length}
-            {entityQuery ? ` з ${data.entities.length}` : ""})
+            By service ({filteredEntities.length}
+            {entityQuery ? ` of ${data.entities.length}` : ""})
           </h3>
           <input
             value={entityQuery}
             onChange={(e) => setEntityQuery(e.target.value)}
-            placeholder="пошук сервісу…"
+            placeholder="search service…"
             className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
           />
         </div>
         {filteredEntities.length === 0 ? (
-          <div className="py-4 text-center text-sm text-[var(--muted)]">Збігів не знайдено</div>
+          <div className="py-4 text-center text-sm text-[var(--muted)]">No matches found</div>
         ) : (
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-x-6">
             {filteredEntities.map((e) => (
@@ -173,42 +176,42 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
       <div className="pt-2 border-t border-[var(--border)]">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-1">
           <h3 className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--warn)" }}>
-            Розподіл за окремими отримувачами ({sorted.length}
-            {destQuery ? ` з ${data.per_destination.length}` : ""})
+            Breakdown by individual recipient ({sorted.length}
+            {destQuery ? ` of ${data.per_destination.length}` : ""})
           </h3>
           <div className="flex items-center gap-2">
             <input
               value={destQuery}
               onChange={(e) => setDestQuery(e.target.value)}
-              placeholder="пошук адреси / сервісу…"
+              placeholder="search address / service…"
               className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
             />
             <button
               onClick={() => downloadCsv("destination-distribution.csv", toCsv(sorted))}
               className="text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
             >
-              експорт CSV
+              export CSV
             </button>
           </div>
         </div>
         <p className="text-sm text-[var(--foreground)] opacity-80 mb-2">
-          бірж серед отримувачів: {exchangeCount} · високоризикових: {highRiskCount} · натисніть на
-          заголовок стовпця для сортування
+          exchanges among recipients: {exchangeCount} · high-risk: {highRiskCount} · click a column
+          header to sort
         </p>
         <div className="overflow-x-auto scrollbar-thin max-h-[560px] overflow-y-auto">
           <table className="w-full text-xs mono">
             <thead className="sticky top-0 bg-[var(--surface)]">
               <tr className="text-[var(--muted)] text-left">
-                <SortableTh label="Адреса" sortKey="address" activeKey={sortKey} dir={dir} onClick={handleSort} />
+                <SortableTh label="Address" sortKey="address" activeKey={sortKey} dir={dir} onClick={handleSort} />
                 <SortableTh
-                  label="Категорія"
+                  label="Category"
                   sortKey="category"
                   activeKey={sortKey}
                   dir={dir}
                   onClick={handleSort}
                 />
                 <SortableTh
-                  label="Отримано від гаманця"
+                  label="Received from wallet"
                   sortKey="received"
                   activeKey={sortKey}
                   dir={dir}
@@ -264,9 +267,9 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
                           <table className="w-full text-xs mono mt-2">
                             <thead>
                               <tr className="text-[var(--muted)] text-left">
-                                <th className="py-1 font-normal">Сервіс</th>
-                                <th className="py-1 font-normal text-right">Частка у власному обігу</th>
-                                <th className="py-1 font-normal text-right">Оцінена сума</th>
+                                <th className="py-1 font-normal">Service</th>
+                                <th className="py-1 font-normal text-right">Share of own turnover</th>
+                                <th className="py-1 font-normal text-right">Estimated amount</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -274,7 +277,7 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
                                 <tr key={b.name} className="border-t border-[var(--border)]">
                                   <td className="py-1.5">{b.name}</td>
                                   <td className="py-1.5 text-right text-[var(--muted)]">
-                                    {b.source_percent.toLocaleString("uk-UA", { maximumFractionDigits: 2 })}%
+                                    {b.source_percent.toLocaleString("en-US", { maximumFractionDigits: 2 })}%
                                   </td>
                                   <td className="py-1.5 text-right" style={{ color: "var(--exchange)" }}>
                                     {formatUsdt(b.estimated_amount, 0)}
@@ -284,7 +287,7 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
                               {d.breakdown.length === 0 && (
                                 <tr>
                                   <td colSpan={3} className="py-2 text-center text-[var(--muted)]">
-                                    Даних немає
+                                    No data
                                   </td>
                                 </tr>
                               )}
@@ -299,7 +302,7 @@ export default function CounterpartyFlow({ data }: { data: CounterpartyFlowSumma
               {sorted.length === 0 && (
                 <tr>
                   <td colSpan={3} className="px-4 py-6 text-center text-[var(--muted)]">
-                    Збігів не знайдено
+                    No matches found
                   </td>
                 </tr>
               )}

@@ -35,11 +35,11 @@ function CustomTooltip({ active, payload }: { active?: boolean; payload?: { payl
   return (
     <div className="report-card rounded-md px-3 py-2 text-xs mono shadow-lg">
       <div className="text-[var(--muted)] mb-1">
-        {fmtHour(d.hour)} UTC · {fmtHour(kyivHour(d.hour))} Київ
+        {fmtHour(d.hour)} UTC · {fmtHour(kyivHour(d.hour))} Kyiv
       </div>
-      <div style={{ color: "var(--inflow)" }}>надійшло: {formatCount(d.in_count)} тр.</div>
-      <div style={{ color: "var(--outflow)" }}>відправлено: {formatCount(d.out_count)} тр.</div>
-      <div className="text-[var(--foreground)] mt-0.5">разом: {formatCount(d.total)} тр.</div>
+      <div style={{ color: "var(--inflow)" }}>received: {formatCount(d.in_count)} tx</div>
+      <div style={{ color: "var(--outflow)" }}>sent: {formatCount(d.out_count)} tx</div>
+      <div className="text-[var(--foreground)] mt-0.5">total: {formatCount(d.total)} tx</div>
     </div>
   );
 }
@@ -91,14 +91,14 @@ export default function HourlyActivityChart({ data }: { data: HourlyActivity[] }
         </ResponsiveContainer>
       </div>
       <p className="text-base text-[var(--foreground)] leading-relaxed">
-        Уся активність гаманця зосереджена в межах{" "}
+        All of the wallet&apos;s activity falls within{" "}
         <span className="font-medium">
           {fmtHour(firstActive)}–{fmtHour(lastActive + 1)} UTC
         </span>{" "}
-        (≈ {fmtHour(kyivHour(firstActive))}–{fmtHour(kyivHour(lastActive + 1))} за київським часом), із{" "}
-        <span className="font-medium">{silentHours.length} год повної тиші щоночі</span>. Це добовий
-        (день/ніч) ритм роботи <span className="font-medium">людини-оператора в одному часовому поясі</span>,
-        а не гарячого гаманця біржі — біржова інфраструктура працює цілодобово без нічних пауз.
+        (≈ {fmtHour(kyivHour(firstActive))}–{fmtHour(kyivHour(lastActive + 1))} Kyiv time), with{" "}
+        <span className="font-medium">{silentHours.length} hours of complete silence every night</span>. This is the daily
+        (day/night) rhythm of a <span className="font-medium">human operator in a single time zone</span>,
+        not an exchange hot wallet — exchange infrastructure runs around the clock with no nightly pauses.
       </p>
     </div>
   );

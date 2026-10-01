@@ -58,27 +58,27 @@ export default function CircularTable({ rows }: { rows: CircularCounterparty[] }
       <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-[var(--border)]">
         <div>
           <h3 className="text-sm font-medium" style={{ color: "var(--warn)" }}>
-            Циркулярні контрагенти
+            Circular counterparties
           </h3>
           <p className="text-sm text-[var(--foreground)] opacity-80 mt-1">
-            Адреси, що фігурують і як джерело, і як отримувач — виявлено: {rows.length}. Натисніть на
-            заголовок стовпця для сортування.
+            Addresses that appear as both a source and a recipient — found: {rows.length}. Click a column
+            header to sort.
           </p>
         </div>
         <button
           onClick={() => downloadCsv("circular-counterparties.csv", toCsv(sorted))}
           className="text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
         >
-          експорт CSV
+          export CSV
         </button>
       </div>
       <div className="overflow-x-auto scrollbar-thin max-h-96 overflow-y-auto">
         <table className="w-full text-xs mono">
           <thead className="sticky top-0 bg-[var(--surface)]">
             <tr className="text-[var(--muted)] text-left">
-              <SortableTh label="Адреса" sortKey="address" activeKey={sortKey} dir={dir} onClick={handleSort} />
+              <SortableTh label="Address" sortKey="address" activeKey={sortKey} dir={dir} onClick={handleSort} />
               <SortableTh
-                label="Надійшло"
+                label="Received"
                 sortKey="in_total"
                 activeKey={sortKey}
                 dir={dir}
@@ -86,7 +86,7 @@ export default function CircularTable({ rows }: { rows: CircularCounterparty[] }
                 align="right"
               />
               <SortableTh
-                label="Тр. вх."
+                label="Tx in"
                 sortKey="in_count"
                 activeKey={sortKey}
                 dir={dir}
@@ -94,7 +94,7 @@ export default function CircularTable({ rows }: { rows: CircularCounterparty[] }
                 align="right"
               />
               <SortableTh
-                label="Відправлено"
+                label="Sent"
                 sortKey="out_total"
                 activeKey={sortKey}
                 dir={dir}
@@ -102,7 +102,7 @@ export default function CircularTable({ rows }: { rows: CircularCounterparty[] }
                 align="right"
               />
               <SortableTh
-                label="Тр. вих."
+                label="Tx out"
                 sortKey="out_count"
                 activeKey={sortKey}
                 dir={dir}
@@ -110,7 +110,7 @@ export default function CircularTable({ rows }: { rows: CircularCounterparty[] }
                 align="right"
               />
               <SortableTh
-                label="Сальдо"
+                label="Net"
                 sortKey="net"
                 activeKey={sortKey}
                 dir={dir}

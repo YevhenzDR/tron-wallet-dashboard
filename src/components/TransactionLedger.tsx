@@ -102,11 +102,11 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
       <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-[var(--border)]">
         <div>
           <h3 className="text-sm font-medium" style={{ color: "var(--warn)" }}>
-            Повний реєстр транзакцій
+            Full transaction ledger
           </h3>
           <p className="text-sm text-[var(--foreground)] opacity-80 mt-1">
-            Кожен окремий переказ з хешем транзакції — знайдено: {formatCount(data.count)} ·
-            показано: {formatCount(sorted.length)}
+            Every individual transfer with its transaction hash — found: {formatCount(data.count)} ·
+            shown: {formatCount(sorted.length)}
           </p>
         </div>
         <div className="no-print flex flex-wrap items-center gap-2">
@@ -124,7 +124,7 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
                     : "border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)]"
                 }`}
               >
-                {d === "all" ? "усі" : d === "in" ? "вхідні" : "вихідні"}
+                {d === "all" ? "all" : d === "in" ? "incoming" : "outgoing"}
               </button>
             ))}
           </div>
@@ -134,14 +134,14 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
               setQuery(e.target.value);
               setPage(0);
             }}
-            placeholder="пошук адреси / мітки / хешу…"
+            placeholder="search address / label / hash…"
             className="mono text-xs bg-[var(--surface-raised)] border border-[var(--border)] rounded px-2 py-1.5 w-40 sm:w-56 outline-none focus:border-[var(--accent)] placeholder:text-[var(--muted)]"
           />
           <button
             onClick={() => downloadCsv("transactions.csv", toCsv(sorted))}
             className="text-xs px-2 py-1.5 rounded border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors whitespace-nowrap"
           >
-            експорт CSV
+            export CSV
           </button>
         </div>
       </div>
@@ -150,18 +150,18 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
         <table className="w-full text-xs mono">
           <thead className="bg-[var(--surface)]">
             <tr className="text-[var(--muted)] text-left">
-              <SortableTh label="Час" sortKey="time" activeKey={sortKey} dir={dir} onClick={handleSort} />
-              <th className="px-4 py-2 font-normal">Напрям</th>
-              <th className="px-4 py-2 font-normal">Контрагент</th>
+              <SortableTh label="Time" sortKey="time" activeKey={sortKey} dir={dir} onClick={handleSort} />
+              <th className="px-4 py-2 font-normal">Direction</th>
+              <th className="px-4 py-2 font-normal">Counterparty</th>
               <SortableTh
-                label="Сума (USDT)"
+                label="Amount (USDT)"
                 sortKey="amount"
                 activeKey={sortKey}
                 dir={dir}
                 onClick={handleSort}
                 align="right"
               />
-              <th className="px-4 py-2 font-normal">Хеш транзакції</th>
+              <th className="px-4 py-2 font-normal">Transaction hash</th>
             </tr>
           </thead>
           <tbody>
@@ -177,7 +177,7 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
                         : { color: "var(--outflow)", borderColor: "var(--outflow)" }
                     }
                   >
-                    {r.direction === "in" ? "вхід" : "вихід"}
+                    {r.direction === "in" ? "in" : "out"}
                   </span>
                 </td>
                 <td className="px-4 py-2 min-w-72">
@@ -215,7 +215,7 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
             {pageRows.length === 0 && (
               <tr>
                 <td colSpan={5} className="px-4 py-6 text-center text-[var(--muted)]">
-                  Збігів не знайдено
+                  No matches found
                 </td>
               </tr>
             )}
@@ -225,7 +225,7 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
 
       <div className="no-print flex items-center justify-end gap-3 px-4 py-3 border-t border-[var(--border)] text-xs text-[var(--muted)]">
         <span>
-          сторінка {currentPage + 1} з {pageCount}
+          page {currentPage + 1} of {pageCount}
         </span>
         <div className="flex gap-1">
           <button
@@ -233,14 +233,14 @@ export default function TransactionLedgerTable({ data }: { data: TransactionLedg
             disabled={currentPage === 0}
             className="px-2 py-1 rounded border border-[var(--border)] disabled:opacity-30 hover:text-[var(--foreground)] transition-colors"
           >
-            ← попередня
+            ← previous
           </button>
           <button
             onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
             disabled={currentPage >= pageCount - 1}
             className="px-2 py-1 rounded border border-[var(--border)] disabled:opacity-30 hover:text-[var(--foreground)] transition-colors"
           >
-            наступна →
+            next →
           </button>
         </div>
       </div>
